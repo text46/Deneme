@@ -6,245 +6,577 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EA SYSTEMS">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000" id="meta-theme-color">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzAwMDAwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTQlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjQwIiBmaWxsPSIjZmZmZmZmIj5FQTwvdGV4dD48L3N2Zz4=">
-<title>EA SYSTEMS</title>
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzAwMDAwMCIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMjQiLz48dGV4dCB4PSI1MCU++">
+<title>EA SYSTEMS - Masaüstü</title>
 <style>
-:root { --black: #000000; --dark-nardo: #5A5D64; --nardo: #8E9399; --light-nardo: #E6E8EA; --white: #FFFFFF; }
-body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#modal):not(#add-modal):not(#machine-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
-html, body { background-color: var(--black) !important; margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--black); }
-.app { max-width:520px; margin:auto; min-height:100vh; background: var(--black); color: var(--white); padding-top:env(safe-area-inset-top); padding-bottom:calc(78px + env(safe-area-inset-bottom)); display:none; }
-header { background:var(--black); color:var(--white); padding:22px 18px 18px; border-radius:0 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
-h1 { font-size:24px; margin:0 0 5px; font-weight:900; letter-spacing:-0.5px }
-.sub { opacity:.75; font-size:13px; font-weight:600; }
-.date { margin-top:15px; background:rgba(255,255,255,.1); padding:10px 12px; border-radius:12px; font-size:13px; display:flex; justify-content:space-between; align-items:center; font-weight:600; }
-.content { padding:16px }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:11px }
-.card { background: #111113; color: var(--white); border-radius:16px; padding:15px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; }
-.label { font-size:12px; color:var(--nardo); font-weight:800; text-transform:uppercase; letter-spacing:0.5px }
-.value { font-size:24px; font-weight:900; margin-top:5px; letter-spacing:-0.5px; color: var(--white); }
-.small { font-size:12px; color:var(--nardo); margin-top:3px; font-weight:600; }
-.progress { height:7px; background:#222226; border-radius:10px; overflow:hidden; margin-top:11px }
-.bar { height:100%; background:var(--white); border-radius:10px; transition:width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) }
-.section { font-size:18px; font-weight:900; margin:26px 2px 14px; letter-spacing:-0.3px; color: var(--white); }
-.order { margin-bottom:12px; cursor:pointer; }
-.order:active { transform:scale(0.97) }
-.row { display:flex; justify-content:space-between; gap:10px; align-items:center }
-.product { font-weight:800; font-size:15px; color: var(--white); }
-.muted { font-size:12px; color:var(--nardo); margin-top:4px; font-weight:700; }
-.badge { font-size:11px; font-weight:800; padding:6px 10px; border-radius:20px; white-space:nowrap; letter-spacing:0.3px }
-.bg-black { background:var(--white); color:var(--black); }
-.bg-nardo { background:var(--nardo); color:var(--white); }
-.bg-light { background:#333338; color:var(--white); }
-.bottom { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:min(520px,100%); height:calc(68px + env(safe-area-inset-bottom)); background:var(--black); border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-around; align-items:flex-start; padding-top:10px; z-index:900 }
-.nav { border:0; background:none; color:var(--nardo); font-size:11px; cursor:pointer; font-weight:700; transition:all 0.3s ease; text-align:center; width: 25%; }
-.nav b { display:block; font-size:22px; margin-bottom:3px; transition:transform 0.3s; }
-.nav.active { color:var(--white); }
-.nav.active b { transform:scale(1.15); }
+:root, [data-theme="dark"] { 
+    --black: #000000; 
+    --bg-main: #000000;
+    --sidebar-bg: #0c0c0e;
+    --card-bg: #111113; 
+    --card-sub-bg: #1e1e24;
+    --dark-nardo: #2a2a2e; 
+    --nardo: #8E9399; 
+    --light-nardo: #E6E8EA; 
+    --white: #FFFFFF; 
+    --text-main: #FFFFFF;
+    --border-color: rgba(255,255,255,0.08);
+    --input-bg: #111113;
+    --input-focus-bg: #1a1a20;
+    --sidebar-border: rgba(255,255,255,0.08);
+    --badge-light: #333338;
+    --dropdown-hover: rgba(255,255,255,0.08);
+}
+
+[data-theme="light"] {
+    --black: #f4f5f7;
+    --bg-main: #f4f5f7;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --card-sub-bg: #f8f9fa;
+    --dark-nardo: #d1d5db;
+    --nardo: #6b7280;
+    --light-nardo: #374151;
+    --white: #111827;
+    --text-main: #111827;
+    --border-color: rgba(0,0,0,0.08);
+    --input-bg: #f9fafb;
+    --input-focus-bg: #ffffff;
+    --sidebar-border: rgba(0,0,0,0.08);
+    --badge-light: #e5e7eb;
+    --dropdown-hover: rgba(0,0,0,0.05);
+}
+
+:root { --sidebar-width: 260px; }
+
+/* ULTRA PREMİUM İNCE SCROLLBAR TASARIMI */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; margin: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(125, 125, 125, 0.3); border-radius: 20px; border: 2px solid transparent; background-clip: content-box; transition: all 0.3s ease; }
+::-webkit-scrollbar-thumb:hover { background: rgba(125, 125, 125, 0.5); border: 2px solid transparent; background-clip: content-box; }
+* { scrollbar-width: thin; scrollbar-color: rgba(125, 125, 125, 0.3) transparent; }
+
+body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-modal):not(#modal):not(#add-modal):not(#machine-modal):not(#report-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
+
+html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color: var(--text-main) !important; transition: background-color 0.3s ease, color 0.3s ease; }
+
+.app { display: none; min-height: 100vh; background: var(--bg-main); color: var(--text-main); }
+
+/* Sol Yan Menü (Sidebar) */
+.desktop-sidebar { position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column; justify-content: space-between; padding: 24px 16px; box-sizing: border-box; z-index: 900; transition: background 0.3s ease, border-color 0.3s ease; }
+.sidebar-top .logo-area { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 20px; padding-left: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
+.sidebar-top .logo-icon { background: linear-gradient(135deg, var(--text-main), var(--nardo)); color: var(--bg-main); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* Sol Profil Alanı */
+.user-profile-badge { background: var(--card-sub-bg); padding: 14px; border-radius: 14px; margin-bottom: 25px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 4px; transition: background 0.3s ease; }
+.user-profile-name { font-size: 14px; font-weight: 900; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
+.user-profile-role { font-size: 10px; font-weight: 800; color: var(--bg-main); background: var(--text-main); padding: 2px 8px; border-radius: 6px; text-transform: uppercase; width: fit-content; }
+.user-profile-date { font-size: 11px; font-weight: 600; color: var(--nardo); margin-top: 2px; border-top: 1px solid var(--border-color); padding-top: 6px; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+.nav-desktop { background: transparent; border: none; color: var(--nardo); text-align: left; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 14px; width: 100%; }
+.nav-desktop svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s; flex-shrink: 0; }
+.nav-desktop:hover { background: var(--border-color); color: var(--text-main); }
+.nav-desktop.active { background: var(--text-main); color: var(--bg-main); }
+.nav-desktop.active svg { stroke: var(--bg-main); }
+
+/* Çıkış Yap Butonu */
+.logout-desktop { background: rgba(255, 82, 82, 0.08); border: 1px solid rgba(255, 82, 82, 0.15); color: #ff5252; text-align: left; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 14px; width: 100%; }
+.logout-desktop svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.logout-desktop:hover { background: rgba(255, 82, 82, 0.18); border-color: rgba(255, 82, 82, 0.3); color: #ff6b6b; transform: translateY(-1px); }
+
+.sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 16px; }
+
+/* Sağ Ana İçerik Alanı */
+.desktop-main { margin-left: var(--sidebar-width); min-height: 100vh; background: var(--bg-main); box-sizing: border-box; padding: 30px 40px; transition: background 0.3s ease; }
+
+.content { padding: 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px; }
+
+.card { background: var(--card-bg); color: var(--text-main); border-radius: 16px; padding: 20px; margin-bottom: 15px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s ease, background 0.3s ease, border 0.3s ease; }
+.label { font-size: 12px; color: var(--nardo); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.value { font-size: 28px; font-weight: 900; margin-top: 8px; letter-spacing: -0.5px; color: var(--text-main); }
+.small { font-size: 12px; color: var(--nardo); margin-top: 4px; font-weight: 600; }
+
+.panel-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+.panel-action-btn { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 16px 20px; color: var(--text-main); font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.panel-action-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.panel-action-btn:hover { background: var(--card-sub-bg); border-color: var(--nardo); }
+
+.progress { height: 8px; background: var(--card-sub-bg); border-radius: 10px; overflow: hidden; margin-top: 12px; }
+.bar { height: 100%; background: var(--text-main); border-radius: 10px; transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+.section { font-size: 18px; font-weight: 900; margin: 30px 0 15px; letter-spacing: -0.3px; color: var(--text-main); }
+.order { margin-bottom: 12px; cursor: pointer; }
+.order:hover { border-color: var(--nardo); }
+.row { display: flex; justify-content: space-between; gap: 15px; align-items: center; }
+.product { font-weight: 800; font-size: 16px; color: var(--text-main); }
+.muted { font-size: 13px; color: var(--nardo); margin-top: 4px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.muted svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.badge { font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.3px; }
+.bg-black { background: var(--text-main); color: var(--bg-main); }
+.bg-nardo { background: var(--nardo); color: var(--white); }
+.bg-light { background: var(--badge-light); color: var(--text-main); }
+
+.bottom { display: none !important; }
+
 .page { display: none; opacity: 0; }
-.page.active-page { display: block; animation: slideFadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-@keyframes slideFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-.modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); align-items:flex-end; justify-content:center; z-index:999999; backdrop-filter:blur(6px); padding-bottom:env(safe-area-inset-bottom); opacity:0; transition:opacity 0.3s; }
-.modal.show { display:flex; opacity:1; }
-.sheet { background:#161619; color:var(--white); width:min(520px,100%); border-radius:28px 28px 0 0; padding:24px; max-height:90vh; overflow-y:auto; transform:translateY(100%); transition:transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); border-top: 1px solid rgba(255,255,255,0.1); }
-.modal.show .sheet { transform:translateY(0); }
-.close { float:right; border:0; background:#222226; color:var(--white); border-radius:50%; width:34px; height:34px; font-size:20px; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; font-weight:900; transition: background 0.2s; }
-.close:active { background:#333338; }
-.detail-box { background:#1e1e24; padding:16px; border-radius:16px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.05); }
-.d-row { display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; align-items:flex-start; }
-.d-row:last-child { margin-bottom:0 }
-.d-row span { color:var(--nardo); font-weight:700; flex-shrink:0; margin-right:15px; }
-.d-row strong { font-weight:800; color:var(--white); text-align:right; flex-grow:1; word-break:break-word; }
-#splash { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--black); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.6s ease, transform 0.6s ease; }
-#splash.hide { opacity: 0; pointer-events: none; transform:scale(1.05); }
-.splash-logo { color: var(--white); font-size: 120px; font-weight: 900; letter-spacing: -4px; animation: popIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.splash-text { color: var(--nardo); font-size: 16px; font-weight: 800; margin-top: 5px; opacity: 0; letter-spacing: 4px; animation: fadeInText 0.8s ease forwards 0.4s; }
+.page.active-page { display: block; animation: slideFadeIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+@keyframes slideFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Modallar */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 999999; backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.3s; }
+.modal.show { display: flex; opacity: 1; }
+.sheet { background: var(--card-bg); color: var(--text-main); width: 480px; border-radius: 20px; padding: 30px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.3); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.modal.show .sheet { transform: scale(1); }
+.close { float: right; border: 0; background: var(--card-sub-bg); color: var(--text-main); border-radius: 50%; width: 34px; height: 34px; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; font-weight: 900; transition: background 0.2s; }
+.close:hover { background: var(--border-color); }
+.detail-box { background: var(--card-sub-bg); padding: 18px; border-radius: 14px; margin-bottom: 14px; border: 1px solid var(--border-color); }
+
+.d-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; align-items: flex-start; }
+.d-row:last-child { margin-bottom: 0; }
+.d-row span { color: var(--nardo); font-weight: 700; flex-shrink: 0; margin-right: 15px; }
+.d-row strong { font-weight: 800; color: var(--text-main); text-align: right; flex-grow: 1; word-break: break-word; }
+
+#splash { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--bg-main); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.6s ease, transform 0.6s ease; }
+#splash.hide { opacity: 0; pointer-events: none; transform: scale(1.05); }
+.splash-logo { width: 90px; height: 90px; background: linear-gradient(135deg, var(--text-main), var(--nardo)); color: var(--bg-main); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 900; box-shadow: 0 10px 30px rgba(0,0,0,0.1); animation: popIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.splash-text { color: var(--nardo); font-size: 14px; font-weight: 800; margin-top: 15px; opacity: 0; letter-spacing: 4px; animation: fadeInText 0.8s ease forwards 0.4s; }
 @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-#role-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--black); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 90000; padding: 24px; box-sizing: border-box; }
-.lang-toggle-wrapper { position: absolute; top: calc(24px + env(safe-area-inset-top)); right: 24px; background: #111113; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+/* Giriş Ekranı Tasarımı */
+#role-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--bg-main); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 90000; padding: 24px; box-sizing: border-box; }
+.lang-toggle-wrapper { position: absolute; top: 30px; right: 40px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .lang-btn { background: transparent; color: var(--nardo); border: none; padding: 8px 16px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; }
-.lang-btn.active { background: var(--white); color: var(--black); }
-.role-btn { width: 100%; max-width: 400px; background: #111113; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; margin-bottom: 16px; cursor: pointer; text-align: left; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.5); display:flex; align-items:center; gap:20px; }
-.role-btn:active { transform: scale(0.95); background: #1a1a1f; }
-.role-icon { width: 64px; height: 64px; background: var(--white); color: var(--black); border-radius: 18px; display: flex; align-items: center; justify-content: center; flex-shrink:0; box-shadow: 0 4px 10px rgba(255,255,255,0.1); }
-.role-title { font-size: 18px; font-weight: 900; color: var(--white); }
-.fab { position:fixed; bottom:calc(85px + env(safe-area-inset-bottom)); right:20px; width:56px; height:56px; background:var(--white); color:var(--black); border-radius:50%; display:none; align-items:center; justify-content:center; font-size:32px; box-shadow:0 10px 25px rgba(255,255,255,0.15); border:none; cursor:pointer; z-index:800; transition:transform 0.2s;}
-.fab:active { transform:scale(0.9); }
-.edit-input { width: 100%; box-sizing: border-box; padding: 14px; border: 2px solid #2a2a30; border-radius: 12px; font-size: 16px; font-weight: 700; margin-top: 5px; outline: none; transition: all 0.3s; color:var(--white); background:#111113; -webkit-appearance: none;}
-.edit-input.center { text-align:center; font-size: 22px; font-weight: 900; }
-.edit-input:focus { border-color: var(--white); background:#1a1a20; }
-.edit-input.readonly { background: #111113; border-color: transparent; pointer-events: none; color: var(--nardo); }
-.btn-update { background: var(--white); color: var(--black); border: none; padding: 16px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 15px; font-size: 15px; cursor: pointer; transition:transform 0.2s;}
-.btn-update:active { transform:scale(0.97); }
-.btn-delete { background: transparent; color: #ff5252; border: 2px solid #ff5252; padding: 12px; border-radius: 12px; font-weight: 800; width: 100%; margin-top: 10px; font-size: 13px; cursor: pointer; display:none;}
-.select-lang { padding: 10px 14px; border-radius: 10px; border: none; font-size: 15px; font-weight: 800; background: #222226; color:var(--white); outline:none; -webkit-appearance: none; appearance: none; text-align:center; min-width:80px;}
-.phase-title { font-size:12px; font-weight:800; color:var(--nardo); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;}
-.logout-btn { background: rgba(255,255,255,0.15); color: var(--white); border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; cursor: pointer; transition:background 0.2s; }
-.logout-btn:active { background: rgba(255,255,255,0.3); }
-.data-card { background: #111113; color: var(--white); border-radius:12px; padding:15px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.05); transition:transform 0.2s;}
-.data-card .time { font-size: 11px; color: var(--nardo); margin-bottom: 8px; font-weight: 600; text-align: right; }
-.machine-item { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--white); font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.2s; display:flex; justify-content:space-between; }
+.lang-btn.active { background: var(--text-main); color: var(--bg-main); }
+
+.login-card { width: 100%; max-width: 420px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); box-sizing: border-box; }
+.login-title { font-size: 26px; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; margin-bottom: 5px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.login-sub { color: var(--nardo); font-size: 13px; font-weight: 600; text-align: center; margin-bottom: 25px; }
+
+.fab { position: fixed; bottom: 40px; right: 40px; width: 60px; height: 60px; background: var(--text-main); color: var(--bg-main); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: none; cursor: pointer; z-index: 800; transition: transform 0.2s; }
+.fab:hover { transform: scale(1.08); }
+.fab:active { transform: scale(0.95); }
+
+.edit-input { width: 100%; box-sizing: border-box; padding: 14px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 15px; font-weight: 700; margin-top: 6px; outline: none; transition: all 0.3s; color: var(--text-main); background: var(--input-bg); }
+.edit-input.center { text-align: center; font-size: 20px; font-weight: 900; }
+.edit-input:focus { border-color: var(--text-main); background: var(--input-focus-bg); }
+.edit-input.readonly { background: var(--card-bg); border-color: transparent; pointer-events: none; color: var(--nardo); }
+.btn-update { background: var(--text-main); color: var(--bg-main); border: none; padding: 15px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 20px; font-size: 15px; cursor: pointer; transition: opacity 0.2s; }
+.btn-update:hover { opacity: 0.9; }
+.btn-delete { background: transparent; color: #ff5252; border: 2px solid #ff5252; padding: 12px; border-radius: 12px; font-weight: 800; width: 100%; margin-top: 12px; font-size: 13px; cursor: pointer; display: none; transition: background 0.2s; }
+.btn-delete:hover { background: rgba(255,82,82,0.1); }
+
+/* ULTRA PREMİUM ÖZEL AÇILIR MENÜ (CUSTOM DROPDOWN) TASARIMI */
+.custom-dropdown { position: relative; width: 160px; user-select: none; }
+.custom-dropdown-selected { background: var(--card-sub-bg); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 10px 16px; font-size: 14px; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.custom-dropdown-selected:hover { border-color: var(--nardo); background: var(--input-focus-bg); }
+.custom-dropdown-options { position: absolute; top: calc(100% + 6px); left: 0; width: 100%; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; z-index: 999; display: none; opacity: 0; transform: translateY(-8px); transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.custom-dropdown.open .custom-dropdown-options { display: block; opacity: 1; transform: translateY(0); }
+.custom-dropdown-option { padding: 11px 16px; font-size: 14px; font-weight: 700; color: var(--text-main); cursor: pointer; transition: background 0.2s ease; }
+.custom-dropdown-option:hover { background: var(--dropdown-hover); }
+.custom-dropdown-option.selected { background: var(--border-color); font-weight: 900; }
+
+.phase-title { font-size: 12px; font-weight: 800; color: var(--nardo); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 14px; }
+.data-card { background: var(--card-bg); color: var(--text-main); border-radius: 14px; padding: 18px; margin-bottom: 12px; border: 1px solid var(--border-color); }
+.data-card .time { font-size: 12px; color: var(--nardo); margin-bottom: 8px; font-weight: 600; text-align: right; }
+.machine-item { padding: 16px 20px; border-bottom: 1px solid var(--border-color); color: var(--text-main); font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.2s; display: flex; justify-content: space-between; align-items: center; }
 .machine-item:last-child { border-bottom: none; }
-.machine-item:active { background: rgba(255,255,255,0.05); }
-.machine-type { color: var(--nardo); font-size:13px; font-weight:600; }
+.machine-item:hover { background: var(--card-sub-bg); }
+.machine-type { color: var(--nardo); font-size: 13px; font-weight: 600; }
+
+/* MANUEL TARİH/SAAT KUTUCUKLARI */
+.custom-datetime-group { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+.custom-date-input, .custom-time-input { background-color: var(--input-bg); color: var(--text-main); border: 2px solid var(--border-color); border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 700; outline: none; font-family: inherit; transition: all 0.3s; box-sizing: border-box; text-align: center; }
+.custom-date-input { flex: 1.4; }
+.custom-time-input { flex: 1; }
+.custom-date-input:focus, .custom-time-input:focus { border-color: var(--text-main); background: var(--input-focus-bg); }
+.custom-date-input::-webkit-calendar-picker-indicator { filter: invert(var(--calendar-invert, 0)); opacity: 0.8; cursor: pointer; transition: opacity 0.2s; }
+[data-theme="dark"] .custom-date-input::-webkit-calendar-picker-indicator { filter: invert(1) brightness(1.5); }
+
+/* RAPOR SONUÇ MODALI */
+.report-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 999999; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
+.report-modal-overlay.show { display: flex; opacity: 1; }
+.report-modal-sheet { background: var(--card-bg); color: var(--text-main); width: 750px; max-width: 90vw; max-height: 85vh; border-radius: 24px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 20px 60px rgba(0,0,0,0.3); display: flex; flex-direction: column; transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.report-modal-overlay.show .report-modal-sheet { transform: scale(1); }
+.report-modal-body { overflow-y: auto; flex-grow: 1; padding-right: 5px; margin-top: 15px; }
+.report-modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px; flex-wrap: wrap; }
+
+@media print {
+  body * { visibility: hidden; }
+  #report-modal-sheet, #report-modal-sheet * { visibility: visible; }
+  #report-modal-sheet { position: absolute; left: 0; top: 0; width: 100%; height: auto; background: #fff !important; color: #000 !important; border: none; box-shadow: none; }
+  .no-print { display: none !important; }
+}
 </style>
 </head>
-<body>
+<body data-theme="dark" onclick="closeAllDropdowns(event)">
 
 <div id="splash">
     <div class="splash-logo">EA</div>
-    <div class="splash-text">EA SYSTEMS</div>
+    <div class="splash-text">EA Software</div>
 </div>
 
+<!-- GİRİŞ EKRANI -->
 <div id="role-screen">
     <div class="lang-toggle-wrapper">
         <button id="lang-tr" class="lang-btn active" onclick="changeLang('tr')">TR</button>
         <button id="lang-en" class="lang-btn" onclick="changeLang('en')">EN</button>
     </div>
-    <div style="text-align:center; margin-bottom:40px;">
-        <div style="font-size:42px; font-weight:900; color:var(--white); letter-spacing:-2px; margin-bottom:5px;">EA PORTAL</div>
-        <div style="color:var(--nardo); font-weight:600; font-size:14px;" data-i18n="selectLoginType">Lütfen giriş türünüzü seçin</div>
-    </div>
-    <button class="role-btn" type="button" onclick="clickAdminRole()">
-        <div class="role-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.6l-2.83-2.83A6 6 0 1 0 12 18v4a10 10 0 1 1 0-20z"/></svg></div>
-        <div class="role-title" data-i18n="adminLogin">Yönetici Girişi</div>
-    </button>
-    <button class="role-btn" type="button" onclick="clickTrackerRole()">
-        <div class="role-icon" style="background:#222226; color:var(--white);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
-        <div class="role-title" data-i18n="trackerLogin">Saha Personeli Girişi</div>
-    </button>
-</div>
 
-<div class="app" id="main-app">
-<header>
-  <h1 id="main-title">EA SYSTEMS</h1>
-  <div class="sub" id="role-subtitle">Saha Operasyon Merkezi</div>
-  <div class="date"><span id="today"></span><button class="logout-btn" onclick="logout()" data-i18n="logout">Çıkış</button></div>
-</header>
-
-<div id="view-home" class="page active-page content">
-  <div class="grid">
-    <div class="card"><div class="label" data-i18n="todayProd">Bugünkü Üretim</div><div class="value" id="val-todayProd">0</div><div class="small" data-i18n="kg">kg / metre</div></div>
-    <div class="card"><div class="label" data-i18n="oee">Aktif Sipariş</div><div class="value" id="val-activeOrders">0</div><div class="small" data-i18n="piece">Adet</div></div>
-  </div>
-  <div class="section" data-i18n="activeOrders">Aktif Üretim Emirleri</div>
-  <div id="orders-preview"></div>
-  <div class="section" data-i18n="deptSummary">Departman Durumları</div>
-  <div id="lines-preview"></div>
-</div>
-
-<div id="view-orders" class="page content">
-  <div class="section" data-i18n="allOrdersTitle">Tüm Üretim Portföyü</div>
-  <div id="orders-full"></div>
-</div>
-
-<div id="view-data" class="page content">
-  <div class="section" data-i18n="navData">Veri Girişi</div>
-  <div class="card" style="background:#111113;">
-    <div class="detail-box" style="border:none;padding:0;background:transparent">
-        <div class="phase-title" data-i18n="machineNo">Makine No</div>
-        <div id="data-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('entry')">
-            <span id="data-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+    <div class="login-card">
+        <div class="login-title">
+            <span style="background:linear-gradient(135deg, var(--text-main), var(--nardo)); width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:var(--bg-main); font-size:14px;">EA</span> 
+            EA Software
         </div>
-        <div class="phase-title" data-i18n="yarnLot">İplik Lot</div><input type="text" id="data-lot" class="edit-input" placeholder="Örn: L-4509">
-        <div class="phase-title" data-i18n="rawFabricKg">Ham Kumaş KG</div><input type="number" id="data-kg" class="edit-input" placeholder="Örn: 250">
-        <button class="btn-update" onclick="saveDataEntry()" style="background:#fff; color:#000;" data-i18n="addEntry">KAYDET</button>
+        <div class="login-sub" data-i18n="loginSub">Sisteme Giriş Yapın</div>
+        
+        <div class="phase-title" data-i18n="usernameLabel">Kullanıcı Adı</div>
+        <input type="text" id="app-user" class="edit-input" placeholder="" autocomplete="off">
+        
+        <div class="phase-title" style="margin-top:15px" data-i18n="passwordLabel">Şifre</div>
+        <input type="password" id="app-pass" class="edit-input" placeholder="">
+        
+        <button class="btn-update" type="button" onclick="attemptLogin()" data-i18n="loginBtn">GİRİŞ YAP</button>
+        
+        <div style="text-align: center; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+            <button class="btn-update" type="button" onclick="openAdminModal()" style="background:#60a5fa; color:#ffffff; margin-top:0; display:flex; align-items:center; justify-content:center; gap:8px;" data-i18n="adminLoginTab">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.6l-2.83-2.83A6 6 0 1 0 12 18v4a10 10 0 1 1 0-20z"/></svg>
+                Yönetici Girişi
+            </button>
+        </div>
     </div>
-  </div>
-  <div class="section" data-i18n="entryHistory">Giriş Geçmişi</div>
-  <div id="data-entries-list"></div>
 </div>
 
-<div id="view-settings" class="page content">
-  <div class="section" data-i18n="settingsTitle">Sistem Tercihleri</div>
-  <div class="card" style="background:#111113;">
-    <div class="detail-box" style="border:none;padding:0;background:transparent">
-        <div class="d-row" style="align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)"><span data-i18n="langSelect">Arayüz Dili</span><select id="lang-select" class="select-lang" onchange="changeLang(this.value)"><option value="tr">TR</option><option value="en">EN</option></select></div>
-        <div class="d-row" style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)"><span data-i18n="activeProfile">Aktif Profil</span><strong id="setting-role" style="color:#fff">Saha Personeli</strong></div>
-        <div class="d-row" style="padding:12px 0"><span data-i18n="dataModel">Veri Modeli</span><strong style="color:#fff" data-i18n="localMemory">Yerel Bellek</strong></div>
+<!-- Masaüstü Uygulama Çerçevesi -->
+<div class="app" id="main-app">
+    <!-- Sol Sabit Yan Menü -->
+    <div class="desktop-sidebar">
+        <div class="sidebar-top">
+            <div class="logo-area">
+                <div class="logo-icon">EA</div>
+                <span>EA Software</span>
+            </div>
+
+            <!-- Sol Üst Kullanıcı Rozeti -->
+            <div class="user-profile-badge">
+                <div class="user-profile-name">
+                    <span id="sidebar-user-name">-</span>
+                    <span class="user-profile-role" id="sidebar-user-role">-</span>
+                </div>
+                <div class="user-profile-date" id="today"></div>
+            </div>
+
+            <div class="sidebar-nav">
+                <button class="nav-desktop active" id="nav-home" onclick="switchView('view-home', 'nav-home')">
+                    <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span data-i18n="navHome">Panel</span>
+                </button>
+                <button class="nav-desktop" id="nav-orders" onclick="switchView('view-orders', 'nav-orders')">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    <span data-i18n="navOrders">Üretim</span>
+                </button>
+                <button class="nav-desktop" id="nav-data" onclick="switchView('view-data', 'nav-data')">
+                    <svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    <span data-i18n="navData">Veri Girişi</span>
+                </button>
+                
+                <button class="nav-desktop" id="nav-users" onclick="switchView('view-users', 'nav-users')" style="display:none;" id-role-restricted="admin">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span data-i18n="navUsers">Kullanıcı Yönetimi</span>
+                </button>
+                <button class="nav-desktop" id="nav-report" onclick="switchView('view-report', 'nav-report')" style="display:none;" id-role-restricted="admin">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <span data-i18n="navReport">Raporlama</span>
+                </button>
+                
+                <button class="nav-desktop" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
+                    <span data-i18n="navSettings">Sistem</span>
+                </button>
+            </div>
+        </div>
+        <div class="sidebar-bottom">
+            <button class="logout-desktop" onclick="logout()">
+                <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span data-i18n="logout">Çıkış Yap</span>
+            </button>
+        </div>
     </div>
-  </div>
-</div>
+
+    <!-- Sağ Ana İçerik Alanı -->
+    <div class="desktop-main">
+        <!-- Panel Sayfası -->
+        <div id="view-home" class="page active-page content">
+          <div class="grid">
+            <div class="card"><div class="label" data-i18n="todayProd">Bugünkü Üretim</div><div class="value" id="val-todayProd">0</div><div class="small" data-i18n="kg">kg / metre</div></div>
+            <div class="card"><div class="label" data-i18n="oee">Aktif Sipariş</div><div class="value" id="val-activeOrders">0</div><div class="small" data-i18n="piece">Adet</div></div>
+          </div>
+
+          <div class="panel-actions" id="admin-action-buttons" style="display:none;">
+              <button class="panel-action-btn" onclick="openAddModal()">
+                  <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> 
+                  <span data-i18n="addNewOrder">Yeni Sipariş Aç</span>
+              </button>
+              <button class="panel-action-btn" onclick="switchView('view-history', 'nav-orders')">
+                  <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span data-i18n="pastOrdersBtn">Geçmiş Siparişler</span>
+              </button>
+          </div>
+
+          <div class="section" data-i18n="activeOrders">Aktif Üretim Emirleri</div>
+          <div id="orders-preview"></div>
+          <div class="section" data-i18n="deptSummary">Departman Durumları</div>
+          <div id="lines-preview"></div>
+        </div>
+
+        <!-- Üretim Sayfası -->
+        <div id="view-orders" class="page content">
+          <div class="section" data-i18n="allOrdersTitle">Tüm Üretim Portföyü</div>
+          <div id="orders-full"></div>
+        </div>
+
+        <!-- Geçmiş Siparişler Sayfası -->
+        <div id="view-history" class="page content">
+          <div class="section" data-i18n="pastOrdersTitle">Geçmiş (Tamamlanan) Siparişler</div>
+          <div id="orders-history"></div>
+        </div>
+
+        <!-- Veri Girişi Sayfası -->
+        <div id="view-data" class="page content">
+          <div class="section" data-i18n="navData">Veri Girişi</div>
+          <div class="card" style="background:var(--card-bg); max-width: 600px;">
+            <div class="detail-box" style="border:none;padding:0;background:transparent">
+                <div class="phase-title" data-i18n="machineNo">Makine No</div>
+                <div id="data-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('entry')">
+                    <span id="data-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+                </div>
+                <div class="phase-title" data-i18n="yarnLot">İplik Lot</div><input type="text" id="data-lot" class="edit-input" placeholder="Örn: L-4509">
+                <div class="phase-title" data-i18n="rawFabricKg">Ham Kumaş KG</div><input type="number" id="data-kg" class="edit-input" placeholder="Örn: 250">
+                <button class="btn-update" onclick="saveDataEntry()" data-i18n="addEntry">KAYDET</button>
+            </div>
+          </div>
+          <div class="section" data-i18n="entryHistory">Giriş Geçmişi</div>
+          <div id="data-entries-list"></div>
+        </div>
+
+        <!-- KULLANICI YÖNETİMİ SAYfASI -->
+        <div id="view-users" class="page content">
+          <div class="section" data-i18n="userMgmtTitle">Kullanıcı Yönetimi & Yetkilendirme</div>
+          <div class="card" style="background:var(--card-bg); max-width: 600px;">
+            <div class="detail-box" style="border:none;padding:0;background:transparent">
+                <div class="phase-title" data-i18n="usernameLabel">Kullanıcı Adı</div>
+                <input type="text" id="new-user-name" class="edit-input" placeholder="Örn: Ahmet" autocomplete="off">
+
+                <div class="phase-title" style="margin-top:12px" data-i18n="passwordLabel">Şifre</div>
+                <input type="password" id="new-user-pass" class="edit-input" placeholder="•••••">
+
+                <div class="phase-title" style="margin-top:12px" data-i18n="roleSelectLabel">Yetki Seviyesi</div>
+                <div class="custom-dropdown" id="dropdown-user-role" onclick="toggleDropdown(event, 'dropdown-user-role')">
+                    <div class="custom-dropdown-selected">
+                        <span id="user-role-selected-text">Yönetici</span>
+                        <span style="font-size:10px; color:var(--nardo);">▼</span>
+                    </div>
+                    <div class="custom-dropdown-options">
+                        <div class="custom-dropdown-option selected" onclick="selectCustomOption(event, 'dropdown-user-role', 'Yönetici', 'Yönetici')">Yönetici</div>
+                        <div class="custom-dropdown-option" onclick="selectCustomOption(event, 'dropdown-user-role', 'Sorumlu', 'Sorumlu')">Sorumlu</div>
+                        <div class="custom-dropdown-option" onclick="selectCustomOption(event, 'dropdown-user-role', 'Saha Personeli', 'Saha Personeli')">Saha Personeli</div>
+                    </div>
+                </div>
+                <input type="hidden" id="new-user-role" value="Yönetici">
+
+                <button class="btn-update" onclick="createNewUser()" data-i18n="saveUserBtn" style="margin-top:20px;">KULLANICIYI KAYDET</button>
+            </div>
+          </div>
+
+          <div class="section" data-i18n="userListTitle">Sistemdeki Kullanıcılar</div>
+          <div id="users-list-container"></div>
+        </div>
+
+        <!-- Raporlama Sayfası -->
+        <div id="view-report" class="page content">
+          <div class="section" data-i18n="reportTitle">Üretim Raporlama Paneli</div>
+          <div class="card" style="background:var(--card-bg); max-width: 600px;">
+            <div class="detail-box" style="border:none;padding:0;background:transparent">
+                <div class="phase-title" data-i18n="machineNo">Makine Seçimi</div>
+                <div id="report-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('report')">
+                    <span id="report-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Tüm Makineler (Genel)</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+                </div>
+
+                <div class="phase-title" data-i18n="startDate">Başlangıç Tarihi / Saati</div>
+                <div class="custom-datetime-group">
+                    <input type="date" id="report-start-date" class="custom-date-input">
+                    <input type="text" id="report-start-time" class="custom-time-input" placeholder="SS:DD" maxlength="5">
+                </div>
+
+                <div class="phase-title" data-i18n="endDate">Bitiş Tarihi / Saati</div>
+                <div class="custom-datetime-group">
+                    <input type="date" id="report-end-date" class="custom-date-input">
+                    <input type="text" id="report-end-time" class="custom-time-input" placeholder="SS:DD" maxlength="5">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn-update" onclick="generateReport()" style="width: auto; padding: 14px 28px; margin-top:0;" data-i18n="btnReport">RAPORLA</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sistem Tercihleri Sayfası -->
+        <div id="view-settings" class="page content">
+          <div class="section" data-i18n="settingsTitle">Sistem Tercihleri</div>
+          <div class="card" style="background:var(--card-bg); max-width: 600px;">
+            <div class="detail-box" style="border:none;padding:0;background:transparent">
+                <!-- DİL SEÇİMİ (ÖZEL DROPDOWN) -->
+                <div class="d-row" style="align-items:center;padding:12px 0;border-bottom:1px solid var(--border-color)">
+                    <span data-i18n="langSelect">Arayüz Dili</span>
+                    <div class="custom-dropdown" id="dropdown-lang" onclick="toggleDropdown(event, 'dropdown-lang')">
+                        <div class="custom-dropdown-selected">
+                            <span id="lang-selected-text">TR</span>
+                            <span style="font-size:10px; color:var(--nardo);">▼</span>
+                        </div>
+                        <div class="custom-dropdown-options">
+                            <div class="custom-dropdown-option selected" onclick="selectLangCustom(event, 'tr', 'TR')">Türkçe (TR)</div>
+                            <div class="custom-dropdown-option" onclick="selectLangCustom(event, 'en', 'EN')">English (EN)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA SEÇİMİ (ÖZEL DROPDOWN) -->
+                <div class="d-row" style="align-items:center;padding:12px 0;border-bottom:1px solid var(--border-color)">
+                    <span data-i18n="themeLabel">Arayüz Teması</span>
+                    <div class="custom-dropdown" id="dropdown-theme" onclick="toggleDropdown(event, 'dropdown-theme')">
+                        <div class="custom-dropdown-selected">
+                            <span id="theme-selected-text">Gece (Dark)</span>
+                            <span style="font-size:10px; color:var(--nardo);">▼</span>
+                        </div>
+                        <div class="custom-dropdown-options">
+                            <div class="custom-dropdown-option selected" onclick="selectThemeCustom(event, 'dark', 'Gece (Dark)')">Gece (Dark)</div>
+                            <div class="custom-dropdown-option" onclick="selectThemeCustom(event, 'light', 'Gündüz (Light)')">Gündüz (Light)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-row" style="padding:12px 0;border-bottom:1px solid var(--border-color)"><span data-i18n="activeProfile">Aktif Profil</span><strong id="setting-role-text" style="color:var(--text-main)">Saha Personeli</strong></div>
+                <div class="d-row" style="padding:12px 0"><span data-i18n="dataModel">Veri Modeli</span><strong style="color:var(--text-main)" data-i18n="localMemory">Yerel Bellek (Offline)</strong></div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div> 
 
 <button class="fab" id="fab-btn" onclick="openAddModal()">＋</button>
 
-<div class="bottom">
- <button class="nav active" id="nav-home" onclick="switchView('view-home', 'nav-home')"><b>⌂</b><span data-i18n="navHome">Panel</span></button>
- <button class="nav" id="nav-orders" onclick="switchView('view-orders', 'nav-orders')"><b>▣</b><span data-i18n="navOrders">Üretim</span></button>
- <button class="nav" id="nav-data" onclick="switchView('view-data', 'nav-data')"><b>📝</b><span data-i18n="navData">Veri</span></button>
- <button class="nav" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')"><b>⚙</b><span data-i18n="navSettings">Sistem</span></button>
+<!-- YÖNETİCİ RAPORU İÇİN ÖZEL PENCERE (MODAL) -->
+<div class="report-modal-overlay" id="report-modal" onclick="if(event.target===this)closeReportModal()">
+  <div class="report-modal-sheet" id="report-modal-sheet">
+      <div class="row" style="align-items:center; margin-bottom:15px;">
+          <h2 style="margin:0; font-size:20px; font-weight:900; color:var(--text-main);" data-i18n="reportResultTitle">Rapor Sonuçları</h2>
+          <button class="close no-print" onclick="closeReportModal()">✕</button>
+      </div>
+      
+      <div class="grid no-print" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom:20px;">
+          <div class="card" style="margin-bottom:0;"><div class="label" data-i18n="repMachine">Seçilen Makine</div><div class="value" id="res-machine" style="font-size:18px;">-</div></div>
+          <div class="card" style="margin-bottom:0;"><div class="label" data-i18n="repTotalProd">Toplam Üretim</div><div class="value" id="res-total" style="font-size:20px;">0 KG</div></div>
+          <div class="card" style="margin-bottom:0;"><div class="label" data-i18n="repCount">Kayıt Adedi</div><div class="value" id="res-count" style="font-size:20px;">0</div></div>
+      </div>
+
+      <div class="section" style="margin-top:0;" data-i18n="matchingEntries">Bu Aralıkta Yapılan Girişler</div>
+      
+      <div class="report-modal-body" id="report-entries-list"></div>
+
+      <div class="report-modal-footer">
+          <button class="logout-btn no-print" onclick="exportExcel()" style="background: linear-gradient(135deg, #10b981, #059669); color:#fff; padding:12px 20px; font-weight:900; border:none; display:flex; align-items:center; gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+              Excele Aktar
+          </button>
+          <button class="logout-btn no-print" onclick="printReportPdf()" style="background:var(--text-main); color:var(--bg-main); padding:12px 20px; font-weight:900; border:none; display:flex; align-items:center; gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              PDF Yazdır
+          </button>
+          <button class="logout-btn no-print" onclick="closeReportModal()" style="background:var(--card-sub-bg); color:var(--text-main); padding:12px 20px; font-weight:900; border:1px solid var(--border-color);" data-i18n="closeModalBtn">Kapat</button>
+      </div>
+  </div>
 </div>
-</div> 
 
 <!-- MODALLAR -->
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal('modal')"><div class="sheet"><button class="close" onclick="closeModal('modal')">✕</button><h2 id="mtitle" style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;"></h2><div id="details"></div></div></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal('modal')"><div class="sheet"><button class="close" onclick="closeModal('modal')">✕</button><h2 id="mtitle" style="margin:0 0 20px;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:var(--text-main);"></h2><div id="details"></div></div></div>
 
 <div class="modal" id="add-modal" onclick="if(event.target===this)closeModal('add-modal')">
  <div class="sheet">
   <button class="close" onclick="closeModal('add-modal')">✕</button>
-  <h2 style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="addNewOrder">Yeni Sipariş Ekle</h2>
+  <h2 style="margin:0 0 20px;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:var(--text-main);" data-i18n="addNewOrder">Yeni Sipariş Aç</h2>
   <div class="detail-box">
     <div class="phase-title" data-i18n="machineNo">Makine No</div>
     <div id="new-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('order')">
         <span id="new-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
     </div>
-    <div class="phase-title" style="margin-top:15px">Parti No</div><input type="text" id="new-no" class="edit-input" placeholder="EA-101">
+    <div class="phase-title" style="margin-top:12px">Parti No</div><input type="text" id="new-no" class="edit-input" placeholder="EA-101">
     <div class="phase-title" data-i18n="productName">Ürün Adı</div><input type="text" id="new-prod" class="edit-input" placeholder="Süprem Kumaş">
     <div class="phase-title" data-i18n="target">Sipariş Miktarı (KG)</div><input type="number" id="new-target" class="edit-input" placeholder="5000">
     <div class="phase-title" data-i18n="material">Materyal</div><input type="text" id="new-yarn" class="edit-input" placeholder="Ne 30/1 Pamuk">
     <div class="phase-title" data-i18n="color">Renk</div><input type="text" id="new-color" class="edit-input" placeholder="Siyah">
-    <button class="btn-update" onclick="saveNewOrder()" style="background:#fff; color:#000;" data-i18n="saveOrderBtn">SİPARİŞİ OLUŞTUR</button>
+    <button class="btn-update" onclick="saveNewOrder()" data-i18n="saveOrderBtn">SİPARİŞİ OLUŞTUR</button>
   </div>
  </div>
 </div>
 
-<div class="modal" id="login-modal" onclick="if(event.target===this)closeModal('login-modal')">
- <div class="sheet">
-  <button class="close" onclick="closeModal('login-modal')">✕</button>
-  <h2 style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="adminLoginTitle">Yönetici Girişi</h2>
+<!-- YÖNETİCİ GİRİŞİ ÖZEL ŞİFRE MODALI -->
+<div class="modal" id="admin-modal" onclick="if(event.target===this)closeModal('admin-modal')">
+ <div class="sheet" style="width: 380px;">
+  <button class="close" onclick="closeModal('admin-modal')">✕</button>
+  <h2 style="margin:0 0 20px;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:var(--text-main);" data-i18n="adminLogin">Yönetici Girişi</h2>
   <div class="detail-box">
-    <div class="phase-title" data-i18n="usernameLabel">Kullanıcı Adı</div><input type="text" id="login-user" class="edit-input" placeholder="Kullanıcı Adı" autocapitalize="none" autocorrect="off" autocomplete="off">
-    <div class="phase-title" style="margin-top:15px" data-i18n="passwordLabel">Şifre</div><input type="password" id="login-pass" class="edit-input" placeholder="•••••">
-    <button class="btn-update" type="button" onclick="attemptAdminLogin()" style="background:#fff; color:#000;" data-i18n="loginBtn">GİRİŞ YAP</button>
+    <div class="phase-title" data-i18n="usernameLabel">Kullanıcı Adı</div>
+    <input type="text" id="admin-user-input" class="edit-input" placeholder="" autocomplete="off">
+    <div class="phase-title" style="margin-top:12px" data-i18n="passwordLabel">Şifre</div>
+    <input type="password" id="admin-pass-input" class="edit-input" placeholder="">
+    <button class="btn-update" onclick="verifyAdminLogin()" data-i18n="loginBtn">GİRİŞ YAP</button>
   </div>
  </div>
 </div>
 
 <div class="modal" id="machine-modal" onclick="if(event.target===this)closeModal('machine-modal')">
- <div class="sheet" style="padding-bottom: 0;">
-  <button class="close" onclick="closeModal('machine-modal')" style="margin-right:24px; margin-top:24px;">✕</button>
-  <h2 style="margin:24px 24px 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="selectMachineTitle">Makine Seçin</h2>
-  <div class="detail-box" id="machine-list" style="max-height: 50vh; overflow-y: auto; padding: 0; background:transparent; border:none; border-radius:0;"></div>
+ <div class="sheet" style="padding-bottom: 0; width: 420px;">
+  <button class="close" onclick="closeModal('machine-modal')" style="margin-right:20px; margin-top:20px;">✕</button>
+  <h2 style="margin:20px 20px 15px;font-size:20px;font-weight:900;letter-spacing:-0.5px;color:var(--text-main);" data-i18n="selectMachineTitle">Makine Seçin</h2>
+  <div class="detail-box" id="machine-list" style="max-height: 45vh; overflow-y: auto; padding: 0; background:transparent; border:none; border-radius:0;"></div>
  </div>
 </div>
 
 <script>
-// Çevrimdışı Çalışması İçin Service Worker Başlatma (PWA)
-if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').then(reg => console.log('Offline mod hazır')).catch(err => console.log('SW Hatası:', err)); }); }
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Hatası:', err)); }); }
 
 const dict = {
   tr: {
-    selectLoginType: "Lütfen giriş türünüzü seçin", todayProd: "Üretim Toplamı", kg: "kg / metre", oee: "Aktif Sipariş", piece: "Adet", activeOrders: "Aktif Siparişler", deptSummary: "Örgü Departmanı", allOrdersTitle: "Tüm Siparişler", settingsTitle: "Sistem Tercihleri",
-    langSelect: "Arayüz Dili", navHome: "Panel", navOrders: "Üretim", navSettings: "Sistem", orderNo: "Parti No", updateBtn: "MİKTARI MANUEL DÜZELT", productName: "Ürün Adı",
+    loginSub: "Sisteme Giriş Yapın", todayProd: "Üretim Toplamı", kg: "kg / metre", oee: "Aktif Sipariş", piece: "Adet", activeOrders: "Aktif Siparişler", deptSummary: "Örgü Departmanı", allOrdersTitle: "Tüm Siparişler", settingsTitle: "Sistem Tercihleri",
+    langSelect: "Arayüz Dili", themeLabel: "Arayüz Teması", navHome: "Panel", navOrders: "Üretim", navData: "Veri Girişi", navReport: "Raporlama", navUsers: "Kullanıcılar", navSettings: "Sistem", orderNo: "Parti No", updateBtn: "MİKTARI MANUEL DÜZELT", productName: "Ürün Adı",
     st_completed: "Tamamlandı", st_inprod: "İşlemde", st_planned: "Bekliyor", knitting: "Örgü / Dokuma", deleteBtn: "Siparişi Sil", loginError: "Kullanıcı adı veya şifre hatalı!",
-    adminLogin: "Yönetici Girişi", trackerLogin: "Saha Personeli Girişi", logout: "Çıkış", adminLoginTitle: "Yönetici Girişi", usernameLabel: "Kullanıcı Adı", passwordLabel: "Şifre", loginBtn: "GİRİŞ YAP",
-    addNewOrder: "Yeni Sipariş Ekle", missingInfo: "Lütfen tüm alanları doldurun!", confirmDelete: "Silmek istediğinize emin misiniz?", material: "Materyal", color: "Renk", target: "Sipariş Miktarı (KG)", activeProfile: "Aktif Profil", dataModel: "Veri Modeli", localMemory: "Yerel Bellek", saveOrderBtn: "SİPARİŞİ OLUŞTUR",
-    navData: "Veri Girişi", machineNo: "Makine No", yarnLot: "İplik Lot", rawFabricKg: "Ham Kumaş (KG)", addEntry: "KAYDET", entryHistory: "Giriş Geçmişi", dateTime: "Tarih/Saat", selectMachine: "Makine Seçin...", selectMachineTitle: "Makine Seçin", viewOnlyMsg: "Veri girişleri 'Veri Girişi' sekmesinden otomatik düşülür.", unassigned: "Atanmadı", noActiveOrder: "Bu makineye atanmış aktif/eksik sipariş bulunamadı!"
+    adminLogin: "Yönetici Girişi", logout: "Çıkış Yap", usernameLabel: "Kullanıcı Adı", passwordLabel: "Şifre", loginBtn: "GİRİŞ YAP", adminLoginTab: "Yönetici Girişi",
+    addNewOrder: "Yeni Sipariş Aç", pastOrdersBtn: "Geçmiş Siparişler", pastOrdersTitle: "Geçmiş (Tamamlanan) Siparişler", missingInfo: "Lütfen tüm alanları doldurun!", confirmDelete: "Silmek istediğinize emin misiniz?", material: "Materyal", color: "Renk", target: "Sipariş Miktarı (KG)", activeProfile: "Aktif Profil", dataModel: "Veri Modeli", localMemory: "Yerel Bellek", saveOrderBtn: "SİPARİŞİ OLUŞTUR",
+    machineNo: "Makine No", yarnLot: "İplik Lot", rawFabricKg: "Ham Kumaş (KG)", addEntry: "KAYDET", entryHistory: "Giriş Geçmişi", dateTime: "Tarih/Saat", selectMachine: "Makine Seçin...", selectMachineTitle: "Makine Seçin", viewOnlyMsg: "Üretim miktarını sadece yöneticiler ve sorumlular düzenleyebilir.", unassigned: "Atanmadı", noActiveOrder: "Bu makineye atanmış aktif/eksik sipariş bulunamadı!",
+    reportTitle: "Üretim Raporlama Paneli", startDate: "Başlangıç Tarihi / Saati", endDate: "Bitiş Tarihi / Saati", btnReport: "RAPORLA", reportResultTitle: "Rapor Sonuçları", backToFilters: "← Filtrelere Dön", repMachine: "Seçilen Makine", repTotalProd: "Toplam Üretim", repCount: "Kayıt Adedi", matchingEntries: "Bu Aralıkta Yapılan Girişler", allMachinesOpt: "Tüm Makineler (Genel)",
+    userMgmtTitle: "Kullanıcı Yönetimi & Yetkilendirme", roleSelectLabel: "Yetki Seviyesi", saveUserBtn: "KULLANICIYI KAYDET", userListTitle: "Kayıtlı Personeller", closeModalBtn: "Kapat"
   },
   en: {
-    selectLoginType: "Please select your login type", todayProd: "Total Output", kg: "kg / meters", oee: "Active Orders", piece: "Pcs", activeOrders: "Active Orders", deptSummary: "Knitting Department", allOrdersTitle: "All Orders", settingsTitle: "System Preferences",
-    langSelect: "UI Language", navHome: "Panel", navOrders: "Production", navSettings: "System", orderNo: "Batch No", updateBtn: "MANUAL UPDATE", productName: "Product Name",
+    loginSub: "Sign in to system", todayProd: "Total Output", kg: "kg / meters", oee: "Active Orders", piece: "Pcs", activeOrders: "Active Orders", deptSummary: "Knitting Department", allOrdersTitle: "All Orders", settingsTitle: "System Preferences",
+    langSelect: "UI Language", themeLabel: "UI Theme", navHome: "Panel", navOrders: "Production", navData: "Data Entry", navReport: "Reporting", navUsers: "Users", navSettings: "System", orderNo: "Batch No", updateBtn: "MANUAL UPDATE", productName: "Product Name",
     st_completed: "Completed", st_inprod: "In Process", st_planned: "Pending", knitting: "Knitting", deleteBtn: "Delete Order", loginError: "Incorrect credentials!",
-    adminLogin: "Admin Login", trackerLogin: "Field Staff Login", logout: "Logout", adminLoginTitle: "Admin Login", usernameLabel: "Username", passwordLabel: "Password", loginBtn: "LOGIN",
-    addNewOrder: "Add New Order", missingInfo: "Please fill all fields!", confirmDelete: "Are you sure you want to delete?", material: "Material", color: "Color", target: "Order Qty (KG)", activeProfile: "Active Profile", dataModel: "Data Model", localMemory: "Local Storage", saveOrderBtn: "CREATE ORDER",
-    navData: "Data Entry", machineNo: "Machine No", yarnLot: "Yarn Lot", rawFabricKg: "Raw Fabric (KG)", addEntry: "SAVE", entryHistory: "Entry History", dateTime: "Date/Time", selectMachine: "Select Machine...", selectMachineTitle: "Select Machine", viewOnlyMsg: "Data is automatically deducted via 'Data Entry' tab.", unassigned: "Unassigned", noActiveOrder: "No active/pending order found for this machine!"
+    adminLogin: "Admin Login", logout: "Logout", usernameLabel: "Username", passwordLabel: "Password", loginBtn: "LOGIN", adminLoginTab: "Admin Login",
+    addNewOrder: "Open New Order", pastOrdersBtn: "Past Orders", pastOrdersTitle: "Past (Completed) Orders", missingInfo: "Please fill all fields!", confirmDelete: "Are you sure you want to delete?", material: "Material", color: "Color", target: "Order Qty (KG)", activeProfile: "Active Profile", dataModel: "Data Model", localMemory: "Local Storage", saveOrderBtn: "CREATE ORDER",
+    machineNo: "Machine No", yarnLot: "Yarn Lot", rawFabricKg: "Raw Fabric (KG)", addEntry: "SAVE", entryHistory: "Entry History", dateTime: "Date/Time", selectMachine: "Select Machine...", selectMachineTitle: "Select Machine", viewOnlyMsg: "Only admins and supervisors can edit production quantities.", unassigned: "Unassigned", noActiveOrder: "No active/pending order found for this machine!",
+    reportTitle: "Production Reporting Panel", startDate: "Start Date / Time", endDate: "End Date / Time", btnReport: "GENERATE REPORT", reportResultTitle: "Report Results", backToFilters: "← Back to Filters", repMachine: "Selected Machine", repTotalProd: "Total Production", repCount: "Record Count", matchingEntries: "Matching Entries in Range", allMachinesOpt: "All Machines (General)",
+    userMgmtTitle: "User Management & Auth", roleSelectLabel: "Permission Level", saveUserBtn: "SAVE USER", userListTitle: "Registered Staff", closeModalBtn: "Close"
   }
 };
 
 let currentLang = localStorage.getItem('eaErpLang') || 'tr';
-let userRole = null;
+let currentTheme = localStorage.getItem('eaErpTheme') || 'dark';
+let currentUser = null; 
 
 const defaultOrders = [
  { no:"EA-TEX-901", product:"Süprem Kumaş", target:5000, made: 5000, yarn: "Ne 30/1 %100 Pamuk", color: "Oxford River", machine: "Makine 1" },
@@ -252,8 +584,15 @@ const defaultOrders = [
 ];
 let appOrders = JSON.parse(localStorage.getItem('eaErpOrders')) || JSON.parse(JSON.stringify(defaultOrders));
 let dataEntries = JSON.parse(localStorage.getItem('eaErpDataEntries')) || [];
+
+let systemUsers = JSON.parse(localStorage.getItem('eaErpUsers')) || [
+    { name: "deneme", pass: "12345", role: "Yönetici" },
+    { name: "sorumlu1", pass: "123", role: "Sorumlu" },
+    { name: "saha1", pass: "123", role: "Saha Personeli" }
+];
+
 const machines = [{ no: "1", type: "Süprem" }, { no: "2", type: "Süprem" }, { no: "3", type: "3 İplik" }, { no: "4", type: "3 İplik" }, { no: "5", type: "İnterlok" }, { no: "6", type: "İnterlok" }, { no: "7", type: "Ribana" }, { no: "8", type: "Ribana" }, { no: "9", type: "Kaşkorse" }, { no: "10", type: "Kaşkorse" }, { no: "11", type: "Pike" }, { no: "12", type: "Pike" }, { no: "13", type: "Havlu" }, { no: "14", type: "Çift Plaka" }, { no: "15", type: "Mini Jakar" }];
-let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = "";
+let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = ""; let selectedReportMachine = "";
 
 function t(key) { return dict[currentLang][key] || key; }
 function applyTranslations() { 
@@ -261,53 +600,460 @@ function applyTranslations() {
     document.getElementById('today').textContent = new Date().toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', {weekday:"long",year:"numeric",month:"long",day:"numeric"}); 
     if(!selectedOrderMachine) document.getElementById('new-machine-text').innerText = t('selectMachine');
     if(!selectedEntryMachine) document.getElementById('data-machine-text').innerText = t('selectMachine');
+    if(!selectedReportMachine) document.getElementById('report-machine-text').innerText = t('allMachinesOpt');
 }
+
+/* ÖZEL DROPDOWN KONTROL FONKSİYONLARI */
+function toggleDropdown(event, dropdownId) {
+    event.stopPropagation();
+    let dropdown = document.getElementById(dropdownId);
+    let isOpen = dropdown.classList.contains('open');
+    closeAllDropdowns();
+    if(!isOpen) {
+        dropdown.classList.add('open');
+    }
+}
+
+function closeAllDropdowns(event) {
+    document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+}
+
+function selectCustomOption(event, dropdownId, value, text) {
+    event.stopPropagation();
+    let dropdown = document.getElementById(dropdownId);
+    let selectedTextSpan = dropdown.querySelector('.custom-dropdown-selected span');
+    selectedTextSpan.innerText = text;
+    
+    dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected'));
+    event.target.classList.add('selected');
+    dropdown.classList.remove('open');
+
+    if(dropdownId === 'dropdown-user-role') {
+        document.getElementById('new-user-role').value = value;
+    }
+}
+
+function selectLangCustom(event, langCode, langText) {
+    event.stopPropagation();
+    document.getElementById('lang-selected-text').innerText = langText;
+    let dropdown = document.getElementById('dropdown-lang');
+    dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected'));
+    event.target.classList.add('selected');
+    dropdown.classList.remove('open');
+    changeLang(langCode);
+}
+
+function selectThemeCustom(event, themeCode, themeText) {
+    event.stopPropagation();
+    document.getElementById('theme-selected-text').innerText = themeText;
+    let dropdown = document.getElementById('dropdown-theme');
+    dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected'));
+    event.target.classList.add('selected');
+    dropdown.classList.remove('open');
+    setTheme(themeCode);
+}
+
 function changeLang(lang) { 
     currentLang = lang; localStorage.setItem('eaErpLang', lang); 
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active')); let activeBtn = document.getElementById('lang-' + lang); if(activeBtn) activeBtn.classList.add('active');
-    let selectEl = document.getElementById('lang-select'); if(selectEl) selectEl.value = lang;
-    applyTranslations(); renderAll(); if(userRole) { renderDataEntries(); }
+    
+    let langText = (lang === 'tr') ? 'TR' : 'EN';
+    let langEl = document.getElementById('lang-selected-text');
+    if(langEl) langEl.innerText = langText;
+
+    applyTranslations(); renderAll(); if(currentUser) { renderDataEntries(); renderUsersList(); }
 }
+
+function setTheme(theme) {
+    currentTheme = theme;
+    localStorage.setItem('eaErpTheme', theme);
+    document.body.setAttribute('data-theme', theme);
+    let metaTheme = document.getElementById('meta-theme-color');
+    if(metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f4f5f7' : '#000000');
+    
+    let themeText = (theme === 'dark') ? 'Gece (Dark)' : 'Gündüz (Light)';
+    let themeEl = document.getElementById('theme-selected-text');
+    if(themeEl) themeEl.innerText = themeText;
+}
+
 function calculateOverall(o) {
     if(typeof o.made === 'undefined') o.made = 0;
     o.k_pct = o.target > 0 ? Math.round((o.made / o.target) * 100) : 0;
     if(o.made >= o.target && o.target > 0) { o.status_code = "st_completed"; o.cls = "bg-black"; } else if(o.made > 0) { o.status_code = "st_inprod"; o.cls = "bg-nardo"; } else { o.status_code = "st_planned"; o.cls = "bg-light"; }
 }
+
 function renderAll() {
-    let html = ""; let totalMade = 0; let totalTarget = 0;
+    let activeHtml = ""; let historyHtml = ""; let totalMade = 0; let totalTarget = 0; let activeCount = 0;
     appOrders.forEach((o, i) => {
-        calculateOverall(o); totalMade += o.made; totalTarget += o.target;
-        let p = o.target > 0 ? Math.min(100, Math.round((o.made / o.target) * 100)) : 0; let rem = o.target - o.made; if(rem < 0) rem = 0; let machineDisp = o.machine || t('unassigned');
-        html += `<div class="card order" onclick="openOrder(${i})"><div class="row"><div><div class="product">${o.product}</div><div class="muted">#${o.no} &nbsp;|&nbsp; 🖥️ ${machineDisp}</div></div><span class="badge ${o.cls}">${t(o.status_code)}</span></div><div class="row" style="margin-top:14px"><strong style="font-size:16px; color:#fff;">${o.made.toLocaleString()} / ${o.target.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:6px;">(Kalan: ${rem.toLocaleString()})</span></strong></div><div class="progress" style="margin-top:10px;"><div class="bar" style="width:${p}%; background:#fff;"></div></div></div>`;
+        calculateOverall(o); 
+        let p = o.target > 0 ? Math.min(100, Math.round((o.made / o.target) * 100)) : 0; 
+        let rem = o.target - o.made; if(rem < 0) rem = 0; 
+        let machineDisp = o.machine || t('unassigned');
+        
+        let machineIconSvg = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>`;
+
+        let cardTpl = `<div class="card order" onclick="openOrder(${i})"><div class="row"><div><div class="product">${o.product}</div><div class="muted">${machineIconSvg} #${o.no} &nbsp;|&nbsp; ${machineDisp}</div></div><span class="badge ${o.cls}">${t(o.status_code)}</span></div><div class="row" style="margin-top:14px"><strong style="font-size:16px; color:var(--text-main);">${o.made.toLocaleString()} / ${o.target.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:6px;">(Kalan: ${rem.toLocaleString()})</span></strong></div><div class="progress" style="margin-top:10px;"><div class="bar" style="width:${p}%;"></div></div></div>`;
+
+        if(o.status_code === "st_completed") { historyHtml += cardTpl; } 
+        else { activeHtml += cardTpl; totalMade += o.made; totalTarget += o.target; activeCount++; }
     });
-    document.getElementById("orders-preview").innerHTML = html; document.getElementById("orders-full").innerHTML = html; document.getElementById("val-todayProd").innerText = totalMade.toLocaleString(); document.getElementById("val-activeOrders").innerText = appOrders.length;
+
+    document.getElementById("orders-preview").innerHTML = activeHtml; 
+    document.getElementById("orders-full").innerHTML = activeHtml; 
+    document.getElementById("orders-history").innerHTML = historyHtml || `<div class="card" style="text-align:center; color:var(--nardo);">Geçmiş tamamlanan sipariş bulunmuyor.</div>`;
+    document.getElementById("val-todayProd").innerText = totalMade.toLocaleString();
+    document.getElementById("val-activeOrders").innerText = activeCount;
+    
     let overallPct = totalTarget > 0 ? Math.round((totalMade / totalTarget) * 100) : 0;
-    document.getElementById("lines-preview").innerHTML = `<div class="card" style="padding:18px 15px"><div class="row" style="margin-bottom:8px;"><span style="color:#fff; font-weight:800;">${t('knitting')}</span><strong style="color:#fff; text-align:right;">${totalMade.toLocaleString()} / ${totalTarget.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:4px;">(%${overallPct})</span></strong></div><div class="progress"><div class="bar" style="width:${overallPct}%; background:#fff;"></div></div></div>`;
+    document.getElementById("lines-preview").innerHTML = `<div class="card" style="padding:18px 15px"><div class="row" style="margin-bottom:8px;"><span style="color:var(--text-main); font-weight:800;">${t('knitting')}</span><strong style="color:var(--text-main); text-align:right;">${totalMade.toLocaleString()} / ${totalTarget.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:4px;">(%${overallPct})</span></strong></div><div class="progress"><div class="bar" style="width:${overallPct}%;"></div></div></div>`;
 }
+
 function openOrder(i){
-  let o = appOrders[i]; document.getElementById("mtitle").textContent = o.product; let deleteBtnHtml = userRole === 'admin' ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; let controls = "";
-  if(userRole === 'admin') { controls = `<div class="phase-title">${t('knitting')} (KG)</div><input type="number" id="edit-k" class="edit-input center" value="${o.made}" max="${o.target}" min="0"><button class="btn-update" onclick="saveProgress(${i})" style="background:#fff; color:#000;">${t('updateBtn')}</button>${deleteBtnHtml}`; } 
-  else { controls = `<div class="phase-title">${t('knitting')} (KG)</div><div class="edit-input center readonly">${o.made.toLocaleString()} KG</div><div style="text-align:center;margin-top:16px;font-size:12px;color:var(--nardo);font-weight:700">${t('viewOnlyMsg')}</div>`; }
-  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div>`; openModal('modal');
+  let o = appOrders[i]; 
+  document.getElementById("mtitle").textContent = o.product; 
+  let canEdit = (currentUser && (currentUser.role === 'Yönetici' || currentUser.role === 'Sorumlu'));
+  let deleteBtnHtml = (currentUser && currentUser.role === 'Yönetici') ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; 
+  let controls = "";
+  
+  if(canEdit) { 
+      controls = `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div>
+                  <input type="number" id="edit-k" class="edit-input center" value="${o.made}" max="${o.target}" min="0">
+                  <button class="btn-update" onclick="saveProgress(${i})" data-i18n="updateBtn">${t('updateBtn')}</button>
+                  ${deleteBtnHtml}`; 
+  } else { 
+      controls = `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div>
+                  <div class="edit-input center readonly">${o.made.toLocaleString()} KG</div>
+                  <div style="text-align:center;margin-top:16px;font-size:12px;color:var(--nardo);font-weight:700">${t('viewOnlyMsg')}</div>`; 
+  }
+  
+  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div>`; 
+  openModal('modal');
 }
-function saveProgress(i) { if(userRole !== 'admin') return; appOrders[i].made = Math.min(appOrders[i].target, Math.max(0, parseInt(document.getElementById('edit-k').value) || 0)); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); }
-function deleteOrder(i) { if(userRole !== 'admin') return; if(confirm(t('confirmDelete'))) { appOrders.splice(i, 1); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); } }
-function openAddModal() { if(userRole !== 'admin') return; selectedOrderMachine = ""; document.getElementById('new-machine-text').innerText = t('selectMachine'); document.getElementById('new-machine-text').style.color = "var(--nardo)"; document.getElementById('new-no').value = ""; document.getElementById('new-prod').value = ""; document.getElementById('new-target').value = ""; document.getElementById('new-yarn').value = ""; document.getElementById('new-color').value = ""; openModal('add-modal'); }
-function saveNewOrder() { if(userRole !== 'admin') return; let mNo = selectedOrderMachine; let no = document.getElementById('new-no').value, prod = document.getElementById('new-prod').value, target = parseInt(document.getElementById('new-target').value); if(!mNo || !no || !prod || isNaN(target) || target <= 0) return alert(t('missingInfo')); appOrders.unshift({ no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value || "-", color: document.getElementById('new-color').value || "-", machine: mNo, made: 0, k_pct: 0 }); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); }
-function openMachineSelect(type) { activeMachineSelector = type; let html = ""; machines.forEach((m) => { let displayText = `Makine ${m.no}`; html += `<div class="machine-item" onclick="selectMachine('${displayText}')"><span>${displayText}</span><span class="machine-type">${m.type}</span></div>`; }); document.getElementById('machine-list').innerHTML = html; openModal('machine-modal'); }
-function selectMachine(m) { if(activeMachineSelector === 'order') { selectedOrderMachine = m; document.getElementById('new-machine-text').innerText = m; document.getElementById('new-machine-text').style.color = "#fff"; } else { selectedEntryMachine = m; document.getElementById('data-machine-text').innerText = m; document.getElementById('data-machine-text').style.color = "#fff"; } closeModal('machine-modal'); }
-function renderDataEntries() { let html = ""; dataEntries.forEach((entry, i) => { let adminControls = userRole === 'admin' ? `<button class="btn-delete" style="display:block; padding:8px; margin-top:12px; font-size:12px;" onclick="deleteDataEntry(${i})">${t('deleteBtn')}</button>` : ''; html += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:#fff">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:#fff">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:#fff">${entry.fabricKg} KG</strong></div>${adminControls}</div>`; }); document.getElementById('data-entries-list').innerHTML = html; }
-function saveDataEntry() { let mNo = selectedEntryMachine; let yLot = document.getElementById('data-lot').value; let kg = parseInt(document.getElementById('data-kg').value); if(!mNo || !yLot || isNaN(kg) || kg <= 0) { alert(t('missingInfo')); return; } let orderIndex = appOrders.findIndex(o => o.machine === mNo && o.made < o.target); if(orderIndex === -1) { alert(t('noActiveOrder')); return; } appOrders[orderIndex].made += kg; if(appOrders[orderIndex].made > appOrders[orderIndex].target) appOrders[orderIndex].made = appOrders[orderIndex].target; calculateOverall(appOrders[orderIndex]); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }; let newEntry = { timestamp: new Date().toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', dateOptions), machineNo: mNo, yarnLot: yLot, fabricKg: kg }; dataEntries.unshift(newEntry); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); selectedEntryMachine = ""; document.getElementById('data-machine-text').innerText = t('selectMachine'); document.getElementById('data-machine-text').style.color = "var(--nardo)"; document.getElementById('data-lot').value = ''; document.getElementById('data-kg').value = ''; renderAll(); renderDataEntries(); alert("Üretim kaydedildi ve siparişten düşüldü!"); }
-function deleteDataEntry(i) { if(userRole !== 'admin') return; if(confirm(t('confirmDelete'))) { dataEntries.splice(i, 1); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); renderDataEntries(); } }
+
+function saveProgress(i) { 
+    if(!currentUser || (currentUser.role !== 'Yönetici' && currentUser.role !== 'Sorumlu')) return; 
+    let val = parseInt(document.getElementById('edit-k').value);
+    if(isNaN(val)) return;
+    appOrders[i].made = Math.min(appOrders[i].target, Math.max(0, val)); 
+    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
+    closeModal('modal'); 
+    renderAll(); 
+}
+
+function deleteOrder(i) { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    if(confirm(t('confirmDelete'))) { appOrders.splice(i, 1); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); } 
+}
+
+function openAddModal() { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    selectedOrderMachine = ""; 
+    document.getElementById('new-machine-text').innerText = t('selectMachine'); 
+    document.getElementById('new-machine-text').style.color = "var(--nardo)"; 
+    document.getElementById('new-no').value = ""; 
+    document.getElementById('new-prod').value = ""; 
+    document.getElementById('new-target').value = ""; 
+    document.getElementById('new-yarn').value = ""; 
+    document.getElementById('new-color').value = ""; 
+    openModal('add-modal'); 
+}
+
+function saveNewOrder() { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    let mNo = selectedOrderMachine; 
+    let no = document.getElementById('new-no').value, prod = document.getElementById('new-prod').value, target = parseInt(document.getElementById('new-target').value); 
+    if(!mNo || !no || !prod || isNaN(target) || target <= 0) return alert(t('missingInfo')); 
+    appOrders.unshift({ no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value || "-", color: document.getElementById('new-color').value || "-", machine: mNo, made: 0, k_pct: 0 }); 
+    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
+    closeModal('add-modal'); 
+    renderAll(); 
+    switchView('view-orders', 'nav-orders'); 
+}
+
+function openMachineSelect(type) { 
+    activeMachineSelector = type; 
+    let html = ""; 
+    if(type === 'report') { html += `<div class="machine-item" onclick="selectMachine('${t('allMachinesOpt')}')"><span>${t('allMachinesOpt')}</span><span class="machine-type">Genel</span></div>`; }
+    machines.forEach((m) => { let displayText = `Makine ${m.no}`; html += `<div class="machine-item" onclick="selectMachine('${displayText}')"><span>${displayText}</span><span class="machine-type">${m.type}</span></div>`; }); 
+    document.getElementById('machine-list').innerHTML = html; 
+    openModal('machine-modal'); 
+}
+
+function selectMachine(m) { 
+    if(activeMachineSelector === 'order') { selectedOrderMachine = m; document.getElementById('new-machine-text').innerText = m; document.getElementById('new-machine-text').style.color = "var(--text-main)"; } 
+    else if(activeMachineSelector === 'entry') { selectedEntryMachine = m; document.getElementById('data-machine-text').innerText = m; document.getElementById('data-machine-text').style.color = "var(--text-main)"; } 
+    else if(activeMachineSelector === 'report') { selectedReportMachine = (m === t('allMachinesOpt')) ? "" : m; document.getElementById('report-machine-text').innerText = m; document.getElementById('report-machine-text').style.color = "var(--text-main)"; }
+    closeModal('machine-modal'); 
+}
+
+function renderDataEntries() { 
+    let html = ""; 
+    dataEntries.forEach((entry, i) => { 
+        let canDeleteEntry = (currentUser && currentUser.role === 'Yönetici');
+        let adminControls = canDeleteEntry ? `<button class="btn-delete" style="display:block; padding:8px; margin-top:12px; font-size:12px;" onclick="deleteDataEntry(${i})">${t('deleteBtn')}</button>` : ''; 
+        html += `<div class="data-card"><div class="time">${entry.timestamp} (${entry.author || 'Personel'})</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabricKg} KG</strong></div>${adminControls}</div>`; 
+    }); 
+    document.getElementById('data-entries-list').innerHTML = html; 
+}
+
+function saveDataEntry() { 
+    let mNo = selectedEntryMachine; 
+    let yLot = document.getElementById('data-lot').value; 
+    let kg = parseInt(document.getElementById('data-kg').value); 
+    if(!mNo || !yLot || isNaN(kg) || kg <= 0) { alert(t('missingInfo')); return; } 
+    let orderIndex = appOrders.findIndex(o => o.machine === mNo && o.made < o.target); 
+    if(orderIndex === -1) { alert(t('noActiveOrder')); return; } 
+    appOrders[orderIndex].made += kg; 
+    if(appOrders[orderIndex].made > appOrders[orderIndex].target) appOrders[orderIndex].made = appOrders[orderIndex].target; 
+    calculateOverall(appOrders[orderIndex]); 
+    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
+
+    let rawDate = new Date();
+    let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }; 
+    let newEntry = { 
+        rawDate: rawDate.toISOString(), 
+        timestamp: rawDate.toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', dateOptions), 
+        machineNo: mNo, 
+        yarnLot: yLot, 
+        fabricKg: kg,
+        author: currentUser ? currentUser.name : "Personel"
+    }; 
+    dataEntries.unshift(newEntry); 
+    localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); 
+    selectedEntryMachine = ""; 
+    document.getElementById('data-machine-text').innerText = t('selectMachine'); 
+    document.getElementById('data-machine-text').style.color = "var(--nardo)"; 
+    document.getElementById('data-lot').value = ''; 
+    document.getElementById('data-kg').value = ''; 
+    renderAll(); 
+    renderDataEntries(); 
+    alert("Üretim kaydedildi ve siparişten düşüldü!"); 
+}
+
+function deleteDataEntry(i) { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    if(confirm(t('confirmDelete'))) { dataEntries.splice(i, 1); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); renderDataEntries(); } 
+}
+
+function createNewUser() {
+    if(!currentUser || currentUser.role !== 'Yönetici') return;
+    let name = document.getElementById('new-user-name').value.trim();
+    let pass = document.getElementById('new-user-pass').value.trim();
+    let role = document.getElementById('new-user-role').value;
+
+    if(!name || !pass) { alert(t('missingInfo')); return; }
+    
+    if(systemUsers.some(u => u.name === name)) {
+        alert("Bu kullanıcı adı zaten sistemde kayıtlı!");
+        return;
+    }
+
+    systemUsers.push({ name: name, pass: pass, role: role });
+    localStorage.setItem('eaErpUsers', JSON.stringify(systemUsers));
+    
+    document.getElementById('new-user-name').value = '';
+    document.getElementById('new-user-pass').value = '';
+    renderUsersList();
+    alert("Kullanıcı başarıyla oluşturuldu!");
+}
+
+function renderUsersList() {
+    let html = "";
+    systemUsers.forEach((u, i) => {
+        let deleteBtn = (u.name !== 'deneme') ? `<button class="btn-delete" style="display:block; padding:6px 12px; margin-top:8px; font-size:11px; width:auto;" onclick="deleteUser(${i})">Kullanıcıyı Sil</button>` : '';
+        html += `<div class="data-card">
+            <div class="d-row" style="margin-bottom:6px"><span>Kullanıcı Adı</span><strong style="color:var(--text-main)">${u.name}</strong></div>
+            <div class="d-row" style="margin-bottom:0"><span>Yetki Seviyesi</span><strong style="color:var(--nardo)">${u.role}</strong></div>
+            ${deleteBtn}
+        </div>`;
+    });
+    document.getElementById('users-list-container').innerHTML = html;
+}
+
+function deleteUser(i) {
+    if(!currentUser || currentUser.role !== 'Yönetici') return;
+    if(systemUsers[i].name === 'deneme') { alert("Ana yönetici hesabı silinemez!"); return; }
+    if(confirm(t('confirmDelete'))) {
+        systemUsers.splice(i, 1);
+        localStorage.setItem('eaErpUsers', JSON.stringify(systemUsers));
+        renderUsersList();
+    }
+}
+
+function generateReport() {
+    let dStart = document.getElementById('report-start-date').value;
+    let tStart = document.getElementById('report-start-time').value || "00:00";
+    let dEnd = document.getElementById('report-end-date').value;
+    let tEnd = document.getElementById('report-end-time').value || "23:59";
+
+    let startDate = dStart ? new Date(`${dStart}T${tStart}`) : null;
+    let endDate = dEnd ? new Date(`${dEnd}T${tEnd}`) : null;
+
+    let filtered = dataEntries.filter(entry => {
+        if(selectedReportMachine && entry.machineNo !== selectedReportMachine) return false;
+        if(entry.rawDate && (startDate || endDate)) {
+            let entryDate = new Date(entry.rawDate);
+            if(startDate && entryDate < startDate) return false;
+            if(endDate && entryDate > endDate) return false;
+        }
+        return true;
+    });
+
+    let totalKg = filtered.reduce((sum, e) => sum + Number(e.fabricKg), 0);
+
+    document.getElementById('res-machine').innerText = selectedReportMachine || t('allMachinesOpt');
+    document.getElementById('res-total').innerText = totalKg.toLocaleString() + " KG";
+    document.getElementById('res-count').innerText = filtered.length;
+
+    let listHtml = "";
+    if(filtered.length === 0) {
+        listHtml = `<div class="card" style="text-align:center; color:var(--nardo);">Bu kriterlere uygun üretim kaydı bulunamadı.</div>`;
+    } else {
+        filtered.forEach(entry => {
+            listHtml += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabricKg} KG</strong></div></div>`;
+        });
+    }
+    document.getElementById('report-entries-list').innerHTML = listHtml;
+    
+    let reportModal = document.getElementById('report-modal');
+    reportModal.style.display = "flex";
+    setTimeout(() => reportModal.classList.add('show'), 10);
+}
+
+function closeReportModal() {
+    let reportModal = document.getElementById('report-modal');
+    reportModal.classList.remove('show');
+    setTimeout(() => reportModal.style.display = "none", 300);
+}
+
+function printReportPdf() {
+    window.print();
+}
+
+function exportExcel() {
+    let dStart = document.getElementById('report-start-date').value || "Baslangic";
+    let rows = [["Makine No", "Iplik Lot", "Ham Kumaş (KG)", "Tarih/Saat", "Personel"]];
+    
+    let entryCards = document.querySelectorAll('#report-entries-list .data-card');
+    if(entryCards.length === 0) {
+        alert("Dışa aktarılacak kayıt bulunamadı!");
+        return;
+    }
+
+    entryCards.forEach(card => {
+        let time = card.querySelector('.time') ? card.querySelector('.time').innerText : "";
+        let rowsInfo = card.querySelectorAll('.d-row');
+        let mNo = rowsInfo[0] && rowsInfo[0].querySelector('strong') ? rowsInfo[0].querySelector('strong').innerText : "";
+        let yLot = rowsInfo[1] && rowsInfo[1].querySelector('strong') ? rowsInfo[1].querySelector('strong').innerText : "";
+        let fKg = rowsInfo[2] && rowsInfo[2].querySelector('strong') ? rowsInfo[2].querySelector('strong').innerText : "";
+        rows.push([mNo, yLot, fKg, time]);
+    });
+
+    let csvContent = "data:text/csv;charset=utf-8,\uFEFF" + rows.map(e => e.join(";")).join("\n");
+    let encodedUri = encodeURI(csvContent);
+    let link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `Uretim_Raporu_${dStart}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 function openModal(id) { let m = document.getElementById(id); m.style.display="flex"; setTimeout(()=>m.classList.add('show'), 10); }
 function closeModal(id) { let m = document.getElementById(id); m.classList.remove('show'); setTimeout(()=>m.style.display="none", 300); }
-function switchView(viewId, navId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page')); document.getElementById(viewId).classList.add('active-page'); document.querySelectorAll('.nav').forEach(nav => nav.classList.remove('active')); document.getElementById(navId).classList.add('active'); window.scrollTo({top:0,behavior:"smooth"}); }
-function clickAdminRole() { document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = ''; openModal('login-modal'); }
-function clickTrackerRole() { finalizeRoleSelection('tracker'); }
-function attemptAdminLogin() { let u = document.getElementById('login-user').value.trim().toLowerCase(); let p = document.getElementById('login-pass').value.trim(); if(u === 'deneme' && p === '12345') { closeModal('login-modal'); setTimeout(() => finalizeRoleSelection('admin'), 300); } else { alert(t('loginError')); } }
-function finalizeRoleSelection(role) { userRole = role; document.getElementById('role-screen').style.display = 'none'; let mainApp = document.getElementById('main-app'); mainApp.style.display = 'block'; document.documentElement.style.backgroundColor = '#000000'; if(role === 'admin') { document.getElementById('fab-btn').style.display = 'flex'; document.getElementById('role-subtitle').innerText = (currentLang === 'tr') ? "Yönetici Kontrol Paneli" : "Admin Control Panel"; document.getElementById('setting-role').innerText = (currentLang === 'tr') ? "Yönetici" : "Admin"; } else { document.getElementById('fab-btn').style.display = 'none'; document.getElementById('role-subtitle').innerText = (currentLang === 'tr') ? "Saha Operasyon Merkezi" : "Field Operations Center"; document.getElementById('setting-role').innerText = (currentLang === 'tr') ? "Saha Personeli" : "Field Staff"; } applyTranslations(); renderAll(); renderDataEntries(); }
-function logout() { userRole = null; document.getElementById('main-app').style.display = 'none'; document.getElementById('role-screen').style.display = 'flex'; switchView('view-home', 'nav-home'); }
-window.onload = () => { document.documentElement.style.backgroundColor = '#000000'; changeLang(currentLang); setTimeout(() => { document.getElementById('splash').classList.add('hide'); document.getElementById('role-screen').style.display = 'flex'; }, 2000); };
+function switchView(viewId, navId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page')); document.getElementById(viewId).classList.add('active-page'); document.querySelectorAll('.nav-desktop').forEach(nav => nav.classList.remove('active')); if(navId) document.getElementById(navId).classList.add('active'); window.scrollTo({top:0,behavior:"smooth"}); }
+
+/* GİRİŞ SİSTEMİ MANTIĞI */
+function attemptLogin() {
+    let uInput = document.getElementById('app-user').value.trim();
+    let pInput = document.getElementById('app-pass').value.trim();
+
+    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput);
+
+    if(foundUser) {
+        finalizeLogin(foundUser);
+    } else {
+        alert(t('loginError'));
+    }
+}
+
+/* Yönetici Girişi Butonu İçin Modal Açma */
+function openAdminModal() {
+    document.getElementById('admin-user-input').value = '';
+    document.getElementById('admin-pass-input').value = '';
+    openModal('admin-modal');
+}
+
+/* Yönetici Girişi Penceresinden Doğrulama */
+function verifyAdminLogin() {
+    let uInput = document.getElementById('admin-user-input').value.trim();
+    let pInput = document.getElementById('admin-pass-input').value.trim();
+
+    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput && u.role === 'Yönetici');
+
+    if(foundUser) {
+        closeModal('admin-modal');
+        finalizeLogin(foundUser);
+    } else {
+        alert("Geçersiz yönetici bilgileri!");
+    }
+}
+
+function finalizeLogin(user) {
+    currentUser = user; 
+    document.getElementById('role-screen').style.display = 'none'; 
+    let mainApp = document.getElementById('main-app'); 
+    mainApp.style.display = 'block'; 
+    
+    let isAdmin = (user.role === 'Yönetici');
+    
+    document.getElementById('nav-users').style.display = isAdmin ? 'flex' : 'none';
+    document.getElementById('nav-report').style.display = isAdmin ? 'flex' : 'none';
+    document.getElementById('admin-action-buttons').style.display = isAdmin ? 'grid' : 'none';
+    document.getElementById('fab-btn').style.display = isAdmin ? 'flex' : 'none';
+
+    document.getElementById('sidebar-user-name').innerText = user.name;
+    document.getElementById('sidebar-user-role').innerText = user.role;
+
+    // BİLGİSAYARIN ANLIK TARİH VE SAATİNİ OTOMATİK OLARAK KUTULARA YERLEŞTİR
+    let now = new Date();
+    let pad = (n) => String(n).padStart(2, '0');
+    let todayDateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+    let currentTimeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    
+    let startDateEl = document.getElementById('report-start-date');
+    let startTimeEl = document.getElementById('report-start-time');
+    let endDateEl = document.getElementById('report-end-date');
+    let endTimeEl = document.getElementById('report-end-time');
+
+    if(startDateEl && !startDateEl.value) startDateEl.value = todayDateStr;
+    if(startTimeEl && !startTimeEl.value) startTimeEl.value = "00:00";
+    if(endDateEl && !endDateEl.value) endDateEl.value = todayDateStr;
+    if(endTimeEl && !endTimeEl.value) endTimeEl.value = currentTimeStr;
+
+    applyTranslations(); 
+    renderAll(); 
+    renderDataEntries(); 
+    renderUsersList();
+}
+
+function logout() { 
+    currentUser = null; 
+    document.getElementById('main-app').style.display = 'none'; 
+    document.getElementById('role-screen').style.display = 'flex'; 
+    document.getElementById('app-user').value = '';
+    document.getElementById('app-pass').value = '';
+    switchView('view-home', 'nav-home');
+}
+
+window.onload = () => { 
+    setTheme(currentTheme);
+    changeLang(currentLang);
+    setTimeout(() => { 
+        document.getElementById('splash').classList.add('hide'); 
+        document.getElementById('role-screen').style.display = 'flex'; 
+    }, 2000); 
+};
 </script>
 </body>
 </html>
