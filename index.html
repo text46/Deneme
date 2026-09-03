@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EA SYSTEMS">
@@ -52,8 +52,8 @@
 :root { --sidebar-width: 260px; }
 
 /* ULTRA PREMİUM İNCE SCROLLBAR */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; margin: 4px; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(125, 125, 125, 0.3); border-radius: 20px; }
 * { scrollbar-width: thin; scrollbar-color: rgba(125, 125, 125, 0.3) transparent; box-sizing: border-box; }
 
@@ -61,12 +61,12 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 
 html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color: var(--text-main) !important; transition: background-color 0.3s ease, color 0.3s ease; }
 
-.app { display: none; min-height: 100vh; background: var(--bg-main); color: var(--text-main); padding-bottom: env(safe-area-inset-bottom); }
+.app { display: none; min-height: 100vh; background: var(--bg-main); color: var(--text-main); }
 
 /* Masaüstü Yan Menü */
-.desktop-sidebar { position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column; justify-content: space-between; padding: 24px 16px; z-index: 900; transition: background 0.3s ease, border-color 0.3s ease; }
+.desktop-sidebar { position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column; justify-content: space-between; padding: 24px 16px; z-index: 900; }
 .sidebar-top .logo-area { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 20px; padding-left: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
-.sidebar-top .logo-icon { background: linear-gradient(135deg, var(--text-main), var(--nardo)); color: var(--bg-main); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.sidebar-top .logo-icon { background: linear-gradient(135deg, var(--text-main), var(--nardo)); color: var(--bg-main); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; }
 
 .user-profile-badge { background: var(--card-sub-bg); padding: 14px; border-radius: 14px; margin-bottom: 25px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 4px; }
 .user-profile-name { font-size: 14px; font-weight: 900; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; }
@@ -74,7 +74,7 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
 .user-profile-date { font-size: 11px; font-weight: 600; color: var(--nardo); margin-top: 2px; border-top: 1px solid var(--border-color); padding-top: 6px; }
 
 .sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
-.nav-desktop { background: transparent; border: none; color: var(--nardo); text-align: left; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 14px; width: 100%; }
+.nav-desktop { background: transparent; border: none; color: var(--nardo); text-align: left; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 14px; width: 100%; transition: all 0.2s; }
 .nav-desktop svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 .nav-desktop:hover { background: var(--border-color); color: var(--text-main); }
 .nav-desktop.active { background: var(--text-main); color: var(--bg-main); }
@@ -84,7 +84,7 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
 .logout-desktop svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 16px; }
 
-/* Mobil Alt Menü (Bottom Navigation Bar) - Varsayılan gizli, mobilde aktif */
+/* Mobil Alt Menü */
 .mobile-bottom-bar { display: none; }
 
 /* Sağ İçerik Alanı */
@@ -177,28 +177,53 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
 .report-modal-body { overflow-y: auto; flex-grow: 1; margin-top: 15px; }
 .report-modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px; flex-wrap: wrap; }
 
-/* MOBİL İÇİN RESPONSIVE OPTİMİZASYONLARI */
+/* KUSURSUZ MOBİL UYUMLULUK (NATIVE APP FEEL) */
 @media (max-width: 768px) {
   .desktop-sidebar { display: none !important; }
-  .desktop-main { margin-left: 0 !important; padding: 20px 16px 90px 16px !important; }
+  .desktop-main { 
+    margin-left: 0 !important; 
+    padding: 16px 16px 110px 16px !important; 
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
   .grid { grid-template-columns: 1fr !important; gap: 12px !important; }
   .panel-actions { grid-template-columns: 1fr !important; gap: 12px !important; }
   
-  /* Mobil Alt Bar */
+  /* Mobil Alt Bar - Tam Ekran Genişliği ve Doğru Konumlandırma */
   .mobile-bottom-bar {
-    position: fixed; bottom: 0; left: 0; width: 100vw; height: 72px;
-    background: var(--sidebar-bg); border-top: 1px solid var(--border-color);
-    display: flex; justify-content: space-around; align-items: center;
-    z-index: 950; backdrop-filter: blur(12px); padding-bottom: env(safe-area-inset-bottom);
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: calc(65px + env(safe-area-inset-bottom));
+    background: var(--sidebar-bg); 
+    border-top: 1px solid var(--border-color);
+    display: flex; 
+    justify-content: space-around; 
+    align-items: flex-start;
+    padding-top: 10px;
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 95000; 
+    backdrop-filter: blur(16px);
   }
   .mob-nav-item {
-    background: transparent; border: none; color: var(--nardo);
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    font-size: 10px; font-weight: 800; cursor: pointer; flex: 1;
+    background: transparent; 
+    border: none; 
+    color: var(--nardo);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 4px;
+    font-size: 10px; 
+    font-weight: 800; 
+    cursor: pointer; 
+    flex: 1;
+    padding: 0;
   }
-  .mob-nav-item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .mob-nav-item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .mob-nav-item.active { color: var(--text-main); }
-  .lang-toggle-wrapper { top: 20px; right: 20px; }
+  .lang-toggle-wrapper { top: 16px; right: 16px; }
+  .fab { bottom: 85px !important; right: 16px !important; }
 }
 
 @media print {
@@ -287,7 +312,7 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
                     <span data-i18n="navReport">Raporlama</span>
                 </button>
                 <button class="nav-desktop" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
                     <span data-i18n="navSettings">Sistem</span>
                 </button>
             </div>
@@ -916,7 +941,6 @@ function switchView(viewId, navId) {
     if(navId) {
         let el = document.getElementById(navId);
         if(el) el.classList.add('active');
-        // Eşleşen diğer menü elemanını da aktif yap
         if(navId.startsWith('nav-')) {
             let mobEl = document.getElementById('mob-' + navId);
             if(mobEl) mobEl.classList.add('active');
