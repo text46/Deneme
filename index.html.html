@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EA SYSTEMS">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzAwMDAwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTQlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjQwIiBmaWxsPSIjZmZmZmZmIj5FQTwvdGV4dD48L3N2Zz4=">
+<title>EA SYSTEMS</title>
+<style>
+:root { --black: #000000; --dark-nardo: #5A5D64; --nardo: #8E9399; --light-nardo: #E6E8EA; --white: #FFFFFF; }
+body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#modal):not(#add-modal):not(#machine-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
+html, body { background-color: var(--black) !important; margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--black); }
+.app { max-width:520px; margin:auto; min-height:100vh; background: var(--black); color: var(--white); padding-top:env(safe-area-inset-top); padding-bottom:calc(78px + env(safe-area-inset-bottom)); display:none; }
+header { background:var(--black); color:var(--white); padding:22px 18px 18px; border-radius:0 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+h1 { font-size:24px; margin:0 0 5px; font-weight:900; letter-spacing:-0.5px }
+.sub { opacity:.75; font-size:13px; font-weight:600; }
+.date { margin-top:15px; background:rgba(255,255,255,.1); padding:10px 12px; border-radius:12px; font-size:13px; display:flex; justify-content:space-between; align-items:center; font-weight:600; }
+.content { padding:16px }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:11px }
+.card { background: #111113; color: var(--white); border-radius:16px; padding:15px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; }
+.label { font-size:12px; color:var(--nardo); font-weight:800; text-transform:uppercase; letter-spacing:0.5px }
+.value { font-size:24px; font-weight:900; margin-top:5px; letter-spacing:-0.5px; color: var(--white); }
+.small { font-size:12px; color:var(--nardo); margin-top:3px; font-weight:600; }
+.progress { height:7px; background:#222226; border-radius:10px; overflow:hidden; margin-top:11px }
+.bar { height:100%; background:var(--white); border-radius:10px; transition:width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) }
+.section { font-size:18px; font-weight:900; margin:26px 2px 14px; letter-spacing:-0.3px; color: var(--white); }
+.order { margin-bottom:12px; cursor:pointer; }
+.order:active { transform:scale(0.97) }
+.row { display:flex; justify-content:space-between; gap:10px; align-items:center }
+.product { font-weight:800; font-size:15px; color: var(--white); }
+.muted { font-size:12px; color:var(--nardo); margin-top:4px; font-weight:700; }
+.badge { font-size:11px; font-weight:800; padding:6px 10px; border-radius:20px; white-space:nowrap; letter-spacing:0.3px }
+.bg-black { background:var(--white); color:var(--black); }
+.bg-nardo { background:var(--nardo); color:var(--white); }
+.bg-light { background:#333338; color:var(--white); }
+.bottom { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:min(520px,100%); height:calc(68px + env(safe-area-inset-bottom)); background:var(--black); border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-around; align-items:flex-start; padding-top:10px; z-index:900 }
+.nav { border:0; background:none; color:var(--nardo); font-size:11px; cursor:pointer; font-weight:700; transition:all 0.3s ease; text-align:center; width: 25%; }
+.nav b { display:block; font-size:22px; margin-bottom:3px; transition:transform 0.3s; }
+.nav.active { color:var(--white); }
+.nav.active b { transform:scale(1.15); }
+.page { display: none; opacity: 0; }
+.page.active-page { display: block; animation: slideFadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+@keyframes slideFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); align-items:flex-end; justify-content:center; z-index:999999; backdrop-filter:blur(6px); padding-bottom:env(safe-area-inset-bottom); opacity:0; transition:opacity 0.3s; }
+.modal.show { display:flex; opacity:1; }
+.sheet { background:#161619; color:var(--white); width:min(520px,100%); border-radius:28px 28px 0 0; padding:24px; max-height:90vh; overflow-y:auto; transform:translateY(100%); transition:transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); border-top: 1px solid rgba(255,255,255,0.1); }
+.modal.show .sheet { transform:translateY(0); }
+.close { float:right; border:0; background:#222226; color:var(--white); border-radius:50%; width:34px; height:34px; font-size:20px; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; font-weight:900; transition: background 0.2s; }
+.close:active { background:#333338; }
+.detail-box { background:#1e1e24; padding:16px; border-radius:16px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.05); }
+.d-row { display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; align-items:flex-start; }
+.d-row:last-child { margin-bottom:0 }
+.d-row span { color:var(--nardo); font-weight:700; flex-shrink:0; margin-right:15px; }
+.d-row strong { font-weight:800; color:var(--white); text-align:right; flex-grow:1; word-break:break-word; }
+#splash { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--black); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.6s ease, transform 0.6s ease; }
+#splash.hide { opacity: 0; pointer-events: none; transform:scale(1.05); }
+.splash-logo { color: var(--white); font-size: 120px; font-weight: 900; letter-spacing: -4px; animation: popIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.splash-text { color: var(--nardo); font-size: 16px; font-weight: 800; margin-top: 5px; opacity: 0; letter-spacing: 4px; animation: fadeInText 0.8s ease forwards 0.4s; }
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes fadeInText { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+#role-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--black); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 90000; padding: 24px; box-sizing: border-box; }
+.lang-toggle-wrapper { position: absolute; top: calc(24px + env(safe-area-inset-top)); right: 24px; background: #111113; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.lang-btn { background: transparent; color: var(--nardo); border: none; padding: 8px 16px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; }
+.lang-btn.active { background: var(--white); color: var(--black); }
+.role-btn { width: 100%; max-width: 400px; background: #111113; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; margin-bottom: 16px; cursor: pointer; text-align: left; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.5); display:flex; align-items:center; gap:20px; }
+.role-btn:active { transform: scale(0.95); background: #1a1a1f; }
+.role-icon { width: 64px; height: 64px; background: var(--white); color: var(--black); border-radius: 18px; display: flex; align-items: center; justify-content: center; flex-shrink:0; box-shadow: 0 4px 10px rgba(255,255,255,0.1); }
+.role-title { font-size: 18px; font-weight: 900; color: var(--white); }
+.fab { position:fixed; bottom:calc(85px + env(safe-area-inset-bottom)); right:20px; width:56px; height:56px; background:var(--white); color:var(--black); border-radius:50%; display:none; align-items:center; justify-content:center; font-size:32px; box-shadow:0 10px 25px rgba(255,255,255,0.15); border:none; cursor:pointer; z-index:800; transition:transform 0.2s;}
+.fab:active { transform:scale(0.9); }
+.edit-input { width: 100%; box-sizing: border-box; padding: 14px; border: 2px solid #2a2a30; border-radius: 12px; font-size: 16px; font-weight: 700; margin-top: 5px; outline: none; transition: all 0.3s; color:var(--white); background:#111113; -webkit-appearance: none;}
+.edit-input.center { text-align:center; font-size: 22px; font-weight: 900; }
+.edit-input:focus { border-color: var(--white); background:#1a1a20; }
+.edit-input.readonly { background: #111113; border-color: transparent; pointer-events: none; color: var(--nardo); }
+.btn-update { background: var(--white); color: var(--black); border: none; padding: 16px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 15px; font-size: 15px; cursor: pointer; transition:transform 0.2s;}
+.btn-update:active { transform:scale(0.97); }
+.btn-delete { background: transparent; color: #ff5252; border: 2px solid #ff5252; padding: 12px; border-radius: 12px; font-weight: 800; width: 100%; margin-top: 10px; font-size: 13px; cursor: pointer; display:none;}
+.select-lang { padding: 10px 14px; border-radius: 10px; border: none; font-size: 15px; font-weight: 800; background: #222226; color:var(--white); outline:none; -webkit-appearance: none; appearance: none; text-align:center; min-width:80px;}
+.phase-title { font-size:12px; font-weight:800; color:var(--nardo); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;}
+.logout-btn { background: rgba(255,255,255,0.15); color: var(--white); border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; cursor: pointer; transition:background 0.2s; }
+.logout-btn:active { background: rgba(255,255,255,0.3); }
+.data-card { background: #111113; color: var(--white); border-radius:12px; padding:15px; margin-bottom:12px; border: 1px solid rgba(255,255,255,0.05); transition:transform 0.2s;}
+.data-card .time { font-size: 11px; color: var(--nardo); margin-bottom: 8px; font-weight: 600; text-align: right; }
+.machine-item { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--white); font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.2s; display:flex; justify-content:space-between; }
+.machine-item:last-child { border-bottom: none; }
+.machine-item:active { background: rgba(255,255,255,0.05); }
+.machine-type { color: var(--nardo); font-size:13px; font-weight:600; }
+</style>
+</head>
+<body>
+
+<div id="splash">
+    <div class="splash-logo">EA</div>
+    <div class="splash-text">EA SYSTEMS</div>
+</div>
+
+<div id="role-screen">
+    <div class="lang-toggle-wrapper">
+        <button id="lang-tr" class="lang-btn active" onclick="changeLang('tr')">TR</button>
+        <button id="lang-en" class="lang-btn" onclick="changeLang('en')">EN</button>
+    </div>
+    <div style="text-align:center; margin-bottom:40px;">
+        <div style="font-size:42px; font-weight:900; color:var(--white); letter-spacing:-2px; margin-bottom:5px;">EA PORTAL</div>
+        <div style="color:var(--nardo); font-weight:600; font-size:14px;" data-i18n="selectLoginType">Lütfen giriş türünüzü seçin</div>
+    </div>
+    <button class="role-btn" type="button" onclick="clickAdminRole()">
+        <div class="role-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.6l-2.83-2.83A6 6 0 1 0 12 18v4a10 10 0 1 1 0-20z"/></svg></div>
+        <div class="role-title" data-i18n="adminLogin">Yönetici Girişi</div>
+    </button>
+    <button class="role-btn" type="button" onclick="clickTrackerRole()">
+        <div class="role-icon" style="background:#222226; color:var(--white);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+        <div class="role-title" data-i18n="trackerLogin">Saha Personeli Girişi</div>
+    </button>
+</div>
+
+<div class="app" id="main-app">
+<header>
+  <h1 id="main-title">EA SYSTEMS</h1>
+  <div class="sub" id="role-subtitle">Saha Operasyon Merkezi</div>
+  <div class="date"><span id="today"></span><button class="logout-btn" onclick="logout()" data-i18n="logout">Çıkış</button></div>
+</header>
+
+<div id="view-home" class="page active-page content">
+  <div class="grid">
+    <div class="card"><div class="label" data-i18n="todayProd">Bugünkü Üretim</div><div class="value" id="val-todayProd">0</div><div class="small" data-i18n="kg">kg / metre</div></div>
+    <div class="card"><div class="label" data-i18n="oee">Aktif Sipariş</div><div class="value" id="val-activeOrders">0</div><div class="small" data-i18n="piece">Adet</div></div>
+  </div>
+  <div class="section" data-i18n="activeOrders">Aktif Üretim Emirleri</div>
+  <div id="orders-preview"></div>
+  <div class="section" data-i18n="deptSummary">Departman Durumları</div>
+  <div id="lines-preview"></div>
+</div>
+
+<div id="view-orders" class="page content">
+  <div class="section" data-i18n="allOrdersTitle">Tüm Üretim Portföyü</div>
+  <div id="orders-full"></div>
+</div>
+
+<div id="view-data" class="page content">
+  <div class="section" data-i18n="navData">Veri Girişi</div>
+  <div class="card" style="background:#111113;">
+    <div class="detail-box" style="border:none;padding:0;background:transparent">
+        <div class="phase-title" data-i18n="machineNo">Makine No</div>
+        <div id="data-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('entry')">
+            <span id="data-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+        </div>
+        <div class="phase-title" data-i18n="yarnLot">İplik Lot</div><input type="text" id="data-lot" class="edit-input" placeholder="Örn: L-4509">
+        <div class="phase-title" data-i18n="rawFabricKg">Ham Kumaş KG</div><input type="number" id="data-kg" class="edit-input" placeholder="Örn: 250">
+        <button class="btn-update" onclick="saveDataEntry()" style="background:#fff; color:#000;" data-i18n="addEntry">KAYDET</button>
+    </div>
+  </div>
+  <div class="section" data-i18n="entryHistory">Giriş Geçmişi</div>
+  <div id="data-entries-list"></div>
+</div>
+
+<div id="view-settings" class="page content">
+  <div class="section" data-i18n="settingsTitle">Sistem Tercihleri</div>
+  <div class="card" style="background:#111113;">
+    <div class="detail-box" style="border:none;padding:0;background:transparent">
+        <div class="d-row" style="align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)"><span data-i18n="langSelect">Arayüz Dili</span><select id="lang-select" class="select-lang" onchange="changeLang(this.value)"><option value="tr">TR</option><option value="en">EN</option></select></div>
+        <div class="d-row" style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)"><span data-i18n="activeProfile">Aktif Profil</span><strong id="setting-role" style="color:#fff">Saha Personeli</strong></div>
+        <div class="d-row" style="padding:12px 0"><span data-i18n="dataModel">Veri Modeli</span><strong style="color:#fff" data-i18n="localMemory">Yerel Bellek</strong></div>
+    </div>
+  </div>
+</div>
+
+<button class="fab" id="fab-btn" onclick="openAddModal()">＋</button>
+
+<div class="bottom">
+ <button class="nav active" id="nav-home" onclick="switchView('view-home', 'nav-home')"><b>⌂</b><span data-i18n="navHome">Panel</span></button>
+ <button class="nav" id="nav-orders" onclick="switchView('view-orders', 'nav-orders')"><b>▣</b><span data-i18n="navOrders">Üretim</span></button>
+ <button class="nav" id="nav-data" onclick="switchView('view-data', 'nav-data')"><b>📝</b><span data-i18n="navData">Veri</span></button>
+ <button class="nav" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')"><b>⚙</b><span data-i18n="navSettings">Sistem</span></button>
+</div>
+</div> 
+
+<!-- MODALLAR -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal('modal')"><div class="sheet"><button class="close" onclick="closeModal('modal')">✕</button><h2 id="mtitle" style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;"></h2><div id="details"></div></div></div>
+
+<div class="modal" id="add-modal" onclick="if(event.target===this)closeModal('add-modal')">
+ <div class="sheet">
+  <button class="close" onclick="closeModal('add-modal')">✕</button>
+  <h2 style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="addNewOrder">Yeni Sipariş Ekle</h2>
+  <div class="detail-box">
+    <div class="phase-title" data-i18n="machineNo">Makine No</div>
+    <div id="new-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('order')">
+        <span id="new-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+    </div>
+    <div class="phase-title" style="margin-top:15px">Parti No</div><input type="text" id="new-no" class="edit-input" placeholder="EA-101">
+    <div class="phase-title" data-i18n="productName">Ürün Adı</div><input type="text" id="new-prod" class="edit-input" placeholder="Süprem Kumaş">
+    <div class="phase-title" data-i18n="target">Sipariş Miktarı (KG)</div><input type="number" id="new-target" class="edit-input" placeholder="5000">
+    <div class="phase-title" data-i18n="material">Materyal</div><input type="text" id="new-yarn" class="edit-input" placeholder="Ne 30/1 Pamuk">
+    <div class="phase-title" data-i18n="color">Renk</div><input type="text" id="new-color" class="edit-input" placeholder="Siyah">
+    <button class="btn-update" onclick="saveNewOrder()" style="background:#fff; color:#000;" data-i18n="saveOrderBtn">SİPARİŞİ OLUŞTUR</button>
+  </div>
+ </div>
+</div>
+
+<div class="modal" id="login-modal" onclick="if(event.target===this)closeModal('login-modal')">
+ <div class="sheet">
+  <button class="close" onclick="closeModal('login-modal')">✕</button>
+  <h2 style="margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="adminLoginTitle">Yönetici Girişi</h2>
+  <div class="detail-box">
+    <div class="phase-title" data-i18n="usernameLabel">Kullanıcı Adı</div><input type="text" id="login-user" class="edit-input" placeholder="Kullanıcı Adı" autocapitalize="none" autocorrect="off" autocomplete="off">
+    <div class="phase-title" style="margin-top:15px" data-i18n="passwordLabel">Şifre</div><input type="password" id="login-pass" class="edit-input" placeholder="•••••">
+    <button class="btn-update" type="button" onclick="attemptAdminLogin()" style="background:#fff; color:#000;" data-i18n="loginBtn">GİRİŞ YAP</button>
+  </div>
+ </div>
+</div>
+
+<div class="modal" id="machine-modal" onclick="if(event.target===this)closeModal('machine-modal')">
+ <div class="sheet" style="padding-bottom: 0;">
+  <button class="close" onclick="closeModal('machine-modal')" style="margin-right:24px; margin-top:24px;">✕</button>
+  <h2 style="margin:24px 24px 20px;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff;" data-i18n="selectMachineTitle">Makine Seçin</h2>
+  <div class="detail-box" id="machine-list" style="max-height: 50vh; overflow-y: auto; padding: 0; background:transparent; border:none; border-radius:0;"></div>
+ </div>
+</div>
+
+<script>
+// Çevrimdışı Çalışması İçin Service Worker Başlatma (PWA)
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').then(reg => console.log('Offline mod hazır')).catch(err => console.log('SW Hatası:', err)); }); }
+
+const dict = {
+  tr: {
+    selectLoginType: "Lütfen giriş türünüzü seçin", todayProd: "Üretim Toplamı", kg: "kg / metre", oee: "Aktif Sipariş", piece: "Adet", activeOrders: "Aktif Siparişler", deptSummary: "Örgü Departmanı", allOrdersTitle: "Tüm Siparişler", settingsTitle: "Sistem Tercihleri",
+    langSelect: "Arayüz Dili", navHome: "Panel", navOrders: "Üretim", navSettings: "Sistem", orderNo: "Parti No", updateBtn: "MİKTARI MANUEL DÜZELT", productName: "Ürün Adı",
+    st_completed: "Tamamlandı", st_inprod: "İşlemde", st_planned: "Bekliyor", knitting: "Örgü / Dokuma", deleteBtn: "Siparişi Sil", loginError: "Kullanıcı adı veya şifre hatalı!",
+    adminLogin: "Yönetici Girişi", trackerLogin: "Saha Personeli Girişi", logout: "Çıkış", adminLoginTitle: "Yönetici Girişi", usernameLabel: "Kullanıcı Adı", passwordLabel: "Şifre", loginBtn: "GİRİŞ YAP",
+    addNewOrder: "Yeni Sipariş Ekle", missingInfo: "Lütfen tüm alanları doldurun!", confirmDelete: "Silmek istediğinize emin misiniz?", material: "Materyal", color: "Renk", target: "Sipariş Miktarı (KG)", activeProfile: "Aktif Profil", dataModel: "Veri Modeli", localMemory: "Yerel Bellek", saveOrderBtn: "SİPARİŞİ OLUŞTUR",
+    navData: "Veri Girişi", machineNo: "Makine No", yarnLot: "İplik Lot", rawFabricKg: "Ham Kumaş (KG)", addEntry: "KAYDET", entryHistory: "Giriş Geçmişi", dateTime: "Tarih/Saat", selectMachine: "Makine Seçin...", selectMachineTitle: "Makine Seçin", viewOnlyMsg: "Veri girişleri 'Veri Girişi' sekmesinden otomatik düşülür.", unassigned: "Atanmadı", noActiveOrder: "Bu makineye atanmış aktif/eksik sipariş bulunamadı!"
+  },
+  en: {
+    selectLoginType: "Please select your login type", todayProd: "Total Output", kg: "kg / meters", oee: "Active Orders", piece: "Pcs", activeOrders: "Active Orders", deptSummary: "Knitting Department", allOrdersTitle: "All Orders", settingsTitle: "System Preferences",
+    langSelect: "UI Language", navHome: "Panel", navOrders: "Production", navSettings: "System", orderNo: "Batch No", updateBtn: "MANUAL UPDATE", productName: "Product Name",
+    st_completed: "Completed", st_inprod: "In Process", st_planned: "Pending", knitting: "Knitting", deleteBtn: "Delete Order", loginError: "Incorrect credentials!",
+    adminLogin: "Admin Login", trackerLogin: "Field Staff Login", logout: "Logout", adminLoginTitle: "Admin Login", usernameLabel: "Username", passwordLabel: "Password", loginBtn: "LOGIN",
+    addNewOrder: "Add New Order", missingInfo: "Please fill all fields!", confirmDelete: "Are you sure you want to delete?", material: "Material", color: "Color", target: "Order Qty (KG)", activeProfile: "Active Profile", dataModel: "Data Model", localMemory: "Local Storage", saveOrderBtn: "CREATE ORDER",
+    navData: "Data Entry", machineNo: "Machine No", yarnLot: "Yarn Lot", rawFabricKg: "Raw Fabric (KG)", addEntry: "SAVE", entryHistory: "Entry History", dateTime: "Date/Time", selectMachine: "Select Machine...", selectMachineTitle: "Select Machine", viewOnlyMsg: "Data is automatically deducted via 'Data Entry' tab.", unassigned: "Unassigned", noActiveOrder: "No active/pending order found for this machine!"
+  }
+};
+
+let currentLang = localStorage.getItem('eaErpLang') || 'tr';
+let userRole = null;
+
+const defaultOrders = [
+ { no:"EA-TEX-901", product:"Süprem Kumaş", target:5000, made: 5000, yarn: "Ne 30/1 %100 Pamuk", color: "Oxford River", machine: "Makine 1" },
+ { no:"EA-TEX-902", product:"Pike Kumaş", target:3000, made: 1950, yarn: "Ne 20/1 Karde", color: "Antrasit", machine: "Makine 11" }
+];
+let appOrders = JSON.parse(localStorage.getItem('eaErpOrders')) || JSON.parse(JSON.stringify(defaultOrders));
+let dataEntries = JSON.parse(localStorage.getItem('eaErpDataEntries')) || [];
+const machines = [{ no: "1", type: "Süprem" }, { no: "2", type: "Süprem" }, { no: "3", type: "3 İplik" }, { no: "4", type: "3 İplik" }, { no: "5", type: "İnterlok" }, { no: "6", type: "İnterlok" }, { no: "7", type: "Ribana" }, { no: "8", type: "Ribana" }, { no: "9", type: "Kaşkorse" }, { no: "10", type: "Kaşkorse" }, { no: "11", type: "Pike" }, { no: "12", type: "Pike" }, { no: "13", type: "Havlu" }, { no: "14", type: "Çift Plaka" }, { no: "15", type: "Mini Jakar" }];
+let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = "";
+
+function t(key) { return dict[currentLang][key] || key; }
+function applyTranslations() { 
+    document.querySelectorAll('[data-i18n]').forEach(el => { let key = el.getAttribute('data-i18n'); if(dict[currentLang][key]) el.innerText = dict[currentLang][key]; }); 
+    document.getElementById('today').textContent = new Date().toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', {weekday:"long",year:"numeric",month:"long",day:"numeric"}); 
+    if(!selectedOrderMachine) document.getElementById('new-machine-text').innerText = t('selectMachine');
+    if(!selectedEntryMachine) document.getElementById('data-machine-text').innerText = t('selectMachine');
+}
+function changeLang(lang) { 
+    currentLang = lang; localStorage.setItem('eaErpLang', lang); 
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active')); let activeBtn = document.getElementById('lang-' + lang); if(activeBtn) activeBtn.classList.add('active');
+    let selectEl = document.getElementById('lang-select'); if(selectEl) selectEl.value = lang;
+    applyTranslations(); renderAll(); if(userRole) { renderDataEntries(); }
+}
+function calculateOverall(o) {
+    if(typeof o.made === 'undefined') o.made = 0;
+    o.k_pct = o.target > 0 ? Math.round((o.made / o.target) * 100) : 0;
+    if(o.made >= o.target && o.target > 0) { o.status_code = "st_completed"; o.cls = "bg-black"; } else if(o.made > 0) { o.status_code = "st_inprod"; o.cls = "bg-nardo"; } else { o.status_code = "st_planned"; o.cls = "bg-light"; }
+}
+function renderAll() {
+    let html = ""; let totalMade = 0; let totalTarget = 0;
+    appOrders.forEach((o, i) => {
+        calculateOverall(o); totalMade += o.made; totalTarget += o.target;
+        let p = o.target > 0 ? Math.min(100, Math.round((o.made / o.target) * 100)) : 0; let rem = o.target - o.made; if(rem < 0) rem = 0; let machineDisp = o.machine || t('unassigned');
+        html += `<div class="card order" onclick="openOrder(${i})"><div class="row"><div><div class="product">${o.product}</div><div class="muted">#${o.no} &nbsp;|&nbsp; 🖥️ ${machineDisp}</div></div><span class="badge ${o.cls}">${t(o.status_code)}</span></div><div class="row" style="margin-top:14px"><strong style="font-size:16px; color:#fff;">${o.made.toLocaleString()} / ${o.target.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:6px;">(Kalan: ${rem.toLocaleString()})</span></strong></div><div class="progress" style="margin-top:10px;"><div class="bar" style="width:${p}%; background:#fff;"></div></div></div>`;
+    });
+    document.getElementById("orders-preview").innerHTML = html; document.getElementById("orders-full").innerHTML = html; document.getElementById("val-todayProd").innerText = totalMade.toLocaleString(); document.getElementById("val-activeOrders").innerText = appOrders.length;
+    let overallPct = totalTarget > 0 ? Math.round((totalMade / totalTarget) * 100) : 0;
+    document.getElementById("lines-preview").innerHTML = `<div class="card" style="padding:18px 15px"><div class="row" style="margin-bottom:8px;"><span style="color:#fff; font-weight:800;">${t('knitting')}</span><strong style="color:#fff; text-align:right;">${totalMade.toLocaleString()} / ${totalTarget.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:4px;">(%${overallPct})</span></strong></div><div class="progress"><div class="bar" style="width:${overallPct}%; background:#fff;"></div></div></div>`;
+}
+function openOrder(i){
+  let o = appOrders[i]; document.getElementById("mtitle").textContent = o.product; let deleteBtnHtml = userRole === 'admin' ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; let controls = "";
+  if(userRole === 'admin') { controls = `<div class="phase-title">${t('knitting')} (KG)</div><input type="number" id="edit-k" class="edit-input center" value="${o.made}" max="${o.target}" min="0"><button class="btn-update" onclick="saveProgress(${i})" style="background:#fff; color:#000;">${t('updateBtn')}</button>${deleteBtnHtml}`; } 
+  else { controls = `<div class="phase-title">${t('knitting')} (KG)</div><div class="edit-input center readonly">${o.made.toLocaleString()} KG</div><div style="text-align:center;margin-top:16px;font-size:12px;color:var(--nardo);font-weight:700">${t('viewOnlyMsg')}</div>`; }
+  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div>`; openModal('modal');
+}
+function saveProgress(i) { if(userRole !== 'admin') return; appOrders[i].made = Math.min(appOrders[i].target, Math.max(0, parseInt(document.getElementById('edit-k').value) || 0)); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); }
+function deleteOrder(i) { if(userRole !== 'admin') return; if(confirm(t('confirmDelete'))) { appOrders.splice(i, 1); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); } }
+function openAddModal() { if(userRole !== 'admin') return; selectedOrderMachine = ""; document.getElementById('new-machine-text').innerText = t('selectMachine'); document.getElementById('new-machine-text').style.color = "var(--nardo)"; document.getElementById('new-no').value = ""; document.getElementById('new-prod').value = ""; document.getElementById('new-target').value = ""; document.getElementById('new-yarn').value = ""; document.getElementById('new-color').value = ""; openModal('add-modal'); }
+function saveNewOrder() { if(userRole !== 'admin') return; let mNo = selectedOrderMachine; let no = document.getElementById('new-no').value, prod = document.getElementById('new-prod').value, target = parseInt(document.getElementById('new-target').value); if(!mNo || !no || !prod || isNaN(target) || target <= 0) return alert(t('missingInfo')); appOrders.unshift({ no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value || "-", color: document.getElementById('new-color').value || "-", machine: mNo, made: 0, k_pct: 0 }); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); }
+function openMachineSelect(type) { activeMachineSelector = type; let html = ""; machines.forEach((m) => { let displayText = `Makine ${m.no}`; html += `<div class="machine-item" onclick="selectMachine('${displayText}')"><span>${displayText}</span><span class="machine-type">${m.type}</span></div>`; }); document.getElementById('machine-list').innerHTML = html; openModal('machine-modal'); }
+function selectMachine(m) { if(activeMachineSelector === 'order') { selectedOrderMachine = m; document.getElementById('new-machine-text').innerText = m; document.getElementById('new-machine-text').style.color = "#fff"; } else { selectedEntryMachine = m; document.getElementById('data-machine-text').innerText = m; document.getElementById('data-machine-text').style.color = "#fff"; } closeModal('machine-modal'); }
+function renderDataEntries() { let html = ""; dataEntries.forEach((entry, i) => { let adminControls = userRole === 'admin' ? `<button class="btn-delete" style="display:block; padding:8px; margin-top:12px; font-size:12px;" onclick="deleteDataEntry(${i})">${t('deleteBtn')}</button>` : ''; html += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:#fff">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:#fff">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:#fff">${entry.fabricKg} KG</strong></div>${adminControls}</div>`; }); document.getElementById('data-entries-list').innerHTML = html; }
+function saveDataEntry() { let mNo = selectedEntryMachine; let yLot = document.getElementById('data-lot').value; let kg = parseInt(document.getElementById('data-kg').value); if(!mNo || !yLot || isNaN(kg) || kg <= 0) { alert(t('missingInfo')); return; } let orderIndex = appOrders.findIndex(o => o.machine === mNo && o.made < o.target); if(orderIndex === -1) { alert(t('noActiveOrder')); return; } appOrders[orderIndex].made += kg; if(appOrders[orderIndex].made > appOrders[orderIndex].target) appOrders[orderIndex].made = appOrders[orderIndex].target; calculateOverall(appOrders[orderIndex]); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }; let newEntry = { timestamp: new Date().toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', dateOptions), machineNo: mNo, yarnLot: yLot, fabricKg: kg }; dataEntries.unshift(newEntry); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); selectedEntryMachine = ""; document.getElementById('data-machine-text').innerText = t('selectMachine'); document.getElementById('data-machine-text').style.color = "var(--nardo)"; document.getElementById('data-lot').value = ''; document.getElementById('data-kg').value = ''; renderAll(); renderDataEntries(); alert("Üretim kaydedildi ve siparişten düşüldü!"); }
+function deleteDataEntry(i) { if(userRole !== 'admin') return; if(confirm(t('confirmDelete'))) { dataEntries.splice(i, 1); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); renderDataEntries(); } }
+function openModal(id) { let m = document.getElementById(id); m.style.display="flex"; setTimeout(()=>m.classList.add('show'), 10); }
+function closeModal(id) { let m = document.getElementById(id); m.classList.remove('show'); setTimeout(()=>m.style.display="none", 300); }
+function switchView(viewId, navId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page')); document.getElementById(viewId).classList.add('active-page'); document.querySelectorAll('.nav').forEach(nav => nav.classList.remove('active')); document.getElementById(navId).classList.add('active'); window.scrollTo({top:0,behavior:"smooth"}); }
+function clickAdminRole() { document.getElementById('login-user').value = ''; document.getElementById('login-pass').value = ''; openModal('login-modal'); }
+function clickTrackerRole() { finalizeRoleSelection('tracker'); }
+function attemptAdminLogin() { let u = document.getElementById('login-user').value.trim().toLowerCase(); let p = document.getElementById('login-pass').value.trim(); if(u === 'deneme' && p === '12345') { closeModal('login-modal'); setTimeout(() => finalizeRoleSelection('admin'), 300); } else { alert(t('loginError')); } }
+function finalizeRoleSelection(role) { userRole = role; document.getElementById('role-screen').style.display = 'none'; let mainApp = document.getElementById('main-app'); mainApp.style.display = 'block'; document.documentElement.style.backgroundColor = '#000000'; if(role === 'admin') { document.getElementById('fab-btn').style.display = 'flex'; document.getElementById('role-subtitle').innerText = (currentLang === 'tr') ? "Yönetici Kontrol Paneli" : "Admin Control Panel"; document.getElementById('setting-role').innerText = (currentLang === 'tr') ? "Yönetici" : "Admin"; } else { document.getElementById('fab-btn').style.display = 'none'; document.getElementById('role-subtitle').innerText = (currentLang === 'tr') ? "Saha Operasyon Merkezi" : "Field Operations Center"; document.getElementById('setting-role').innerText = (currentLang === 'tr') ? "Saha Personeli" : "Field Staff"; } applyTranslations(); renderAll(); renderDataEntries(); }
+function logout() { userRole = null; document.getElementById('main-app').style.display = 'none'; document.getElementById('role-screen').style.display = 'flex'; switchView('view-home', 'nav-home'); }
+window.onload = () => { document.documentElement.style.backgroundColor = '#000000'; changeLang(currentLang); setTimeout(() => { document.getElementById('splash').classList.add('hide'); document.getElementById('role-screen').style.display = 'flex'; }, 2000); };
+</script>
+</body>
+</html>
