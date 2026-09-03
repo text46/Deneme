@@ -146,7 +146,7 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
 .login-title { font-size: 26px; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; margin-bottom: 5px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .login-sub { color: var(--nardo); font-size: 13px; font-weight: 600; text-align: center; margin-bottom: 25px; }
 
-.fab { position: fixed; bottom: 85px; right: 20px; width: 56px; height: 56px; background: var(--text-main); color: var(--bg-main); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: none; cursor: pointer; z-index: 800; }
+.fab { position: fixed; bottom: calc(75px + env(safe-area-inset-bottom)); right: 20px; width: 56px; height: 56px; background: var(--text-main); color: var(--bg-main); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: none; cursor: pointer; z-index: 800; }
 
 .edit-input { width: 100%; box-sizing: border-box; padding: 14px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 15px; font-weight: 700; margin-top: 6px; outline: none; color: var(--text-main); background: var(--input-bg); }
 .edit-input.center { text-align: center; font-size: 20px; font-weight: 900; }
@@ -177,31 +177,36 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
 .report-modal-body { overflow-y: auto; flex-grow: 1; margin-top: 15px; }
 .report-modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px; flex-wrap: wrap; }
 
-/* KUSURSUZ MOBİL UYUMLULUK (NATIVE APP FEEL) */
+/* KUSURSUZ MOBİL UYUMLULUK VE BOŞLUK DÜZELTMESİ */
 @media (max-width: 768px) {
+  html, body {
+    background-color: var(--sidebar-bg) !important;
+  }
   .desktop-sidebar { display: none !important; }
   .desktop-main { 
     margin-left: 0 !important; 
-    padding: 16px 16px 110px 16px !important; 
+    padding: 16px 16px calc(90px + env(safe-area-inset-bottom)) 16px !important; 
     width: 100% !important;
+    min-height: 100vh !important;
+    background: var(--bg-main) !important;
     box-sizing: border-box !important;
   }
   .grid { grid-template-columns: 1fr !important; gap: 12px !important; }
   .panel-actions { grid-template-columns: 1fr !important; gap: 12px !important; }
   
-  /* Mobil Alt Bar - Tam Ekran Genişliği ve Doğru Konumlandırma */
+  /* Mobil Alt Bar - Tam Ekran Genişliği ve Dip Sınır Sabitleme */
   .mobile-bottom-bar {
     position: fixed; 
     bottom: 0; 
     left: 0; 
     width: 100%; 
-    height: calc(65px + env(safe-area-inset-bottom));
+    height: calc(60px + env(safe-area-inset-bottom));
     background: var(--sidebar-bg); 
     border-top: 1px solid var(--border-color);
     display: flex; 
     justify-content: space-around; 
     align-items: flex-start;
-    padding-top: 10px;
+    padding-top: 8px;
     padding-bottom: env(safe-area-inset-bottom);
     z-index: 95000; 
     backdrop-filter: blur(16px);
@@ -213,17 +218,17 @@ html, body { background-color: var(--bg-main) !important; margin: 0; padding: 0;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    gap: 4px;
+    gap: 3px;
     font-size: 10px; 
     font-weight: 800; 
     cursor: pointer; 
     flex: 1;
     padding: 0;
   }
-  .mob-nav-item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .mob-nav-item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .mob-nav-item.active { color: var(--text-main); }
   .lang-toggle-wrapper { top: 16px; right: 16px; }
-  .fab { bottom: 85px !important; right: 16px !important; }
+  .fab { bottom: calc(75px + env(safe-area-inset-bottom)) !important; right: 16px !important; }
 }
 
 @media print {
@@ -980,14 +985,23 @@ function finalizeLogin(user) {
     document.getElementById('main-app').style.display = 'block'; 
     
     let isAdmin = (user.role === 'Yönetici');
+    
     document.getElementById('nav-users').style.display = isAdmin ? 'flex' : 'none';
     document.getElementById('nav-report').style.display = isAdmin ? 'flex' : 'none';
     document.getElementById('mob-nav-report').style.display = isAdmin ? 'flex' : 'none';
+    
+    if(window.innerWidth <= 768 && isAdmin) {
+        document.getElementById('mob-nav-report').style.display = 'flex';
+    }
+
     document.getElementById('admin-action-buttons').style.display = isAdmin ? 'grid' : 'none';
     document.getElementById('fab-btn').style.display = isAdmin ? 'flex' : 'none';
 
     document.getElementById('sidebar-user-name').innerText = user.name;
     document.getElementById('sidebar-user-role').innerText = user.role;
+    
+    let roleTextEl = document.getElementById('setting-role-text');
+    if(roleTextEl) roleTextEl.innerText = user.role;
 
     let now = new Date();
     let pad = (n) => String(n).padStart(2, '0');
