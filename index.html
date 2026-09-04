@@ -12,6 +12,10 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
 <title>EA SYSTEMS - ERP</title>
+
+<!-- SUPABASE BAĞLANTISI -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 :root, [data-theme="dark"] { 
     --black: #000000; 
@@ -55,7 +59,7 @@
 
 /* KUSURSUZ UYGULAMA KİLİTLEME (SCROLL ENGELLEYİCİ) */
 html, body { 
-    position: fixed; /* Sayfanın sekmeler arası zıplamasını/boşluk yapmasını engeller */
+    position: fixed; 
     top: 0; left: 0; right: 0; bottom: 0;
     width: 100%; height: 100%;
     margin: 0; padding: 0; 
@@ -214,9 +218,8 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .report-modal-body { overflow-y: auto; flex-grow: 1; margin-top: 15px; }
 .report-modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px; flex-wrap: wrap; }
 
-
 /* =========================================
-   SÜPER KUSURSUZ MOBİL YAPI (SİYAH BOŞLUKLARA SON)
+   MOBİL (NATIVE APP) FLEXBOX MİMARİSİ
 ========================================= */
 @media (max-width: 768px) {
   .desktop-sidebar { display: none !important; }
@@ -225,7 +228,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
   .desktop-main { 
     left: 0 !important; 
     right: 0 !important;
-    bottom: calc(56px + env(safe-area-inset-bottom)) !important; /* Alt barın tam üstünde kesilir */
+    bottom: calc(56px + env(safe-area-inset-bottom)) !important; 
     padding: 16px 16px 20px 16px !important; 
   }
   
@@ -350,7 +353,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
                     <span data-i18n="navReport">Raporlama</span>
                 </button>
                 <button class="nav-desktop" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
                     <span data-i18n="navSettings">Sistem</span>
                 </button>
             </div>
@@ -514,7 +517,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
                 </div>
 
                 <div class="d-row" style="padding:12px 0;border-bottom:1px solid var(--border-color)"><span data-i18n="activeProfile">Aktif Profil</span><strong id="setting-role-text" style="color:var(--text-main)">Saha Personeli</strong></div>
-                <div class="d-row" style="padding:12px 0"><span data-i18n="dataModel">Veri Modeli</span><strong style="color:var(--text-main)" data-i18n="localMemory">Yerel Bellek (Offline)</strong></div>
+                <div class="d-row" style="padding:12px 0"><span data-i18n="dataModel">Veri Modeli</span><strong style="color:#10b981">Supabase (Bulut)</strong></div>
             </div>
           </div>
         </div>
@@ -539,7 +542,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
             <span data-i18n="navReport">Rapor</span>
         </button>
         <button class="mob-nav-item" id="mob-nav-settings" onclick="switchView('view-settings', 'mob-nav-settings')">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
             <span data-i18n="navSettings">Sistem</span>
         </button>
     </div>
@@ -619,6 +622,14 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 <script>
 if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Hatası:', err)); }); }
 
+/* ==========================================
+   SUPABASE VERİTABANI BAĞLANTISI 
+========================================== */
+const { createClient } = supabase;
+const _supabaseUrl = 'https://rkfxgfbjodmacufmakzv.supabase.co';
+const _supabaseKey = 'sb_publishable_x4N_x_uyBxx8aGhDISoWjw_nYzJGJuL';
+const db = createClient(_supabaseUrl, _supabaseKey);
+
 const dict = {
   tr: {
     loginSub: "Sisteme Giriş Yapın", todayProd: "Üretim Toplamı", kg: "kg / metre", oee: "Aktif Sipariş", piece: "Adet", activeOrders: "Aktif Siparişler", deptSummary: "Örgü Departmanı", allOrdersTitle: "Tüm Siparişler", settingsTitle: "Sistem Tercihleri",
@@ -646,18 +657,9 @@ let currentLang = localStorage.getItem('eaErpLang') || 'tr';
 let currentTheme = localStorage.getItem('eaErpTheme') || 'dark';
 let currentUser = null; 
 
-const defaultOrders = [
- { no:"EA-TEX-901", product:"Süprem Kumaş", target:5000, made: 5000, yarn: "Ne 30/1 %100 Pamuk", color: "Oxford River", machine: "Makine 1" },
- { no:"EA-TEX-902", product:"Pike Kumaş", target:3000, made: 1950, yarn: "Ne 20/1 Karde", color: "Antrasit", machine: "Makine 11" }
-];
-let appOrders = JSON.parse(localStorage.getItem('eaErpOrders')) || JSON.parse(JSON.stringify(defaultOrders));
-let dataEntries = JSON.parse(localStorage.getItem('eaErpDataEntries')) || [];
-
-let systemUsers = JSON.parse(localStorage.getItem('eaErpUsers')) || [
-    { name: "deneme", pass: "12345", role: "Yönetici" },
-    { name: "sorumlu1", pass: "123", role: "Sorumlu" },
-    { name: "saha1", pass: "123", role: "Saha Personeli" }
-];
+let appOrders = [];
+let dataEntries = [];
+let systemUsers = [];
 
 const machines = [{ no: "1", type: "Süprem" }, { no: "2", type: "Süprem" }, { no: "3", type: "3 İplik" }, { no: "4", type: "3 İplik" }, { no: "5", type: "İnterlok" }, { no: "6", type: "İnterlok" }, { no: "7", type: "Ribana" }, { no: "8", type: "Ribana" }, { no: "9", type: "Kaşkorse" }, { no: "10", type: "Kaşkorse" }, { no: "11", type: "Pike" }, { no: "12", type: "Pike" }, { no: "13", type: "Havlu" }, { no: "14", type: "Çift Plaka" }, { no: "15", type: "Mini Jakar" }];
 let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = ""; let selectedReportMachine = "";
@@ -773,18 +775,25 @@ function openOrder(i){
   openModal('modal');
 }
 
-function saveProgress(i) { 
+async function saveProgress(i) { 
     if(!currentUser || (currentUser.role !== 'Yönetici' && currentUser.role !== 'Sorumlu')) return; 
     let val = parseInt(document.getElementById('edit-k').value);
     if(isNaN(val)) return;
-    appOrders[i].made = Math.min(appOrders[i].target, Math.max(0, val)); 
-    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
+    
+    let o = appOrders[i];
+    o.made = Math.min(o.target, Math.max(0, val)); 
+    
+    await db.from('orders').update({ made: o.made }).eq('id', o.id);
     closeModal('modal'); renderAll(); 
 }
 
-function deleteOrder(i) { 
+async function deleteOrder(i) { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
-    if(confirm(t('confirmDelete'))) { appOrders.splice(i, 1); localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); closeModal('modal'); renderAll(); } 
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('orders').delete().eq('id', appOrders[i].id);
+        appOrders.splice(i, 1); 
+        closeModal('modal'); renderAll(); 
+    } 
 }
 
 function openAddModal() { 
@@ -797,14 +806,19 @@ function openAddModal() {
     document.getElementById('new-color').value = ""; openModal('add-modal'); 
 }
 
-function saveNewOrder() { 
+async function saveNewOrder() { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
     let mNo = selectedOrderMachine; 
     let no = document.getElementById('new-no').value, prod = document.getElementById('new-prod').value, target = parseInt(document.getElementById('new-target').value); 
     if(!mNo || !no || !prod || isNaN(target) || target <= 0) return alert(t('missingInfo')); 
-    appOrders.unshift({ no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value || "-", color: document.getElementById('new-color').value || "-", machine: mNo, made: 0, k_pct: 0 }); 
-    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
-    closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); 
+    
+    let newOrder = { no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value || "-", color: document.getElementById('new-color').value || "-", machine: mNo, made: 0 }; 
+    const { data, error } = await db.from('orders').insert([newOrder]).select();
+    
+    if(data) {
+        appOrders.unshift(data[0]); 
+        closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); 
+    } else { alert("Sipariş oluşturulurken hata oluştu!"); }
 }
 
 function openMachineSelect(type) { 
@@ -827,57 +841,73 @@ function renderDataEntries() {
     dataEntries.forEach((entry, i) => { 
         let canDeleteEntry = (currentUser && currentUser.role === 'Yönetici');
         let adminControls = canDeleteEntry ? `<button class="btn-delete" style="display:block; padding:8px; margin-top:12px; font-size:12px;" onclick="deleteDataEntry(${i})">${t('deleteBtn')}</button>` : ''; 
-        html += `<div class="data-card"><div class="time">${entry.timestamp} (${entry.author || 'Personel'})</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabricKg} KG</strong></div>${adminControls}</div>`; 
+        html += `<div class="data-card"><div class="time">${entry.timestamp} (${entry.author || 'Personel'})</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machine_no}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarn_lot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabric_kg} KG</strong></div>${adminControls}</div>`; 
     }); 
     document.getElementById('data-entries-list').innerHTML = html; 
 }
 
-function saveDataEntry() { 
+async function saveDataEntry() { 
     let mNo = selectedEntryMachine; 
     let yLot = document.getElementById('data-lot').value; 
     let kg = parseInt(document.getElementById('data-kg').value); 
     if(!mNo || !yLot || isNaN(kg) || kg <= 0) { alert(t('missingInfo')); return; } 
+    
     let orderIndex = appOrders.findIndex(o => o.machine === mNo && o.made < o.target); 
     if(orderIndex === -1) { alert(t('noActiveOrder')); return; } 
-    appOrders[orderIndex].made += kg; 
-    if(appOrders[orderIndex].made > appOrders[orderIndex].target) appOrders[orderIndex].made = appOrders[orderIndex].target; 
-    calculateOverall(appOrders[orderIndex]); 
-    localStorage.setItem('eaErpOrders', JSON.stringify(appOrders)); 
+    
+    let o = appOrders[orderIndex];
+    let newMade = o.made + kg;
+    if(newMade > o.target) newMade = o.target;
+    
+    await db.from('orders').update({ made: newMade }).eq('id', o.id);
+    o.made = newMade;
 
     let rawDate = new Date();
     let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }; 
     let newEntry = { 
-        rawDate: rawDate.toISOString(), 
+        raw_date: rawDate.toISOString(), 
         timestamp: rawDate.toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', dateOptions), 
-        machineNo: mNo, yarnLot: yLot, fabricKg: kg,
+        machine_no: mNo, 
+        yarn_lot: yLot, 
+        fabric_kg: kg,
         author: currentUser ? currentUser.name : "Personel"
     }; 
-    dataEntries.unshift(newEntry); 
-    localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); 
-    selectedEntryMachine = ""; 
-    document.getElementById('data-machine-text').innerText = t('selectMachine'); 
-    document.getElementById('data-machine-text').style.color = "var(--nardo)"; 
-    document.getElementById('data-lot').value = ''; document.getElementById('data-kg').value = ''; 
-    renderAll(); renderDataEntries(); alert("Üretim kaydedildi ve siparişten düşüldü!"); 
+    
+    let { data } = await db.from('data_entries').insert([newEntry]).select();
+    if(data) {
+        dataEntries.unshift(data[0]); 
+        selectedEntryMachine = ""; 
+        document.getElementById('data-machine-text').innerText = t('selectMachine'); 
+        document.getElementById('data-machine-text').style.color = "var(--nardo)"; 
+        document.getElementById('data-lot').value = ''; document.getElementById('data-kg').value = ''; 
+        renderAll(); renderDataEntries(); alert("Üretim kaydedildi ve siparişten düşüldü!"); 
+    }
 }
 
-function deleteDataEntry(i) { 
+async function deleteDataEntry(i) { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
-    if(confirm(t('confirmDelete'))) { dataEntries.splice(i, 1); localStorage.setItem('eaErpDataEntries', JSON.stringify(dataEntries)); renderDataEntries(); } 
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('data_entries').delete().eq('id', dataEntries[i].id);
+        dataEntries.splice(i, 1); 
+        renderDataEntries(); 
+    } 
 }
 
-function createNewUser() {
+async function createNewUser() {
     if(!currentUser || currentUser.role !== 'Yönetici') return;
     let name = document.getElementById('new-user-name').value.trim();
     let pass = document.getElementById('new-user-pass').value.trim();
     let role = document.getElementById('new-user-role').value;
     if(!name || !pass) { alert(t('missingInfo')); return; }
     if(systemUsers.some(u => u.name === name)) { alert("Bu kullanıcı adı zaten sistemde kayıtlı!"); return; }
-    systemUsers.push({ name: name, pass: pass, role: role });
-    localStorage.setItem('eaErpUsers', JSON.stringify(systemUsers));
-    document.getElementById('new-user-name').value = '';
-    document.getElementById('new-user-pass').value = '';
-    renderUsersList(); alert("Kullanıcı başarıyla oluşturuldu!");
+    
+    let { data } = await db.from('users').insert([{ name: name, pass: pass, role: role }]).select();
+    if(data) {
+        systemUsers.push(data[0]);
+        document.getElementById('new-user-name').value = '';
+        document.getElementById('new-user-pass').value = '';
+        renderUsersList(); alert("Kullanıcı başarıyla oluşturuldu!");
+    }
 }
 
 function renderUsersList() {
@@ -889,10 +919,14 @@ function renderUsersList() {
     document.getElementById('users-list-container').innerHTML = html;
 }
 
-function deleteUser(i) {
+async function deleteUser(i) {
     if(!currentUser || currentUser.role !== 'Yönetici') return;
     if(systemUsers[i].name === 'deneme') { alert("Ana yönetici hesabı silinemez!"); return; }
-    if(confirm(t('confirmDelete'))) { systemUsers.splice(i, 1); localStorage.setItem('eaErpUsers', JSON.stringify(systemUsers)); renderUsersList(); }
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('users').delete().eq('id', systemUsers[i].id);
+        systemUsers.splice(i, 1); 
+        renderUsersList(); 
+    }
 }
 
 function generateReport() {
@@ -905,16 +939,16 @@ function generateReport() {
     let endDate = dEnd ? new Date(`${dEnd}T${tEnd}`) : null;
 
     let filtered = dataEntries.filter(entry => {
-        if(selectedReportMachine && entry.machineNo !== selectedReportMachine) return false;
-        if(entry.rawDate && (startDate || endDate)) {
-            let entryDate = new Date(entry.rawDate);
+        if(selectedReportMachine && entry.machine_no !== selectedReportMachine) return false;
+        if(entry.raw_date && (startDate || endDate)) {
+            let entryDate = new Date(entry.raw_date);
             if(startDate && entryDate < startDate) return false;
             if(endDate && entryDate > endDate) return false;
         }
         return true;
     });
 
-    let totalKg = filtered.reduce((sum, e) => sum + Number(e.fabricKg), 0);
+    let totalKg = filtered.reduce((sum, e) => sum + Number(e.fabric_kg), 0);
     document.getElementById('res-machine').innerText = selectedReportMachine || t('allMachinesOpt');
     document.getElementById('res-total').innerText = totalKg.toLocaleString() + " KG";
     document.getElementById('res-count').innerText = filtered.length;
@@ -924,7 +958,7 @@ function generateReport() {
         listHtml = `<div class="card" style="text-align:center; color:var(--nardo);">Bu kriterlere uygun üretim kaydı bulunamadı.</div>`;
     } else {
         filtered.forEach(entry => {
-            listHtml += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machineNo}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarnLot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabricKg} KG</strong></div></div>`;
+            listHtml += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machine_no}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarn_lot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabric_kg} KG</strong></div></div>`;
         });
     }
     document.getElementById('report-entries-list').innerHTML = listHtml;
@@ -1018,7 +1052,7 @@ function verifyAdminLogin() {
 function finalizeLogin(user) {
     currentUser = user; 
     document.getElementById('role-screen').style.display = 'none'; 
-    document.getElementById('main-app').style.display = 'block'; 
+    document.getElementById('main-app').style.display = window.innerWidth <= 768 ? 'flex' : 'block'; 
     
     let isAdmin = (user.role === 'Yönetici');
     
@@ -1061,13 +1095,32 @@ function logout() {
     switchView('view-home', 'nav-home');
 }
 
+/* VERİTABANINDAN VERİLERİ ÇEK VE UYGULAMAYI BAŞLAT */
+async function initApp() {
+    try {
+        let [uRes, oRes, dRes] = await Promise.all([
+            db.from('users').select('*'),
+            db.from('orders').select('*').order('id', { ascending: false }),
+            db.from('data_entries').select('*').order('id', { ascending: false })
+        ]);
+        
+        if(uRes.data) systemUsers = uRes.data;
+        if(oRes.data) appOrders = oRes.data;
+        if(dRes.data) dataEntries = dRes.data;
+        
+        renderAll();
+    } catch(e) {
+        console.error("Veritabanı bağlantı hatası:", e);
+    }
+
+    document.getElementById('splash').classList.add('hide'); 
+    document.getElementById('role-screen').style.display = 'flex'; 
+}
+
 window.onload = () => { 
     setTheme(currentTheme);
     changeLang(currentLang);
-    setTimeout(() => { 
-        document.getElementById('splash').classList.add('hide'); 
-        document.getElementById('role-screen').style.display = 'flex'; 
-    }, 2000); 
+    initApp(); // Animasyon esnasında verileri çeker
 };
 </script>
 </body>
