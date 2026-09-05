@@ -8,11 +8,9 @@
 <meta name="apple-mobile-web-app-title" content="EA SYSTEMS">
 <meta name="theme-color" content="#0c0c0e" id="meta-theme-color">
 <link rel="manifest" href="manifest.json">
-
-<!-- BİLGİSAYAR VE MOBİL UYGULAMA İKONLARI (OTOMATİK GÜNCELLENİR) -->
+<!-- LOGO -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
-
 <title>EA SYSTEMS - ERP</title>
 
 <style>
@@ -363,7 +361,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
           <div id="lines-preview"></div>
         </div>
 
-        <!-- Üretim (Aktif ve Geçmiş Siparişler Sekmeleri ile) -->
+        <!-- Üretim -->
         <div id="view-orders" class="page content">
           <div style="display: flex; gap: 10px; margin-bottom: 20px;" class="no-print">
               <button id="tab-active-orders-btn" class="btn-update" style="margin-top:0; background:var(--text-main); color:var(--bg-main);" onclick="switchOrderTab('active')">Aktif Siparişler</button>
@@ -440,19 +438,17 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
           <div id="users-list-container"></div>
         </div>
 
-        <!-- Raporlama (GÜNCELLENDİ: 2 Aşamalı Ayrı Kutucuk Sistemi) -->
+        <!-- Raporlama (GÜNCELLENDİ: 2 Aşamalı Net Ayrı Kutucuk Sistemi) -->
         <div id="view-report" class="page content">
           <div class="section" data-i18n="reportTitle">Üretim Raporlama Paneli</div>
           <div class="card" style="background:var(--card-bg); max-width: 600px;">
             <div class="detail-box" style="border:none;padding:0;background:transparent">
                 
-                <!-- 1. Kutucuk: Filtre Türü (Tümü / Makine / Lot) -->
-                <div class="phase-title">Filtre Türü Seçin</div>
+                <div class="phase-title">Filtre Türü</div>
                 <div id="report-filter-type" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openReportFilterTypeModal()">
                     <span id="report-filter-type-text" style="color:var(--text-main)">Tüm Rapor (Genel)</span><span style="color:var(--nardo); font-size:12px;">▼</span>
                 </div>
 
-                <!-- 2. Kutucuk: Seçime Göre Otomatik Açılan Alt Kutu (Makine Sistemden Seçilir veya Lot Elle Yazılır) -->
                 <div id="report-value-container" style="display: none; margin-top: 15px;">
                     <div class="phase-title" id="report-value-label">Değer Belirle</div>
                     <div id="report-filter-value" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openReportFilterValueModal()">
@@ -543,7 +539,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 
 <div id="print-area" class="no-print" style="display:none;"></div>
 
-<!-- RAPOR SONUÇ SAYFASI (PREMİUM LOGOLU BUTONLAR İLE) -->
+<!-- RAPOR SONUÇ SAYFASI -->
 <div id="report-modal-sheet-overlay">
     <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
         <h2 style="margin: 0; font-size: 20px; font-weight: 900; color: var(--text-main);" data-i18n="reportResultTitle">Rapor Sonuçları</h2>
@@ -1197,6 +1193,7 @@ function renderSystemLogs() {
 
 let currentFilteredEntries = [];
 
+// RAPORU OLUŞTURMA VE DİKEY TABLO FORMATINDA LİSTELEME
 function generateReport() { 
     let dStart = document.getElementById('report-start-date').value; 
     let tStart = document.getElementById('report-start-time').value || "00:00"; 
@@ -1256,44 +1253,33 @@ function closeReportResultPage() {
     document.getElementById('report-modal-sheet-overlay').classList.remove('show');
 }
 
-// EXCEL'E (CSV) SÜTUN SÜTUN DÜZGÜN AKTARIM (SEPARATÖR DÜZELTİLDİ)
-function exportReportExcel() {
-    if(!currentFilteredEntries || currentFilteredEntries.length === 0) {
-        showToast("Dışa aktarılacak veri yok!", "error");
-        return;
-    }
-    let csvContent = "\uFEFFsep=;\nTarih / Saat;Makine No;İplik Lot;Üretim Miktarı (KG);Personel\n";
-    currentFilteredEntries.forEach(e => {
-        let cleanDate = (e.timestamp || "").replace(/"/g, '""');
-        let cleanMach = (e.machine_no || "").replace(/"/g, '""');
-        let cleanLot = (e.yarn_lot || "").replace(/"/g, '""');
-        let cleanKg = (e.fabric_kg || 0);
-        let cleanAuthor = (e.author || "-").replace(/"/g, '""');
-        csvContent += `"${cleanDate}";"${cleanMach}";"${cleanLot}";${cleanKg};"${cleanAuthor}"\n`;
-    });
-
-    let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    let url = URL.createObjectURL(blob);
-    let link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `Uretim_Raporu_${new Date().toISOString().slice(0,10)}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showToast("Rapor Excel sütunlarına göre indirildi.", "success");
+// OFFLINE ÇALIŞMA VE İNTERNET OLMADAN GİRİŞ İÇİN ÖNBELLEKLEME
+function cacheUsersLocally(users) {
+    try {
+        localStorage.setItem('ea_cached_users', JSON.stringify(users));
+    } catch(e) {}
 }
 
-function openModal(id) { let m = document.getElementById(id); m.style.display="flex"; setTimeout(()=>m.classList.add('show'), 10); }
-function closeModal(id) { let m = document.getElementById(id); m.classList.remove('show'); setTimeout(()=>m.style.display="none", 300); }
-function switchView(viewId, navId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page')); document.getElementById(viewId).classList.add('active-page'); document.querySelectorAll('.nav-desktop').forEach(nav => nav.classList.remove('active')); if(navId) { let el = document.getElementById(navId); if(el) el.classList.add('active'); } let isDesktop = window.innerWidth > 768; let mainContainer = isDesktop ? window : document.querySelector('.desktop-main'); if(mainContainer && mainContainer.scrollTo) mainContainer.scrollTo({top:0,behavior:"smooth"}); closeMobileMenu(); }
+function getCachedUsers() {
+    try {
+        let cached = localStorage.getItem('ea_cached_users');
+        if(cached) return JSON.parse(cached);
+    } catch(e) {}
+    // Varsayılan çevrimdışı yönetici hesabı
+    return [{ name: "deneme", pass: "deneme", role: "Yönetici" }];
+}
 
 function attemptLogin() { 
     let uInput = document.getElementById('app-user').value.trim(); 
     let pInput = document.getElementById('app-pass').value.trim(); 
-    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput); 
+    
+    // Önce hafızadaki (bellek veya localstorage) kullanıcılarla doğrula
+    let usersList = systemUsers.length > 0 ? systemUsers : getCachedUsers();
+    let foundUser = usersList.find(u => u.name === uInput && u.pass === pInput); 
+
     if(foundUser) {
         finalizeLogin(foundUser);
-        addSystemLog("LOGIN", "Kullanıcı sisteme giriş yaptı.");
+        addSystemLog("LOGIN", "Kullanıcı sisteme giriş yaptı (Çevrimdışı/Çevrim içi).");
         showToast("Hoş geldiniz, " + foundUser.name, "success");
     } else {
         showToast(t('loginError'), "error");
@@ -1305,7 +1291,8 @@ function openAdminModal() { document.getElementById('admin-user-input').value = 
 function verifyAdminLogin() { 
     let uInput = document.getElementById('admin-user-input').value.trim(); 
     let pInput = document.getElementById('admin-pass-input').value.trim(); 
-    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput && u.role === 'Yönetici'); 
+    let usersList = systemUsers.length > 0 ? systemUsers : getCachedUsers();
+    let foundUser = usersList.find(u => u.name === uInput && u.pass === pInput && u.role === 'Yönetici'); 
     if(foundUser) { 
         closeModal('admin-modal'); 
         finalizeLogin(foundUser); 
@@ -1366,13 +1353,20 @@ async function initApp() {
             db.from('data_entries').select('*').order('id', { ascending: false }),
             db.from('logs').select('*').order('id', { ascending: false })
         ]);
-        if(uRes.data) systemUsers = uRes.data; 
+        if(uRes.data) { 
+            systemUsers = uRes.data; 
+            cacheUsersLocally(systemUsers); 
+        }
         if(oRes.data) appOrders = oRes.data; 
         if(dRes.data) dataEntries = dRes.data; 
         if(lRes.data) systemLogs = lRes.data;
         renderAll();
-    } catch(e) { console.error("Veritabanı bağlantı hatası:", e); }
-    document.getElementById('splash').classList.add('hide'); document.getElementById('role-screen').style.display = 'flex'; 
+    } catch(e) { 
+        console.warn("İnternet bağlantısı yok veya Supabase'e ulaşılamadı. Yerel önbellek ile devam ediliyor.");
+        systemUsers = getCachedUsers();
+    }
+    document.getElementById('splash').classList.add('hide'); 
+    document.getElementById('role-screen').style.display = 'flex'; 
 }
 
 window.onload = () => { setTheme(currentTheme); changeLang(currentLang); initApp(); };
