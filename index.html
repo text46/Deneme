@@ -8,9 +8,11 @@
 <meta name="apple-mobile-web-app-title" content="EA SYSTEMS">
 <meta name="theme-color" content="#0c0c0e" id="meta-theme-color">
 <link rel="manifest" href="manifest.json">
-<!-- LOGO -->
+
+<!-- BİLGİSAYAR VE MOBİL UYGULAMA İKONLARI (OTOMATİK GÜNCELLENİR) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4RTkzOTkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIwIiBmaWxsPSIjMDAwMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iIGxldHRlci1zcGFjaW5nPSItNSI+RUE8L3RleHQ+PC9zdmc+">
+
 <title>EA SYSTEMS - ERP</title>
 
 <style>
@@ -31,15 +33,22 @@
 :root { --sidebar-width: 260px; }
 
 html, body { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; margin: 0; padding: 0; background-color: var(--bg-main) !important; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color: var(--text-main) !important; overflow: hidden !important; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
-input, textarea { -webkit-user-select: text; user-select: text; }
+input, textarea, select { -webkit-user-select: text; user-select: text; }
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; margin: 4px;}
 ::-webkit-scrollbar-thumb { background: rgba(125, 125, 125, 0.3); border-radius: 20px; }
 * { scrollbar-width: thin; scrollbar-color: rgba(125, 125, 125, 0.3) transparent; box-sizing: border-box; }
 
-body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-modal):not(#modal):not(#add-modal):not(#machine-modal):not(#report-modal):not(#scanner-modal):not(#qr-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
+body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-modal):not(#modal):not(#add-modal):not(#machine-modal):not(#report-modal):not(#report-filter-type-modal):not(#report-filter-value-modal):not(#scanner-modal):not(#qr-modal):not(#toast-container):not(#report-modal-sheet-overlay):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
 
 .app { display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-main); color: var(--text-main); overflow: hidden; }
+
+/* TOAST BİLDİRİM STİLLERİ */
+#toast-container { position: fixed; top: calc(20px + env(safe-area-inset-top, 0px)); right: 20px; z-index: 9999999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+.toast { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 14px 20px; border-radius: 14px; font-size: 14px; font-weight: 800; box-shadow: 0 10px 30px rgba(0,0,0,0.4); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 12px; pointer-events: auto; transform: translateX(120%); opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; max-width: 350px; }
+.toast.show { transform: translateX(0); opacity: 1; }
+.toast.success { border-left: 4px solid #10b981; }
+.toast.error { border-left: 4px solid #ef4444; }
 
 .hamburger-btn { display: none; position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); left: calc(16px + env(safe-area-inset-left, 0px)); z-index: 9999; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 .hamburger-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; }
@@ -108,7 +117,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .close { float: right; border: 0; background: var(--card-sub-bg); color: var(--text-main); border-radius: 50%; width: 34px; height: 34px; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; }
 .detail-box { background: var(--card-sub-bg); padding: 18px; border-radius: 14px; margin-bottom: 14px; border: 1px solid var(--border-color); }
 
-.d-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; align-items: flex-start; }
+.d-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; align-items: center; }
 .d-row span { color: var(--nardo); font-weight: 700; flex-shrink: 0; margin-right: 15px; }
 .d-row strong { font-weight: 800; color: var(--text-main); text-align: right; flex-grow: 1; word-break: break-word; }
 
@@ -135,12 +144,19 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .btn-update { background: var(--text-main); color: var(--bg-main); border: none; padding: 15px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 20px; font-size: 15px; cursor: pointer; transition: opacity 0.2s;}
 .btn-update:active { opacity: 0.8; }
 .btn-delete { background: transparent; color: #ff5252; border: 2px solid #ff5252; padding: 12px; border-radius: 12px; font-weight: 800; width: 100%; margin-top: 12px; font-size: 13px; cursor: pointer; display: none; }
-.btn-print { background: #3b82f6; color: #fff; border: none; padding: 12px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 12px; font-size: 13px; cursor: pointer; }
 
-/* BARKODU AÇ BUTONU STİLİ */
 .btn-barcode { background: var(--card-sub-bg); color: var(--text-main); border: 1.5px solid var(--border-color); padding: 14px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 12px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
 .btn-barcode:active { background: var(--border-color); }
 .btn-barcode svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* PREMIUM RAPOR BUTONLARI (LOGOLU) */
+.btn-action-premium { background: var(--card-sub-bg); color: var(--text-main); border: 1.5px solid var(--border-color); padding: 12px 20px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.btn-action-premium:hover { background: var(--border-color); }
+.btn-action-premium svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-excel { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #10b981; }
+.btn-excel:hover { background: rgba(16, 185, 129, 0.2); }
+.btn-print-prem { background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); color: #3b82f6; }
+.btn-print-prem:hover { background: rgba(59, 130, 246, 0.2); }
 
 .custom-dropdown { position: relative; width: 100%; user-select: none; }
 .custom-dropdown-selected { background: var(--card-sub-bg); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
@@ -160,15 +176,28 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .custom-date-input { flex: 1.4; }
 .custom-time-input { flex: 1; }
 
-.report-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 999999; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
-.report-modal-overlay.show { display: flex; opacity: 1; }
-.report-modal-sheet { background: var(--card-bg); color: var(--text-main); width: 750px; max-width: 90vw; max-height: 85vh; border-radius: 24px; padding: 35px; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
-.report-modal-body { overflow-y: auto; flex-grow: 1; margin-top: 15px; }
-.report-modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 20px; flex-wrap: wrap; }
-
 #reader { width: 100%; border-radius: 14px; overflow: hidden; border: 2px solid var(--border-color); background: #000; }
 #reader video { object-fit: cover; }
 #reader img[alt="Info icon"] { display:none !important; }
+
+/* RAPOR SONUÇ SAYFASI STİLLERİ */
+#report-modal-sheet-overlay { display: none; position: fixed; inset: 0; background: var(--bg-main); z-index: 999999; flex-direction: column; overflow-y: auto; padding: calc(30px + env(safe-area-inset-top, 0px)) 40px calc(30px + env(safe-area-inset-bottom, 0px)) 40px; }
+#report-modal-sheet-overlay.show { display: flex; }
+
+/* TABLO STİLLERİ */
+.report-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: var(--card-bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border-color); }
+.report-table th, .report-table td { padding: 12px 16px; text-align: left; font-size: 13px; border-bottom: 1px solid var(--border-color); }
+.report-table th { background: var(--card-sub-bg); color: var(--nardo); font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+.report-table td { font-weight: 700; color: var(--text-main); }
+.report-table tr:last-child td { border-bottom: none; }
+
+/* LOG SEÇİM BUTONLARI */
+.log-pill-badge { padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 800; display: inline-block; }
+.log-pill-login { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.log-pill-order { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.log-pill-data { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.log-pill-delete { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.log-pill-user { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
 
 /* MOBİL (NATIVE APP) FLEXBOX MİMARİSİ */
 @media (max-width: 768px) {
@@ -184,19 +213,27 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
   .lang-toggle-wrapper { position: relative; top: auto; right: auto; margin-top: 30px; }
   
   .fab { position: fixed !important; bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important; right: 18px !important; }
+  #report-modal-sheet-overlay { padding: calc(20px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 0px)) 16px; }
 }
 
 @media print {
-  body * { visibility: hidden; }
-  #print-area, #print-area * { visibility: visible; }
-  #print-area { position: absolute; left: 0; top: 0; width: 100%; height: auto; background: #fff !important; color: #000 !important; font-family: sans-serif; padding:20px; }
+  body, html { position: static !important; overflow: visible !important; height: auto !important; background: #fff !important; color: #000 !important; }
+  body * { visibility: hidden !important; }
+  #report-modal-sheet-overlay, #report-modal-sheet-overlay * { visibility: visible !important; }
+  #report-modal-sheet-overlay { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; height: auto !important; overflow: visible !important; background: #fff !important; color: #000 !important; padding: 20px !important; }
   .no-print { display: none !important; }
-  #report-modal-sheet, #report-modal-sheet * { visibility: visible; }
-  #report-modal-sheet { position: absolute; left: 0; top: 0; width: 100%; background: #fff !important; color: #000 !important; }
+  .report-table { width: 100% !important; border: 1px solid #ccc !important; background: #fff !important; }
+  .report-table th { background: #f0f0f0 !important; color: #000 !important; }
+  .report-table td { color: #000 !important; border-bottom: 1px solid #ddd !important; }
+  .card { background: #f9f9f9 !important; border: 1px solid #ccc !important; color: #000 !important; box-shadow: none !important; }
+  .label, .d-row span { color: #555 !important; }
+  .value, .d-row strong { color: #000 !important; }
 }
 </style>
 </head>
 <body data-theme="dark" onclick="closeAllDropdowns(event)">
+
+<div id="toast-container"></div>
 
 <div id="splash">
     <div class="splash-logo">EA</div>
@@ -282,6 +319,10 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
                     <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                     <span data-i18n="navReport">Raporlama</span>
                 </button>
+                <button class="nav-desktop" id="nav-logs" onclick="switchView('view-logs', 'nav-logs')" style="display:none;">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <span>İşlem Logları</span>
+                </button>
                 <button class="nav-desktop" id="nav-settings" onclick="switchView('view-settings', 'nav-settings')">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>
                     <span data-i18n="navSettings">Sistem</span>
@@ -322,10 +363,20 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
           <div id="lines-preview"></div>
         </div>
 
-        <!-- Üretim -->
+        <!-- Üretim (Aktif ve Geçmiş Siparişler Sekmeleri ile) -->
         <div id="view-orders" class="page content">
-          <div class="section" data-i18n="allOrdersTitle">Tüm Üretim Portföyü</div>
-          <div id="orders-full"></div>
+          <div style="display: flex; gap: 10px; margin-bottom: 20px;" class="no-print">
+              <button id="tab-active-orders-btn" class="btn-update" style="margin-top:0; background:var(--text-main); color:var(--bg-main);" onclick="switchOrderTab('active')">Aktif Siparişler</button>
+              <button id="tab-history-orders-btn" class="btn-update" style="margin-top:0; background:var(--card-sub-bg); color:var(--text-main); border:1px solid var(--border-color);" onclick="switchOrderTab('history')">Geçmiş Siparişler</button>
+          </div>
+          <div id="orders-tab-active">
+              <div class="section" data-i18n="allOrdersTitle">Tüm Aktif Üretim Portföyü</div>
+              <div id="orders-full"></div>
+          </div>
+          <div id="orders-tab-history" style="display:none;">
+              <div class="section" data-i18n="pastOrdersTitle">Geçmiş (Tamamlanan) Siparişler</div>
+              <div id="orders-full-history"></div>
+          </div>
         </div>
 
         <!-- Geçmiş Siparişler -->
@@ -389,16 +440,27 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
           <div id="users-list-container"></div>
         </div>
 
-        <!-- Raporlama -->
+        <!-- Raporlama (GÜNCELLENDİ: 2 Aşamalı Ayrı Kutucuk Sistemi) -->
         <div id="view-report" class="page content">
           <div class="section" data-i18n="reportTitle">Üretim Raporlama Paneli</div>
           <div class="card" style="background:var(--card-bg); max-width: 600px;">
             <div class="detail-box" style="border:none;padding:0;background:transparent">
-                <div class="phase-title" data-i18n="machineNo">Makine Seçimi</div>
-                <div id="report-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('report')">
-                    <span id="report-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Tüm Makineler (Genel)</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+                
+                <!-- 1. Kutucuk: Filtre Türü (Tümü / Makine / Lot) -->
+                <div class="phase-title">Filtre Türü Seçin</div>
+                <div id="report-filter-type" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openReportFilterTypeModal()">
+                    <span id="report-filter-type-text" style="color:var(--text-main)">Tüm Rapor (Genel)</span><span style="color:var(--nardo); font-size:12px;">▼</span>
                 </div>
-                <div class="phase-title" data-i18n="startDate">Başlangıç Tarihi / Saati</div>
+
+                <!-- 2. Kutucuk: Seçime Göre Otomatik Açılan Alt Kutu (Makine Sistemden Seçilir veya Lot Elle Yazılır) -->
+                <div id="report-value-container" style="display: none; margin-top: 15px;">
+                    <div class="phase-title" id="report-value-label">Değer Belirle</div>
+                    <div id="report-filter-value" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openReportFilterValueModal()">
+                        <span id="report-filter-value-text" style="color:var(--nardo)">Seçim Yapın...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
+                    </div>
+                </div>
+
+                <div class="phase-title" data-i18n="startDate" style="margin-top:20px;">Başlangıç Tarihi / Saati</div>
                 <div class="custom-datetime-group">
                     <input type="date" id="report-start-date" class="custom-date-input">
                     <input type="text" id="report-start-time" class="custom-time-input" placeholder="SS:DD" maxlength="5">
@@ -413,6 +475,35 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
                 </div>
             </div>
           </div>
+        </div>
+
+        <!-- İşlem Logları Paneli -->
+        <div id="view-logs" class="page content">
+          <div class="section">Sistem İşlem Logları (Audit Trail)</div>
+          
+          <div class="card" style="background:var(--card-bg); margin-bottom: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <div class="phase-title" style="margin-top:0">İşlem Türü Filtresi</div>
+                    <select id="log-filter-action" class="edit-input" onchange="renderSystemLogs()" style="margin-top:6px;">
+                        <option value="">Tüm İşlemler</option>
+                        <option value="LOGIN">Giriş / Oturum</option>
+                        <option value="LOGOUT">Çıkış</option>
+                        <option value="ORDER_CREATE">Sipariş Oluşturma</option>
+                        <option value="ORDER_UPDATE">Sipariş Düzenleme</option>
+                        <option value="ORDER_DELETE">Sipariş Silme</option>
+                        <option value="DATA_ENTRY">Üretim Verisi Girişi</option>
+                        <option value="USER_MANAGE">Kullanıcı İşlemleri</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="phase-title" style="margin-top:0">Kullanıcı Filtresi</div>
+                    <input type="text" id="log-filter-user" class="edit-input" placeholder="Örn: deneme" oninput="renderSystemLogs()" style="margin-top:6px;">
+                </div>
+            </div>
+          </div>
+
+          <div id="logs-list-container"></div>
         </div>
 
         <!-- Sistem Tercihleri -->
@@ -450,13 +541,56 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 
 <button class="fab" id="fab-btn" onclick="openAddModal()">＋</button>
 
-<!-- YAZDIRILABİLİR ALAN KAPSAYICISI -->
 <div id="print-area" class="no-print" style="display:none;"></div>
+
+<!-- RAPOR SONUÇ SAYFASI (PREMİUM LOGOLU BUTONLAR İLE) -->
+<div id="report-modal-sheet-overlay">
+    <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+        <h2 style="margin: 0; font-size: 20px; font-weight: 900; color: var(--text-main);" data-i18n="reportResultTitle">Rapor Sonuçları</h2>
+        <button class="close" onclick="closeReportResultPage()">✕</button>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 12px; margin-bottom: 15px;">
+        <div class="card" style="padding: 12px 16px; margin-bottom:0;"><div class="label" style="font-size:10px;" data-i18n="repTotalProd">Toplam Üretim</div><div class="value" style="font-size:20px; margin-top:4px;" id="res-total">0 KG</div></div>
+        <div class="card" style="padding: 12px 16px; margin-bottom:0;"><div class="label" style="font-size:10px;" data-i18n="repCount">Kayıt Adedi</div><div class="value" style="font-size:20px; margin-top:4px;" id="res-count">0</div></div>
+        <div class="card" style="padding: 12px 16px; margin-bottom:0; background:var(--card-sub-bg);"><div class="label" style="font-size:10px;">Filtre Kriteri</div><div style="font-size:15px; font-weight:900; margin-top:4px; color:var(--text-main);" id="res-machine">-</div></div>
+    </div>
+    
+    <div class="section" style="font-size: 15px; margin: 15px 0 10px;" data-i18n="matchingEntries">Üretim Giriş Detayları</div>
+    
+    <div style="flex-grow: 1; overflow-y: auto; margin-bottom: 15px;">
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Tarih / Saat</th>
+                    <th>Makine No</th>
+                    <th>İplik Lot</th>
+                    <th>Üretim Miktarı</th>
+                    <th>Personel</th>
+                </tr>
+            </thead>
+            <tbody id="report-table-body">
+                <!-- Javascript ile doldurulacak -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PREMİUM LOGOLU BUTONLAR -->
+    <div class="no-print" style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 15px; flex-wrap: wrap;">
+        <button class="btn-action-premium btn-excel" onclick="exportReportExcel()">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Excel'e Aktar (CSV)
+        </button>
+        <button class="btn-action-premium btn-print-prem" onclick="window.print()">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Yazdır / PDF
+        </button>
+    </div>
+</div>
 
 <!-- MODALLAR -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal('modal')"><div class="sheet"><button class="close no-print" onclick="closeModal('modal')">✕</button><h2 id="mtitle" style="margin:0 0 20px;font-size:20px;font-weight:900;color:var(--text-main);"></h2><div id="details"></div></div></div>
 
-<!-- YENİ: BÜYÜK QR KOD GÖSTERİM MODALI -->
 <div class="modal" id="qr-modal" onclick="if(event.target===this)closeModal('qr-modal')">
   <div class="sheet" style="text-align: center; width: 400px;">
     <button class="close" onclick="closeModal('qr-modal')">✕</button>
@@ -477,12 +611,10 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
     <div id="new-machine" class="edit-input" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;" onclick="openMachineSelect('order')">
         <span id="new-machine-text" style="color:var(--nardo)" data-i18n="selectMachine">Makine Seçin...</span><span style="color:var(--nardo); font-size:12px;">▼</span>
     </div>
-    <div class="phase-title" style="margin-top:12px">Parti No</div><input type="text" id="new-no" class="edit-input" placeholder="EA-101">
     <div class="phase-title" data-i18n="productName">Ürün Adı</div><input type="text" id="new-prod" class="edit-input" placeholder="Süprem Kumaş">
     <div class="phase-title" style="color:#60a5fa">Zorunlu İplik Lotu (Hata Önleyici)</div><input type="text" id="new-lot" class="edit-input" placeholder="Örn: L-4509">
     <div class="phase-title" data-i18n="target">Sipariş Miktarı (KG)</div><input type="number" id="new-target" class="edit-input" placeholder="5000">
     <div class="phase-title" data-i18n="material">Materyal</div><input type="text" id="new-yarn" class="edit-input" placeholder="Ne 30/1 Pamuk">
-    <div class="phase-title" data-i18n="color">Renk</div><input type="text" id="new-color" class="edit-input" placeholder="Siyah">
     <button class="btn-update" onclick="saveNewOrder()" data-i18n="saveOrderBtn">SİPARİŞİ OLUŞTUR</button>
   </div>
  </div>
@@ -516,6 +648,29 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
  </div>
 </div>
 
+<!-- 1. MODAL: FİLTRE TÜRÜ SEÇİMİ (TÜMÜ / MAKİNE NO / İPLİK LOT) -->
+<div class="modal" id="report-filter-type-modal" onclick="if(event.target===this)closeModal('report-filter-type-modal')">
+ <div class="sheet" style="padding-bottom: 0; width: 420px;">
+  <button class="close" onclick="closeModal('report-filter-type-modal')" style="margin-right:20px; margin-top:20px;">✕</button>
+  <h2 style="margin:20px 20px 15px;font-size:20px;font-weight:900;color:var(--text-main);">Filtre Türü Seçin</h2>
+  <div class="detail-box" style="padding: 0; background:transparent; border:none;">
+      <div class="machine-item" onclick="selectReportFilterType('all')"><span>Tüm Rapor (Genel)</span><span class="machine-type">Genel</span></div>
+      <div class="machine-item" onclick="selectReportFilterType('machine')"><span>Makine No ile Seç</span><span class="machine-type">Sistemden</span></div>
+      <div class="machine-item" onclick="selectReportFilterType('lot')"><span>İplik Lotu ile Seç</span><span class="machine-type">Elle Yaz</span></div>
+  </div>
+ </div>
+</div>
+
+<!-- 2. MODAL: MAKİNE VEYA İPLİK LOT DEĞER SEÇİMİ / GİRİŞİ -->
+<div class="modal" id="report-filter-value-modal" onclick="if(event.target===this)closeModal('report-filter-value-modal')">
+ <div class="sheet" style="width: 420px;">
+  <button class="close" onclick="closeModal('report-filter-value-modal')" style="margin-right:20px; margin-top:20px;">✕</button>
+  <h2 id="val-modal-title" style="margin:20px 20px 15px;font-size:20px;font-weight:900;color:var(--text-main);">Değer Seç</h2>
+  <div class="detail-box" id="report-value-content" style="padding: 0; background:transparent; border:none;">
+  </div>
+ </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
@@ -531,22 +686,22 @@ const db = createClient(_supabaseUrl, _supabaseKey);
 const dict = {
   tr: {
     loginSub: "Sisteme Giriş Yapın", todayProd: "Üretim Toplamı", kg: "kg / metre", oee: "Aktif Sipariş", piece: "Adet", activeOrders: "Aktif Siparişler", deptSummary: "Örgü Departmanı", allOrdersTitle: "Tüm Siparişler", settingsTitle: "Sistem Tercihleri",
-    langSelect: "Arayüz Dili", themeLabel: "Arayüz Teması", navHome: "Panel", navOrders: "Üretim", navData: "Veri Girişi", navScan: "İş Emri Okut", navReport: "Raporlama", navUsers: "Kullanıcılar", navSettings: "Sistem", orderNo: "Parti No", updateBtn: "MİKTARI MANUEL DÜZELT", productName: "Ürün Adı",
+    langSelect: "Arayüz Dili", themeLabel: "Arayüz Teması", navHome: "Panel", navOrders: "Üretim", navData: "Veri Girişi", navScan: "İş Emri Okut", navReport: "Raporlama", navUsers: "Kullanıcılar", navSettings: "Sistem", updateBtn: "MİKTARI MANUEL DÜZELT", productName: "Ürün Adı",
     st_completed: "Tamamlandı", st_inprod: "İşlemde", st_planned: "Bekliyor", knitting: "Örgü / Dokuma", deleteBtn: "Siparişi Sil", loginError: "Kullanıcı adı veya şifre hatalı!",
     adminLogin: "Yönetici Girişi", logout: "Çıkış Yap", usernameLabel: "Kullanıcı Adı", passwordLabel: "Şifre", loginBtn: "GİRİŞ YAP", adminLoginTab: "Yönetici Girişi",
-    addNewOrder: "Yeni Sipariş Aç", pastOrdersBtn: "Geçmiş Siparişler", pastOrdersTitle: "Geçmiş (Tamamlanan) Siparişler", missingInfo: "Lütfen tüm alanları doldurun!", confirmDelete: "Silmek istediğinize emin misiniz?", material: "Materyal", color: "Renk", target: "Sipariş Miktarı (KG)", activeProfile: "Aktif Profil", dataModel: "Veri Modeli", saveOrderBtn: "SİPARİŞİ OLUŞTUR",
+    addNewOrder: "Yeni Sipariş Aç", pastOrdersBtn: "Geçmiş Siparişler", pastOrdersTitle: "Geçmiş (Tamamlanan) Siparişler", missingInfo: "Lütfen tüm alanları doldurun!", confirmDelete: "Silmek istediğinize emin misiniz?", material: "Materyal", target: "Sipariş Miktarı (KG)", activeProfile: "Aktif Profil", dataModel: "Veri Modeli", saveOrderBtn: "SİPARİŞİ OLUŞTUR",
     machineNo: "Makine No", yarnLot: "İplik Lot", rawFabricKg: "Ham Kumaş (KG)", addEntry: "KAYDET", entryHistory: "Giriş Geçmişi", dateTime: "Tarih/Saat", selectMachine: "Makine Seçin...", selectMachineTitle: "Makine Seçin", viewOnlyMsg: "Üretim miktarını sadece yöneticiler ve sorumlular düzenleyebilir.", unassigned: "Atanmadı", noActiveOrder: "Bu makineye atanmış aktif/eksik sipariş bulunamadı!",
-    reportTitle: "Üretim Raporlama Paneli", startDate: "Başlangıç Tarihi / Saati", endDate: "Bitiş Tarihi / Saati", btnReport: "RAPORLA", reportResultTitle: "Rapor Sonuçları", repMachine: "Seçilen Makine", repTotalProd: "Toplam Üretim", repCount: "Kayıt Adedi", matchingEntries: "Bu Aralıkta Yapılan Girişler", allMachinesOpt: "Tüm Makineler (Genel)",
+    reportTitle: "Üretim Raporlama Paneli", startDate: "Başlangıç Tarihi / Saati", endDate: "Bitiş Tarihi / Saati", btnReport: "RAPORLA", reportResultTitle: "Rapor Sonuçları", repMachine: "Seçilen Kriter", repTotalProd: "Toplam Üretim", repCount: "Kayıt Adedi", matchingEntries: "Bu Aralıkta Yapılan Girişler", allMachinesOpt: "Tüm Rapor (Genel)",
     userMgmtTitle: "Kullanıcı Yönetimi & Yetkilendirme", roleSelectLabel: "Yetki Seviyesi", saveUserBtn: "KULLANICIYI KAYDET", userListTitle: "Kayıtlı Personeller"
   },
   en: {
     loginSub: "Sign in to system", todayProd: "Total Output", kg: "kg / meters", oee: "Active Orders", piece: "Pcs", activeOrders: "Active Orders", deptSummary: "Knitting Department", allOrdersTitle: "All Orders", settingsTitle: "System Preferences",
-    langSelect: "UI Language", themeLabel: "UI Theme", navHome: "Panel", navOrders: "Production", navData: "Data Entry", navScan: "Scan QR", navReport: "Reporting", navUsers: "Users", navSettings: "System", orderNo: "Batch No", updateBtn: "MANUAL UPDATE", productName: "Product Name",
+    langSelect: "UI Language", themeLabel: "UI Theme", navHome: "Panel", navOrders: "Production", navData: "Data Entry", navScan: "Scan QR", navReport: "Reporting", navUsers: "Users", navSettings: "System", updateBtn: "MANUAL UPDATE", productName: "Product Name",
     st_completed: "Completed", st_inprod: "In Process", st_planned: "Pending", knitting: "Knitting", deleteBtn: "Delete Order", loginError: "Incorrect credentials!",
     adminLogin: "Admin Login", logout: "Logout", usernameLabel: "Username", passwordLabel: "Password", loginBtn: "LOGIN", adminLoginTab: "Admin Login",
-    addNewOrder: "Open New Order", pastOrdersBtn: "Past Orders", pastOrdersTitle: "Past (Completed) Orders", missingInfo: "Please fill all fields!", confirmDelete: "Are you sure you want to delete?", material: "Material", color: "Color", target: "Order Qty (KG)", activeProfile: "Active Profile", dataModel: "Data Model", saveOrderBtn: "CREATE ORDER",
+    addNewOrder: "Open New Order", pastOrdersBtn: "Past Orders", pastOrdersTitle: "Past (Completed) Orders", missingInfo: "Please fill all fields!", confirmDelete: "Are you sure you want to delete?", material: "Material", target: "Order Qty (KG)", activeProfile: "Active Profile", dataModel: "Data Model", saveOrderBtn: "CREATE ORDER",
     machineNo: "Machine No", yarnLot: "Yarn Lot", rawFabricKg: "Raw Fabric (KG)", addEntry: "SAVE", entryHistory: "Entry History", dateTime: "Date/Time", selectMachine: "Select Machine...", selectMachineTitle: "Select Machine", viewOnlyMsg: "Only admins and supervisors can edit production quantities.", unassigned: "Unassigned", noActiveOrder: "No active/pending order found for this machine!",
-    reportTitle: "Production Reporting Panel", startDate: "Start Date / Time", endDate: "End Date / Time", btnReport: "GENERATE REPORT", reportResultTitle: "Report Results", repMachine: "Selected Machine", repTotalProd: "Total Production", repCount: "Record Count", matchingEntries: "Matching Entries in Range", allMachinesOpt: "All Machines (General)",
+    reportTitle: "Production Reporting Panel", startDate: "Start Date / Time", endDate: "End Date / Time", btnReport: "GENERATE REPORT", reportResultTitle: "Report Results", repMachine: "Selected Criteria", repTotalProd: "Total Production", repCount: "Record Count", matchingEntries: "Matching Entries in Range", allMachinesOpt: "All (General Report)",
     userMgmtTitle: "User Management & Auth", roleSelectLabel: "Permission Level", saveUserBtn: "SAVE USER", userListTitle: "Registered Staff"
   }
 };
@@ -554,17 +709,56 @@ const dict = {
 let currentLang = localStorage.getItem('eaErpLang') || 'tr';
 let currentTheme = localStorage.getItem('eaErpTheme') || 'dark';
 let currentUser = null; 
-let appOrders = []; let dataEntries = []; let systemUsers = [];
+let appOrders = []; let dataEntries = []; let systemUsers = []; let systemLogs = [];
 const machines = [{ no: "1", type: "Süprem" }, { no: "2", type: "Süprem" }, { no: "3", type: "3 İplik" }, { no: "4", type: "3 İplik" }, { no: "5", type: "İnterlok" }, { no: "6", type: "İnterlok" }, { no: "7", type: "Ribana" }, { no: "8", type: "Ribana" }, { no: "9", type: "Kaşkorse" }, { no: "10", type: "Kaşkorse" }, { no: "11", type: "Pike" }, { no: "12", type: "Pike" }, { no: "13", type: "Havlu" }, { no: "14", type: "Çift Plaka" }, { no: "15", type: "Mini Jakar" }];
-let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = ""; let selectedReportMachine = "";
+let activeMachineSelector = ""; let selectedOrderMachine = ""; let selectedEntryMachine = ""; 
+let reportFilterType = "all"; 
+let reportFilterValue = ""; 
 
 function t(key) { return dict[currentLang][key] || key; }
+
+function showToast(message, type = 'success') {
+    let container = document.getElementById('toast-container');
+    let toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    let icon = type === 'success' ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+    toast.innerHTML = `${icon} <span>${message}</span>`;
+    container.appendChild(toast);
+    setTimeout(() => { toast.classList.add('show'); }, 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+    }, 3500);
+}
+
+async function addSystemLog(actionType, details) {
+    try {
+        let rawDate = new Date();
+        let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        let newLog = {
+            raw_date: rawDate.toISOString(),
+            timestamp: rawDate.toLocaleDateString('tr-TR', dateOptions),
+            username: currentUser ? currentUser.name : "Sistem",
+            role: currentUser ? currentUser.role : "Sistem",
+            action_type: actionType,
+            details: details
+        };
+        const { data } = await db.from('logs').insert([newLog]).select();
+        if(data) {
+            systemLogs.unshift(data[0]);
+            renderSystemLogs();
+        }
+    } catch(e) {
+        console.error("Log kaydedilemedi:", e);
+    }
+}
+
 function applyTranslations() { 
     document.querySelectorAll('[data-i18n]').forEach(el => { let key = el.getAttribute('data-i18n'); if(dict[currentLang][key]) el.innerText = dict[currentLang][key]; }); 
     document.getElementById('today').textContent = new Date().toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', {weekday:"long",year:"numeric",month:"long",day:"numeric"}); 
     if(!selectedOrderMachine) document.getElementById('new-machine-text').innerText = t('selectMachine');
     if(!selectedEntryMachine) document.getElementById('data-machine-text').innerText = t('selectMachine');
-    if(!selectedReportMachine) document.getElementById('report-machine-text').innerText = t('allMachinesOpt');
+    if(reportFilterType === 'all') document.getElementById('report-filter-type-text').innerText = t('allMachinesOpt');
 }
 
 function toggleMobileMenu() { let sidebar = document.querySelector('.desktop-sidebar'); let overlay = document.getElementById('mobile-menu-overlay'); if(sidebar.classList.contains('open')) { closeMobileMenu(); } else { sidebar.classList.add('open'); overlay.style.display = 'block'; setTimeout(() => overlay.classList.add('show'), 10); } }
@@ -574,7 +768,7 @@ function closeAllDropdowns(event) { document.querySelectorAll('.custom-dropdown'
 function selectCustomOption(event, dropdownId, value, text) { event.stopPropagation(); let dropdown = document.getElementById(dropdownId); dropdown.querySelector('.custom-dropdown-selected span').innerText = text; dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected')); event.target.classList.add('selected'); dropdown.classList.remove('open'); if(dropdownId === 'dropdown-user-role') document.getElementById('new-user-role').value = value; }
 function selectLangCustom(event, langCode, langText) { event.stopPropagation(); document.getElementById('lang-selected-text').innerText = langText; let dropdown = document.getElementById('dropdown-lang'); dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected')); event.target.classList.add('selected'); dropdown.classList.remove('open'); changeLang(langCode); }
 function selectThemeCustom(event, themeCode, themeText) { event.stopPropagation(); document.getElementById('theme-selected-text').innerText = themeText; let dropdown = document.getElementById('dropdown-theme'); dropdown.querySelectorAll('.custom-dropdown-option').forEach(opt => opt.classList.remove('selected')); event.target.classList.add('selected'); dropdown.classList.remove('open'); setTheme(themeCode); }
-function changeLang(lang) { currentLang = lang; localStorage.setItem('eaErpLang', lang); document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active')); let activeBtn = document.getElementById('lang-' + lang); if(activeBtn) activeBtn.classList.add('active'); document.getElementById('lang-selected-text').innerText = (lang === 'tr') ? 'TR' : 'EN'; applyTranslations(); renderAll(); if(currentUser) { renderDataEntries(); renderUsersList(); } }
+function changeLang(lang) { currentLang = lang; localStorage.setItem('eaErpLang', lang); document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active')); let activeBtn = document.getElementById('lang-' + lang); if(activeBtn) activeBtn.classList.add('active'); document.getElementById('lang-selected-text').innerText = (lang === 'tr') ? 'TR' : 'EN'; applyTranslations(); renderAll(); if(currentUser) { renderDataEntries(); renderUsersList(); renderSystemLogs(); } }
 function setTheme(theme) { currentTheme = theme; localStorage.setItem('eaErpTheme', theme); document.body.setAttribute('data-theme', theme); let metaTheme = document.getElementById('meta-theme-color'); if(metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f4f5f7' : '#0c0c0e'); document.getElementById('theme-selected-text').innerText = (theme === 'dark') ? 'Gece (Dark)' : 'Gündüz (Light)'; }
 function calculateOverall(o) { if(typeof o.made === 'undefined') o.made = 0; o.k_pct = o.target > 0 ? Math.round((o.made / o.target) * 100) : 0; if(o.made >= o.target && o.target > 0) { o.status_code = "st_completed"; o.cls = "bg-black"; } else if(o.made > 0) { o.status_code = "st_inprod"; o.cls = "bg-nardo"; } else { o.status_code = "st_planned"; o.cls = "bg-light"; } }
 
@@ -582,33 +776,116 @@ function renderAll() {
     let activeHtml = ""; let historyHtml = ""; let totalMade = 0; let totalTarget = 0; let activeCount = 0;
     appOrders.forEach((o, i) => {
         calculateOverall(o); let p = o.target > 0 ? Math.min(100, Math.round((o.made / o.target) * 100)) : 0; let rem = o.target - o.made; if(rem < 0) rem = 0; let machineDisp = o.machine || t('unassigned');
-        let machineIconSvg = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>`;
-        let cardTpl = `<div class="card order" onclick="openOrder(${i})"><div class="row"><div><div class="product">${o.product}</div><div class="muted">${machineIconSvg} #${o.no} &nbsp;|&nbsp; ${machineDisp}</div></div><span class="badge ${o.cls}">${t(o.status_code)}</span></div><div class="row" style="margin-top:14px"><strong style="font-size:16px; color:var(--text-main);">${o.made.toLocaleString()} / ${o.target.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:6px;">(Kalan: ${rem.toLocaleString()})</span></strong></div><div class="progress" style="margin-top:10px;"><div class="bar" style="width:${p}%;"></div></div></div>`;
+        let machineIconSvg = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09c-.658.003-1.25.396-1.51 1z"></path></svg>`;
+        let cardTpl = `<div class="card order" onclick="openOrder(${i})"><div class="row"><div><div class="product">${o.product}</div><div class="muted">${machineIconSvg} ${machineDisp}</div></div><span class="badge ${o.cls}">${t(o.status_code)}</span></div><div class="row" style="margin-top:14px"><strong style="font-size:16px; color:var(--text-main);">${o.made.toLocaleString()} / ${o.target.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:6px;">(Kalan: ${rem.toLocaleString()})</span></strong></div><div class="progress" style="margin-top:10px;"><div class="bar" style="width:${p}%;"></div></div></div>`;
         if(o.status_code === "st_completed") { historyHtml += cardTpl; } else { activeHtml += cardTpl; totalMade += o.made; totalTarget += o.target; activeCount++; }
     });
-    document.getElementById("orders-preview").innerHTML = activeHtml; document.getElementById("orders-full").innerHTML = activeHtml; document.getElementById("orders-history").innerHTML = historyHtml || `<div class="card" style="text-align:center; color:var(--nardo);">Geçmiş tamamlanan sipariş bulunmuyor.</div>`; document.getElementById("val-todayProd").innerText = totalMade.toLocaleString(); document.getElementById("val-activeOrders").innerText = activeCount;
+    document.getElementById("orders-preview").innerHTML = activeHtml; 
+    document.getElementById("orders-full").innerHTML = activeHtml; 
+    document.getElementById("orders-full-history").innerHTML = historyHtml || `<div class="card" style="text-align:center; color:var(--nardo);">Geçmiş tamamlanan sipariş bulunmuyor.</div>`;
+    document.getElementById("orders-history").innerHTML = historyHtml || `<div class="card" style="text-align:center; color:var(--nardo);">Geçmiş tamamlanan sipariş bulunmuyor.</div>`; 
+    document.getElementById("val-todayProd").innerText = totalMade.toLocaleString(); 
+    document.getElementById("val-activeOrders").innerText = activeCount;
     let overallPct = totalTarget > 0 ? Math.round((totalMade / totalTarget) * 100) : 0; document.getElementById("lines-preview").innerHTML = `<div class="card" style="padding:18px 15px"><div class="row" style="margin-bottom:8px;"><span style="color:var(--text-main); font-weight:800;">${t('knitting')}</span><strong style="color:var(--text-main); text-align:right;">${totalMade.toLocaleString()} / ${totalTarget.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:4px;">(%${overallPct})</span></strong></div><div class="progress"><div class="bar" style="width:${overallPct}%;"></div></div></div>`;
 }
 
-// BARKODU AÇ BUTONLU SİPARİŞ DETAYI
+function switchOrderTab(tab) {
+    if(tab === 'active') {
+        document.getElementById('orders-tab-active').style.display = 'block';
+        document.getElementById('orders-tab-history').style.display = 'none';
+        document.getElementById('tab-active-orders-btn').style.background = 'var(--text-main)';
+        document.getElementById('tab-active-orders-btn').style.color = 'var(--bg-main)';
+        document.getElementById('tab-history-orders-btn').style.background = 'var(--card-sub-bg)';
+        document.getElementById('tab-history-orders-btn').style.color = 'var(--text-main)';
+    } else {
+        document.getElementById('orders-tab-active').style.display = 'none';
+        document.getElementById('orders-tab-history').style.display = 'block';
+        document.getElementById('tab-history-orders-btn').style.background = 'var(--text-main)';
+        document.getElementById('tab-history-orders-btn').style.color = 'var(--bg-main)';
+        document.getElementById('tab-active-orders-btn').style.background = 'var(--card-sub-bg)';
+        document.getElementById('tab-active-orders-btn').style.color = 'var(--text-main)';
+    }
+}
+
 function openOrder(i){
   let o = appOrders[i]; 
   document.getElementById("mtitle").textContent = o.product; 
+  let isAdmin = (currentUser && currentUser.role === 'Yönetici');
   let canEdit = (currentUser && (currentUser.role === 'Yönetici' || currentUser.role === 'Sorumlu'));
-  let deleteBtnHtml = (currentUser && currentUser.role === 'Yönetici') ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; 
+  
+  let deleteBtnHtml = isAdmin ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; 
   let controls = canEdit ? `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div><input type="number" id="edit-k" class="edit-input center" value="${o.made}" max="${o.target}" min="0"><button class="btn-update" onclick="saveProgress(${i})" data-i18n="updateBtn">${t('updateBtn')}</button>${deleteBtnHtml}` : `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div><div class="edit-input center readonly">${o.made.toLocaleString()} KG</div><div style="text-align:center;margin-top:16px;font-size:12px;color:var(--nardo);font-weight:700">${t('viewOnlyMsg')}</div>`;
   
-  // Sabit QR yerine "Barkodu Aç" butonu eklendi
   let barcodeBtnHtml = `<button class="btn-barcode" onclick="openLargeBarcode(${i})">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
     Barkodu Aç
   </button>`;
+
+  let infoBoxHtml = "";
+  if(isAdmin) {
+      infoBoxHtml = `
+      <div class="detail-box">
+          <div class="phase-title">Ürün Adı</div>
+          <input type="text" id="det-prod-${i}" class="edit-input" value="${o.product}">
+          <div class="phase-title" style="margin-top:10px">Zorunlu Lot</div>
+          <input type="text" id="det-lot-${i}" class="edit-input" value="${o.lot_no || ''}">
+          <div class="phase-title" style="margin-top:10px">Sipariş Miktarı (KG)</div>
+          <input type="number" id="det-target-${i}" class="edit-input" value="${o.target}">
+          <div class="phase-title" style="margin-top:10px">Makine No</div>
+          <input type="text" id="det-mach-${i}" class="edit-input" value="${o.machine || ''}">
+      </div>
+      <div class="detail-box">
+          <div class="phase-title">Materyal</div>
+          <input type="text" id="det-yarn-${i}" class="edit-input" value="${o.yarn || ''}">
+      </div>
+      <button class="btn-update" onclick="saveOrderDetails(${i})" style="margin-bottom:14px; background:#3b82f6; color:#fff;">DEĞİŞİKLİKLERİ KAYDET</button>
+      `;
+  } else {
+      infoBoxHtml = `
+      <div class="detail-box">
+          <div class="d-row"><span>Ürün Adı</span><strong>${o.product}</strong></div>
+          <div class="d-row"><span>Zorunlu Lot</span><strong style="color:#60a5fa">${o.lot_no || '-'}</strong></div>
+          <div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div>
+          <div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div>
+      </div>
+      <div class="detail-box">
+          <div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div>
+      </div>
+      `;
+  }
   
-  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>Zorunlu Lot</span><strong style="color:#60a5fa">${o.lot_no || '-'}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div>${barcodeBtnHtml}<button class="btn-print no-print" onclick="printJobOrder(${i})">🖨️ İŞ EMRİNİ YAZDIR</button>`; 
+  document.getElementById("details").innerHTML = `${infoBoxHtml}<div class="detail-box">${controls}</div>${barcodeBtnHtml}<button class="btn-print no-print" onclick="printJobOrder(${i})">🖨️ İŞ EMRİNİ YAZDIR</button>`; 
   openModal('modal');
 }
 
-// BÜYÜK BARKODU PENCEREDE AÇMA FONKSİYONU
+async function saveOrderDetails(i) {
+    if(!currentUser || currentUser.role !== 'Yönetici') return;
+    let o = appOrders[i];
+    let newProd = document.getElementById(`det-prod-${i}`).value.trim();
+    let newLot = document.getElementById(`det-lot-${i}`).value.trim();
+    let newTarget = parseInt(document.getElementById(`det-target-${i}`).value);
+    let newMach = document.getElementById(`det-mach-${i}`).value.trim();
+    let newYarn = document.getElementById(`det-yarn-${i}`).value.trim();
+
+    if(!newProd || isNaN(newTarget) || newTarget <= 0) {
+        showToast("Lütfen zorunlu alanları doldurun!", "error");
+        return;
+    }
+
+    let updatedFields = { product: newProd, lot_no: newLot, target: newTarget, machine: newMach, yarn: newYarn };
+    const { error } = await db.from('orders').update(updatedFields).eq('id', o.id);
+    
+    if(error) {
+        showToast("Güncelleme hatası: " + error.message, "error");
+    } else {
+        Object.assign(o, updatedFields);
+        closeModal('modal');
+        renderAll();
+        addSystemLog("ORDER_UPDATE", `Sipariş güncellendi: ${newProd} (${newMach}, ${newTarget} KG)`);
+        showToast("Sipariş başarıyla güncellendi!", "success");
+    }
+}
+
 function openLargeBarcode(i) {
     let o = appOrders[i];
     openModal('qr-modal');
@@ -618,13 +895,13 @@ function openLargeBarcode(i) {
             text: `EA-ERP-ORDER:${o.id}`,
             width: 220, height: 220, colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
         });
-        document.getElementById('qr-modal-info').innerText = `Parti: #${o.no} | ${o.product}`;
+        document.getElementById('qr-modal-info').innerText = `${o.product} | ${o.machine || ''}`;
     }, 100);
 }
 
 function printJobOrder(i) {
     let o = appOrders[i]; let printArea = document.getElementById("print-area");
-    printArea.innerHTML = `<div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:20px;"><h1 style="margin:0; font-size:24px; font-weight:900;">EA YAZILIM</h1><h2 style="margin:5px 0 0 0; font-size:18px;">ÜRETİM İŞ EMRİ</h2></div><div style="display:flex; justify-content:space-between; margin-bottom:20px;"><div style="font-size:16px; line-height:2;"><strong>Parti No:</strong> #${o.no}<br><strong>Ürün Adı:</strong> ${o.product}<br><strong>Makine:</strong> ${o.machine || 'Atanmadı'}<br><strong>Kullanılacak Lot:</strong> ${o.lot_no || 'Belirtilmedi'}<br><strong>Miktar:</strong> ${o.target.toLocaleString()} KG<br><strong>Materyal:</strong> ${o.yarn}<br><strong>Renk:</strong> ${o.color}</div><div id="print-qr-box" style="border: 2px solid #000; padding:10px;"></div></div><div style="font-size:12px; text-align:center; margin-top:40px;">Uygulamadan İş Emri Okut menüsünden barkodu taratarak ilerlemeyi görüntüleyebilirsiniz.</div>`;
+    printArea.innerHTML = `<div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:20px;"><h1 style="margin:0; font-size:24px; font-weight:900;">EA YAZILIM</h1><h2 style="margin:5px 0 0 0; font-size:18px;">ÜRETİM İŞ EMRİ</h2></div><div style="display:flex; justify-content:space-between; margin-bottom:20px;"><div style="font-size:16px; line-height:2;"><strong>Ürün Adı:</strong> ${o.product}<br><strong>Makine:</strong> ${o.machine || 'Atanmadı'}<br><strong>Kullanılacak Lot:</strong> ${o.lot_no || 'Belirtilmedi'}<br><strong>Miktar:</strong> ${o.target.toLocaleString()} KG<br><strong>Materyal:</strong> ${o.yarn}</div><div id="print-qr-box" style="border: 2px solid #000; padding:10px;"></div></div><div style="font-size:12px; text-align:center; margin-top:40px;">Uygulamadan İş Emri Okut menüsünden barkodu taratarak ilerlemeyi görüntüleyebilirsiniz.</div>`;
     printArea.style.display = "block";
     new QRCode(document.getElementById("print-qr-box"), { text: `EA-ERP-ORDER:${o.id}`, width: 120, height: 120, colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H });
     setTimeout(() => { window.print(); printArea.style.display = "none"; }, 500);
@@ -639,9 +916,9 @@ function closeScanner() { if(html5QrcodeScanner) { html5QrcodeScanner.clear().ca
 function onScanSuccess(decodedText, decodedResult) {
     if(scannerMode === "lot") {
         closeScanner();
-        if(decodedText.startsWith("EA-ERP-ORDER:")) { let orderId = parseInt(decodedText.split(":")[1]); let o = appOrders.find(x => x.id === orderId); if(o && o.lot_no && o.lot_no !== "-") document.getElementById('data-lot').value = o.lot_no; else alert("Bu siparişte atanmış bir lot bulunamadı."); } else { document.getElementById('data-lot').value = decodedText; }
+        if(decodedText.startsWith("EA-ERP-ORDER:")) { let orderId = parseInt(decodedText.split(":")[1]); let o = appOrders.find(x => x.id === orderId); if(o && o.lot_no && o.lot_no !== "-") document.getElementById('data-lot').value = o.lot_no; else showToast("Bu siparişte atanmış bir lot bulunamadı.", "error"); } else { document.getElementById('data-lot').value = decodedText; }
     } else {
-        if(decodedText.startsWith("EA-ERP-ORDER:")) { let orderId = parseInt(decodedText.split(":")[1]); let oIndex = appOrders.findIndex(o => o.id === orderId); if(oIndex !== -1) { closeScanner(); setTimeout(() => { openOrder(oIndex); }, 300); } else { alert("Bu sipariş sistemde bulunamadı veya silinmiş olabilir."); } } else { alert("Geçersiz QR Kod! Bu kod EA ERP sistemine ait değil."); }
+        if(decodedText.startsWith("EA-ERP-ORDER:")) { let orderId = parseInt(decodedText.split(":")[1]); let oIndex = appOrders.findIndex(o => o.id === orderId); if(oIndex !== -1) { closeScanner(); setTimeout(() => { openOrder(oIndex); }, 300); } else { showToast("Bu sipariş sistemde bulunamadı veya silinmiş olabilir.", "error"); } } else { showToast("Geçersiz QR Kod!", "error"); }
     }
 }
 function onScanFailure(error) { /* Sessizce devam et */ }
@@ -651,50 +928,139 @@ async function saveProgress(i) {
     let val = parseInt(document.getElementById('edit-k').value); if(isNaN(val)) return;
     let o = appOrders[i]; o.made = Math.min(o.target, Math.max(0, val)); 
     await db.from('orders').update({ made: o.made }).eq('id', o.id); closeModal('modal'); renderAll(); 
+    addSystemLog("ORDER_UPDATE", `Üretim miktarı manuel düzeltildi: ${o.product} (${o.made}/${o.target} KG)`);
+    showToast("Üretim miktarı başarıyla güncellendi.", "success");
 }
 
 async function deleteOrder(i) { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
-    if(confirm(t('confirmDelete'))) { await db.from('orders').delete().eq('id', appOrders[i].id); appOrders.splice(i, 1); closeModal('modal'); renderAll(); } 
+    let o = appOrders[i];
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('orders').delete().eq('id', o.id); 
+        addSystemLog("ORDER_DELETE", `Sipariş silindi: ${o.product} (${o.machine})`);
+        appOrders.splice(i, 1); 
+        closeModal('modal'); 
+        renderAll(); 
+        showToast("Sipariş silindi.", "success"); 
+    } 
 }
 
 function openAddModal() { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
     selectedOrderMachine = ""; document.getElementById('new-machine-text').innerText = t('selectMachine'); document.getElementById('new-machine-text').style.color = "var(--nardo)"; 
-    document.getElementById('new-no').value = ""; document.getElementById('new-prod').value = ""; document.getElementById('new-lot').value = ""; 
-    document.getElementById('new-target').value = ""; document.getElementById('new-yarn').value = ""; document.getElementById('new-color').value = ""; 
+    document.getElementById('new-prod').value = ""; document.getElementById('new-lot').value = ""; 
+    document.getElementById('new-target').value = ""; document.getElementById('new-yarn').value = ""; 
     openModal('add-modal'); 
 }
 
 async function saveNewOrder() { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
     let mNo = selectedOrderMachine; 
-    let no = document.getElementById('new-no').value.trim(), prod = document.getElementById('new-prod').value.trim(), target = parseInt(document.getElementById('new-target').value); 
+    let prod = document.getElementById('new-prod').value.trim(), target = parseInt(document.getElementById('new-target').value); 
     let lot_no = document.getElementById('new-lot').value.trim() || "-"; 
 
-    if(!mNo || !no || !prod || isNaN(target) || target <= 0) return alert(t('missingInfo')); 
+    if(!mNo || !prod || isNaN(target) || target <= 0) {
+        showToast(t('missingInfo'), "error");
+        return;
+    } 
     
-    let newOrder = { no: no, product: prod, target: target, yarn: document.getElementById('new-yarn').value.trim() || "-", color: document.getElementById('new-color').value.trim() || "-", machine: mNo, made: 0, lot_no: lot_no }; 
+    let newOrder = { no: "EA-" + Math.floor(100+Math.random()*900), product: prod, target: target, yarn: document.getElementById('new-yarn').value.trim() || "-", color: "-", machine: mNo, made: 0, lot_no: lot_no }; 
     const { data, error } = await db.from('orders').insert([newOrder]).select();
     
     if(error) { 
-        alert("Sipariş oluşturulamadı! Veritabanı Hatası: " + error.message); 
+        showToast("Sipariş oluşturulamadı: " + error.message, "error");
         return; 
     }
-    if(data) { appOrders.unshift(data[0]); closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); } 
+    if(data) { 
+        appOrders.unshift(data[0]); 
+        closeModal('add-modal'); 
+        renderAll(); 
+        switchView('view-orders', 'nav-orders'); 
+        addSystemLog("ORDER_CREATE", `Yeni sipariş açıldı: ${prod} (${mNo}, ${target} KG, Lot: ${lot_no})`);
+        showToast("Yeni sipariş başarıyla oluşturuldu!", "success");
+    } 
 }
 
 function openMachineSelect(type) { 
-    activeMachineSelector = type; let html = ""; if(type === 'report') { html += `<div class="machine-item" onclick="selectMachine('${t('allMachinesOpt')}')"><span>${t('allMachinesOpt')}</span><span class="machine-type">Genel</span></div>`; }
+    activeMachineSelector = type; let html = ""; 
     machines.forEach((m) => { let displayText = `Makine ${m.no}`; html += `<div class="machine-item" onclick="selectMachine('${displayText}')"><span>${displayText}</span><span class="machine-type">${m.type}</span></div>`; }); 
     document.getElementById('machine-list').innerHTML = html; openModal('machine-modal'); 
 }
 
 function selectMachine(m) { 
     if(activeMachineSelector === 'order') { selectedOrderMachine = m; document.getElementById('new-machine-text').innerText = m; document.getElementById('new-machine-text').style.color = "var(--text-main)"; } 
-    else if(activeMachineSelector === 'entry') { selectedEntryMachine = m; document.getElementById('data-machine-text').innerText = m; document.getElementById('data-machine-text').style.color = "var(--text-main)"; } 
-    else if(activeMachineSelector === 'report') { selectedReportMachine = (m === t('allMachinesOpt')) ? "" : m; document.getElementById('report-machine-text').innerText = m; document.getElementById('report-machine-text').style.color = "var(--text-main)"; }
+    else if(activeMachineSelector === 'entry') { selectedEntryMachine = m; document.getElementById('data-machine-text').innerText = m; document.getElementById('data-machine-text').style.color = "var(--nardo)"; } 
     closeModal('machine-modal'); 
+}
+
+/* 2 AŞAMALI NET FİLTRELEME MANTIĞI */
+function openReportFilterTypeModal() {
+    openModal('report-filter-type-modal');
+}
+
+function selectReportFilterType(type) {
+    closeModal('report-filter-type-modal');
+    reportFilterType = type;
+    if(type === 'all') {
+        reportFilterValue = "";
+        document.getElementById('report-filter-type-text').innerText = "Tüm Rapor (Genel)";
+        document.getElementById('report-value-container').style.display = "none";
+    } else if(type === 'machine') {
+        document.getElementById('report-filter-type-text').innerText = "Makine No ile Seç";
+        document.getElementById('report-value-label').innerText = "Makine Seçin";
+        document.getElementById('report-filter-value-text').innerText = "Makine Seçin...";
+        document.getElementById('report-filter-value-text').style.color = "var(--nardo)";
+        document.getElementById('report-value-container').style.display = "block";
+    } else if(type === 'lot') {
+        document.getElementById('report-filter-type-text').innerText = "İplik Lotu ile Seç";
+        document.getElementById('report-value-label').innerText = "İplik Lotu Yazın";
+        document.getElementById('report-filter-value-text').innerText = "Lot Numarası Yazmak İçin Tıklayın...";
+        document.getElementById('report-filter-value-text').style.color = "var(--nardo)";
+        document.getElementById('report-value-container').style.display = "block";
+    }
+}
+
+function openReportFilterValueModal() {
+    if(reportFilterType === 'machine') {
+        let html = "";
+        machines.forEach((m) => {
+            let displayText = `Makine ${m.no}`;
+            html += `<div class="machine-item" onclick="selectReportValue('${displayText}')"><span>${displayText}</span><span class="machine-type">${m.type}</span></div>`;
+        });
+        document.getElementById('val-modal-title').innerText = "Makine Seçin";
+        document.getElementById('report-value-content').innerHTML = html;
+        openModal('report-filter-value-modal');
+    } else if(reportFilterType === 'lot') {
+        let html = `
+            <div style="padding: 10px 20px 20px 20px;">
+                <div class="phase-title">İplik Lot Numarası</div>
+                <input type="text" id="manual-lot-input" class="edit-input" placeholder="Örn: L-4509" style="margin-top:6px;">
+                <button class="btn-update" onclick="applyManualLot()" style="margin-top:15px;">LOTU SEÇ</button>
+            </div>
+        `;
+        document.getElementById('val-modal-title').innerText = "İplik Lotu Belirle";
+        document.getElementById('report-value-content').innerHTML = html;
+        openModal('report-filter-value-modal');
+    }
+}
+
+function selectReportValue(val) {
+    reportFilterValue = val;
+    document.getElementById('report-filter-value-text').innerText = val;
+    document.getElementById('report-filter-value-text').style.color = "var(--text-main)";
+    closeModal('report-filter-value-modal');
+}
+
+function applyManualLot() {
+    let val = document.getElementById('manual-lot-input').value.trim();
+    if(!val) {
+        showToast("Lütfen bir lot numarası girin!", "error");
+        return;
+    }
+    reportFilterValue = val;
+    document.getElementById('report-filter-value-text').innerText = "Lot: " + val;
+    document.getElementById('report-filter-value-text').style.color = "var(--text-main)";
+    closeModal('report-filter-value-modal');
 }
 
 function renderDataEntries() { 
@@ -707,12 +1073,15 @@ function renderDataEntries() {
 
 async function saveDataEntry() { 
     let mNo = selectedEntryMachine; let yLot = document.getElementById('data-lot').value.trim(); let kg = parseInt(document.getElementById('data-kg').value); 
-    if(!mNo || !yLot || isNaN(kg) || kg <= 0) { alert(t('missingInfo')); return; } 
+    if(!mNo || !yLot || isNaN(kg) || kg <= 0) { showToast(t('missingInfo'), "error"); return; } 
     let orderIndex = appOrders.findIndex(o => o.machine === mNo && o.made < o.target); 
-    if(orderIndex === -1) { alert(t('noActiveOrder')); return; } 
+    if(orderIndex === -1) { showToast(t('noActiveOrder'), "error"); return; } 
     let o = appOrders[orderIndex];
 
-    if(o.lot_no && o.lot_no !== "-" && o.lot_no !== yLot) { alert(`HATA: Yanlış İplik Lotu!\n\nSeçtiğiniz makinedeki aktif sipariş için kullanılması zorunlu lot numarası: ${o.lot_no}\n\nLütfen elinizdeki ipliğin lot numarasını kontrol edip tekrar deneyin.`); return; }
+    if(o.lot_no && o.lot_no !== "-" && o.lot_no !== yLot) { 
+        showToast(`HATA: Yanlış İplik Lotu! Doğru Lot: ${o.lot_no}`, "error"); 
+        return; 
+    }
 
     let newMade = o.made + kg; if(newMade > o.target) newMade = o.target;
     await db.from('orders').update({ made: newMade }).eq('id', o.id); o.made = newMade;
@@ -720,28 +1089,287 @@ async function saveDataEntry() {
     let rawDate = new Date(); let dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }; 
     let newEntry = { raw_date: rawDate.toISOString(), timestamp: rawDate.toLocaleDateString(currentLang==='tr'?'tr-TR':'en-US', dateOptions), machine_no: mNo, yarn_lot: yLot, fabric_kg: kg, author: currentUser ? currentUser.name : "Personel" }; 
     let { data } = await db.from('data_entries').insert([newEntry]).select();
-    if(data) { dataEntries.unshift(data[0]); selectedEntryMachine = ""; document.getElementById('data-machine-text').innerText = t('selectMachine'); document.getElementById('data-machine-text').style.color = "var(--nardo)"; document.getElementById('data-lot').value = ''; document.getElementById('data-kg').value = ''; renderAll(); renderDataEntries(); alert("Üretim kaydedildi ve siparişten düşüldü!"); }
+    if(data) { 
+        dataEntries.unshift(data[0]); 
+        selectedEntryMachine = ""; 
+        document.getElementById('data-machine-text').innerText = t('selectMachine'); 
+        document.getElementById('data-machine-text').style.color = "var(--nardo)"; 
+        document.getElementById('data-lot').value = ''; 
+        document.getElementById('data-kg').value = ''; 
+        renderAll(); 
+        renderDataEntries(); 
+        addSystemLog("DATA_ENTRY", `Üretim girişi yapıldı: ${mNo} - ${kg} KG (Lot: ${yLot})`);
+        showToast("Üretim başarıyla kaydedildi!", "success"); 
+    }
 }
 
-async function deleteDataEntry(i) { if(!currentUser || currentUser.role !== 'Yönetici') return; if(confirm(t('confirmDelete'))) { await db.from('data_entries').delete().eq('id', dataEntries[i].id); dataEntries.splice(i, 1); renderDataEntries(); } }
-async function createNewUser() { if(!currentUser || currentUser.role !== 'Yönetici') return; let name = document.getElementById('new-user-name').value.trim(); let pass = document.getElementById('new-user-pass').value.trim(); let role = document.getElementById('new-user-role').value; if(!name || !pass) { alert(t('missingInfo')); return; } if(systemUsers.some(u => u.name === name)) { alert("Bu kullanıcı adı zaten sistemde kayıtlı!"); return; } let { data } = await db.from('users').insert([{ name: name, pass: pass, role: role }]).select(); if(data) { systemUsers.push(data[0]); document.getElementById('new-user-name').value = ''; document.getElementById('new-user-pass').value = ''; renderUsersList(); alert("Kullanıcı başarıyla oluşturuldu!"); } }
+async function deleteDataEntry(i) { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    let e = dataEntries[i];
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('data_entries').delete().eq('id', e.id); 
+        addSystemLog("DATA_ENTRY", `Üretim kaydı silindi: ${e.machine_no} - ${e.fabric_kg} KG (Tarih: ${e.timestamp})`);
+        dataEntries.splice(i, 1); 
+        renderDataEntries(); 
+        showToast("Kayıt silindi.", "success"); 
+    } 
+}
+
+async function createNewUser() { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    let name = document.getElementById('new-user-name').value.trim(); 
+    let pass = document.getElementById('new-user-pass').value.trim(); 
+    let role = document.getElementById('new-user-role').value; 
+    if(!name || !pass) { showToast(t('missingInfo'), "error"); return; } 
+    if(systemUsers.some(u => u.name === name)) { showToast("Bu kullanıcı adı zaten kayıtlı!", "error"); return; } 
+    let { data } = await db.from('users').insert([{ name: name, pass: pass, role: role }]).select(); 
+    if(data) { 
+        systemUsers.push(data[0]); 
+        document.getElementById('new-user-name').value = ''; 
+        document.getElementById('new-user-pass').value = ''; 
+        renderUsersList(); 
+        addSystemLog("USER_MANAGE", `Yeni kullanıcı oluşturuldu: ${name} (${role})`);
+        showToast("Kullanıcı oluşturuldu!", "success"); 
+    } 
+}
+
 function renderUsersList() { let html = ""; systemUsers.forEach((u, i) => { let deleteBtn = (u.name !== 'deneme') ? `<button class="btn-delete" style="display:block; padding:6px 12px; margin-top:8px; font-size:11px; width:auto;" onclick="deleteUser(${i})">Kullanıcıyı Sil</button>` : ''; html += `<div class="data-card"><div class="d-row" style="margin-bottom:6px"><span>Kullanıcı Adı</span><strong style="color:var(--text-main)">${u.name}</strong></div><div class="d-row" style="margin-bottom:0"><span>Yetki Seviyesi</span><strong style="color:var(--nardo)">${u.role}</strong></div>${deleteBtn}</div>`; }); document.getElementById('users-list-container').innerHTML = html; }
-async function deleteUser(i) { if(!currentUser || currentUser.role !== 'Yönetici') return; if(systemUsers[i].name === 'deneme') { alert("Ana yönetici hesabı silinemez!"); return; } if(confirm(t('confirmDelete'))) { await db.from('users').delete().eq('id', systemUsers[i].id); systemUsers.splice(i, 1); renderUsersList(); } }
-function generateReport() { let dStart = document.getElementById('report-start-date').value; let tStart = document.getElementById('report-start-time').value || "00:00"; let dEnd = document.getElementById('report-end-date').value; let tEnd = document.getElementById('report-end-time').value || "23:59"; let startDate = dStart ? new Date(`${dStart}T${tStart}`) : null; let endDate = dEnd ? new Date(`${dEnd}T${tEnd}`) : null; let filtered = dataEntries.filter(entry => { if(selectedReportMachine && entry.machine_no !== selectedReportMachine) return false; if(entry.raw_date && (startDate || endDate)) { let entryDate = new Date(entry.raw_date); if(startDate && entryDate < startDate) return false; if(endDate && entryDate > endDate) return false; } return true; }); let totalKg = filtered.reduce((sum, e) => sum + Number(e.fabric_kg), 0); document.getElementById('res-machine').innerText = selectedReportMachine || t('allMachinesOpt'); document.getElementById('res-total').innerText = totalKg.toLocaleString() + " KG"; document.getElementById('res-count').innerText = filtered.length; let listHtml = ""; if(filtered.length === 0) { listHtml = `<div class="card" style="text-align:center; color:var(--nardo);">Bu kriterlere uygun üretim kaydı bulunamadı.</div>`; } else { filtered.forEach(entry => { listHtml += `<div class="data-card"><div class="time">${entry.timestamp}</div><div class="d-row" style="margin-bottom:8px"><span>${t('machineNo')}</span><strong style="color:var(--text-main)">${entry.machine_no}</strong></div><div class="d-row" style="margin-bottom:8px"><span>${t('yarnLot')}</span><strong style="color:var(--text-main)">${entry.yarn_lot}</strong></div><div class="d-row" style="margin-bottom:0"><span>${t('rawFabricKg')}</span><strong style="color:var(--text-main)">${entry.fabric_kg} KG</strong></div></div>`; }); } document.getElementById('report-entries-list').innerHTML = listHtml; let reportModal = document.getElementById('report-modal'); reportModal.style.display = "flex"; setTimeout(() => reportModal.classList.add('show'), 10); }
-function closeReportModal() { let reportModal = document.getElementById('report-modal'); reportModal.classList.remove('show'); setTimeout(() => reportModal.style.display = "none", 300); }
+
+async function deleteUser(i) { 
+    if(!currentUser || currentUser.role !== 'Yönetici') return; 
+    let u = systemUsers[i];
+    if(u.name === 'deneme') { showToast("Ana yönetici silinemez!", "error"); return; } 
+    if(confirm(t('confirmDelete'))) { 
+        await db.from('users').delete().eq('id', u.id); 
+        addSystemLog("USER_MANAGE", `Kullanıcı silindi: ${u.name} (${u.role})`);
+        systemUsers.splice(i, 1); 
+        renderUsersList(); 
+        showToast("Kullanıcı silindi.", "success"); 
+    } 
+}
+
+function renderSystemLogs() {
+    let actionFilter = document.getElementById('log-filter-action') ? document.getElementById('log-filter-action').value : "";
+    let userFilter = document.getElementById('log-filter-user') ? document.getElementById('log-filter-user').value.toLowerCase().trim() : "";
+
+    let filtered = systemLogs.filter(log => {
+        if(actionFilter && log.action_type !== actionFilter) return false;
+        if(userFilter && !log.username.toLowerCase().includes(userFilter)) return false;
+        return true;
+    });
+
+    let html = "";
+    if(filtered.length === 0) {
+        html = `<div class="card" style="text-align:center; color:var(--nardo); padding:30px;">Kayıtlı işlem logu bulunamadı.</div>`;
+    } else {
+        filtered.forEach(log => {
+            let pillClass = "log-pill-data";
+            let actionName = log.action_type;
+            if(log.action_type === 'LOGIN') { pillClass = "log-pill-login"; actionName = "Giriş Yapıldı"; }
+            else if(log.action_type === 'LOGOUT') { pillClass = "log-pill-delete"; actionName = "Çıkış Yapıldı"; }
+            else if(log.action_type === 'ORDER_CREATE') { pillClass = "log-pill-order"; actionName = "Sipariş Açıldı"; }
+            else if(log.action_type === 'ORDER_UPDATE') { pillClass = "log-pill-data"; actionName = "Sipariş Güncellendi"; }
+            else if(log.action_type === 'ORDER_DELETE') { pillClass = "log-pill-delete"; actionName = "Sipariş Silindi"; }
+            else if(log.action_type === 'DATA_ENTRY') { pillClass = "log-pill-data"; actionName = "Üretim Girişi"; }
+            else if(log.action_type === 'USER_MANAGE') { pillClass = "log-pill-user"; actionName = "Kullanıcı Yönetimi"; }
+
+            html += `
+                <div class="data-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span class="log-pill-badge ${pillClass}">${actionName}</span>
+                        <div class="time" style="margin:0">${log.timestamp}</div>
+                    </div>
+                    <div class="d-row" style="margin-bottom:6px">
+                        <span>İşlemi Yapan</span>
+                        <strong style="color:var(--text-main)">${log.username} <span style="font-size:11px; color:var(--nardo);">(${log.role})</span></strong>
+                    </div>
+                    <div class="d-row" style="margin-bottom:0">
+                        <span>Detay</span>
+                        <strong style="color:var(--nardo); text-align:right;">${log.details}</strong>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    let container = document.getElementById('logs-list-container');
+    if(container) container.innerHTML = html;
+}
+
+let currentFilteredEntries = [];
+
+function generateReport() { 
+    let dStart = document.getElementById('report-start-date').value; 
+    let tStart = document.getElementById('report-start-time').value || "00:00"; 
+    let dEnd = document.getElementById('report-end-date').value; 
+    let tEnd = document.getElementById('report-end-time').value || "23:59"; 
+    
+    let startDate = dStart ? new Date(`${dStart}T${tStart}:00`) : null; 
+    let endDate = dEnd ? new Date(`${dEnd}T${tEnd}:59`) : null; 
+
+    currentFilteredEntries = dataEntries.filter(entry => { 
+        if(reportFilterType === 'machine' && reportFilterValue) {
+            if(entry.machine_no !== reportFilterValue) return false;
+        } else if(reportFilterType === 'lot' && reportFilterValue) {
+            if(entry.yarn_lot !== reportFilterValue) return false;
+        }
+
+        if(entry.raw_date && (startDate || endDate)) { 
+            let entryDate = new Date(entry.raw_date); 
+            if(startDate && entryDate < startDate) return false; 
+            if(endDate && entryDate > endDate) return false; 
+        } 
+        return true; 
+    }); 
+
+    let totalKg = currentFilteredEntries.reduce((sum, e) => sum + Number(e.fabric_kg || 0), 0); 
+    
+    let filterDesc = "Tüm Rapor (Genel)";
+    if(reportFilterType === 'machine') filterDesc = reportFilterValue || "Tüm Makineler";
+    if(reportFilterType === 'lot') filterDesc = "Lot: " + (reportFilterValue || "Tüm Lotlar");
+
+    document.getElementById('res-machine').innerText = filterDesc; 
+    document.getElementById('res-total').innerText = totalKg.toLocaleString() + " KG"; 
+    document.getElementById('res-count').innerText = currentFilteredEntries.length; 
+    
+    let tableHtml = ""; 
+    if(currentFilteredEntries.length === 0) { 
+        tableHtml = `<tr><td colspan="5" style="text-align:center; color:var(--nardo); padding: 30px;">Bu kriterlere uygun üretim kaydı bulunamadı.</td></tr>`; 
+    } else { 
+        currentFilteredEntries.forEach(entry => { 
+            tableHtml += `
+                <tr>
+                    <td>${entry.timestamp}</td>
+                    <td><strong>${entry.machine_no}</strong></td>
+                    <td><span style="color:#60a5fa">${entry.yarn_lot}</span></td>
+                    <td><strong>${Number(entry.fabric_kg).toLocaleString()} KG</strong></td>
+                    <td>${entry.author || 'Personel'}</td>
+                </tr>
+            `; 
+        }); 
+    } 
+    document.getElementById('report-table-body').innerHTML = tableHtml; 
+    document.getElementById('report-modal-sheet-overlay').classList.add('show');
+    showToast("Rapor başarıyla oluşturuldu.", "success");
+}
+
+function closeReportResultPage() {
+    document.getElementById('report-modal-sheet-overlay').classList.remove('show');
+}
+
+// EXCEL'E (CSV) SÜTUN SÜTUN DÜZGÜN AKTARIM (SEPARATÖR DÜZELTİLDİ)
+function exportReportExcel() {
+    if(!currentFilteredEntries || currentFilteredEntries.length === 0) {
+        showToast("Dışa aktarılacak veri yok!", "error");
+        return;
+    }
+    let csvContent = "\uFEFFsep=;\nTarih / Saat;Makine No;İplik Lot;Üretim Miktarı (KG);Personel\n";
+    currentFilteredEntries.forEach(e => {
+        let cleanDate = (e.timestamp || "").replace(/"/g, '""');
+        let cleanMach = (e.machine_no || "").replace(/"/g, '""');
+        let cleanLot = (e.yarn_lot || "").replace(/"/g, '""');
+        let cleanKg = (e.fabric_kg || 0);
+        let cleanAuthor = (e.author || "-").replace(/"/g, '""');
+        csvContent += `"${cleanDate}";"${cleanMach}";"${cleanLot}";${cleanKg};"${cleanAuthor}"\n`;
+    });
+
+    let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    let url = URL.createObjectURL(blob);
+    let link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Uretim_Raporu_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("Rapor Excel sütunlarına göre indirildi.", "success");
+}
+
 function openModal(id) { let m = document.getElementById(id); m.style.display="flex"; setTimeout(()=>m.classList.add('show'), 10); }
 function closeModal(id) { let m = document.getElementById(id); m.classList.remove('show'); setTimeout(()=>m.style.display="none", 300); }
 function switchView(viewId, navId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page')); document.getElementById(viewId).classList.add('active-page'); document.querySelectorAll('.nav-desktop').forEach(nav => nav.classList.remove('active')); if(navId) { let el = document.getElementById(navId); if(el) el.classList.add('active'); } let isDesktop = window.innerWidth > 768; let mainContainer = isDesktop ? window : document.querySelector('.desktop-main'); if(mainContainer && mainContainer.scrollTo) mainContainer.scrollTo({top:0,behavior:"smooth"}); closeMobileMenu(); }
-function attemptLogin() { let uInput = document.getElementById('app-user').value.trim(); let pInput = document.getElementById('app-pass').value.trim(); let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput); if(foundUser) finalizeLogin(foundUser); else alert(t('loginError')); }
+
+function attemptLogin() { 
+    let uInput = document.getElementById('app-user').value.trim(); 
+    let pInput = document.getElementById('app-pass').value.trim(); 
+    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput); 
+    if(foundUser) {
+        finalizeLogin(foundUser);
+        addSystemLog("LOGIN", "Kullanıcı sisteme giriş yaptı.");
+        showToast("Hoş geldiniz, " + foundUser.name, "success");
+    } else {
+        showToast(t('loginError'), "error");
+    }
+}
+
 function openAdminModal() { document.getElementById('admin-user-input').value = ''; document.getElementById('admin-pass-input').value = ''; openModal('admin-modal'); }
-function verifyAdminLogin() { let uInput = document.getElementById('admin-user-input').value.trim(); let pInput = document.getElementById('admin-pass-input').value.trim(); let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput && u.role === 'Yönetici'); if(foundUser) { closeModal('admin-modal'); finalizeLogin(foundUser); } else alert("Geçersiz yönetici bilgileri!"); }
-function finalizeLogin(user) { currentUser = user; document.getElementById('role-screen').style.display = 'none'; document.getElementById('main-app').style.display = window.innerWidth <= 768 ? 'flex' : 'block'; let isAdmin = (user.role === 'Yönetici'); document.getElementById('nav-users').style.display = isAdmin ? 'flex' : 'none'; document.getElementById('nav-report').style.display = isAdmin ? 'flex' : 'none'; document.getElementById('admin-action-buttons').style.display = isAdmin ? 'grid' : 'none'; document.getElementById('fab-btn').style.display = isAdmin ? 'flex' : 'none'; document.getElementById('sidebar-user-name').innerText = user.name; document.getElementById('sidebar-user-role').innerText = user.role; let roleTextEl = document.getElementById('setting-role-text'); if(roleTextEl) roleTextEl.innerText = user.role; let now = new Date(); let pad = (n) => String(n).padStart(2, '0'); let todayDateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`; let currentTimeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`; if(!document.getElementById('report-start-date').value) document.getElementById('report-start-date').value = todayDateStr; if(!document.getElementById('report-start-time').value) document.getElementById('report-start-time').value = "00:00"; if(!document.getElementById('report-end-date').value) document.getElementById('report-end-date').value = todayDateStr; if(!document.getElementById('report-end-time').value) document.getElementById('report-end-time').value = currentTimeStr; applyTranslations(); renderAll(); renderDataEntries(); renderUsersList(); }
-function logout() { currentUser = null; document.getElementById('main-app').style.display = 'none'; document.getElementById('role-screen').style.display = 'flex'; document.getElementById('app-user').value = ''; document.getElementById('app-pass').value = ''; switchView('view-home', 'nav-home'); }
+
+function verifyAdminLogin() { 
+    let uInput = document.getElementById('admin-user-input').value.trim(); 
+    let pInput = document.getElementById('admin-pass-input').value.trim(); 
+    let foundUser = systemUsers.find(u => u.name === uInput && u.pass === pInput && u.role === 'Yönetici'); 
+    if(foundUser) { 
+        closeModal('admin-modal'); 
+        finalizeLogin(foundUser); 
+        addSystemLog("LOGIN", "Yönetici paneli girişi yapıldı.");
+        showToast("Yönetici girişi başarılı.", "success");
+    } else {
+        showToast("Geçersiz yönetici bilgileri!", "error");
+    }
+}
+
+function finalizeLogin(user) { 
+    currentUser = user; 
+    document.getElementById('role-screen').style.display = 'none'; 
+    document.getElementById('main-app').style.display = window.innerWidth <= 768 ? 'flex' : 'block'; 
+    let isAdmin = (user.role === 'Yönetici'); 
+    document.getElementById('nav-users').style.display = isAdmin ? 'flex' : 'none'; 
+    document.getElementById('nav-report').style.display = isAdmin ? 'flex' : 'none'; 
+    document.getElementById('nav-logs').style.display = isAdmin ? 'flex' : 'none'; 
+    document.getElementById('admin-action-buttons').style.display = isAdmin ? 'grid' : 'none'; 
+    document.getElementById('fab-btn').style.display = isAdmin ? 'flex' : 'none'; 
+    document.getElementById('sidebar-user-name').innerText = user.name; 
+    document.getElementById('sidebar-user-role').innerText = user.role; 
+    let roleTextEl = document.getElementById('setting-role-text'); 
+    if(roleTextEl) roleTextEl.innerText = user.role; 
+    let now = new Date(); 
+    let pad = (n) => String(n).padStart(2, '0'); 
+    let todayDateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`; 
+    let currentTimeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`; 
+    if(!document.getElementById('report-start-date').value) document.getElementById('report-start-date').value = todayDateStr; 
+    if(!document.getElementById('report-start-time').value) document.getElementById('report-start-time').value = "00:00"; 
+    if(!document.getElementById('report-end-date').value) document.getElementById('report-end-date').value = todayDateStr; 
+    if(!document.getElementById('report-end-time').value) document.getElementById('report-end-time').value = currentTimeStr; 
+    applyTranslations(); 
+    renderAll(); 
+    renderDataEntries(); 
+    renderUsersList(); 
+    renderSystemLogs();
+}
+
+function logout() { 
+    if(currentUser) {
+        addSystemLog("LOGOUT", "Kullanıcı sistemden çıkış yaptı.");
+    }
+    currentUser = null; 
+    document.getElementById('main-app').style.display = 'none'; 
+    document.getElementById('role-screen').style.display = 'flex'; 
+    document.getElementById('app-user').value = ''; 
+    document.getElementById('app-pass').value = ''; 
+    switchView('view-home', 'nav-home'); 
+    showToast("Çıkış yapıldı.", "success"); 
+}
 
 async function initApp() {
     try {
-        let [uRes, oRes, dRes] = await Promise.all([ db.from('users').select('*'), db.from('orders').select('*').order('id', { ascending: false }), db.from('data_entries').select('*').order('id', { ascending: false }) ]);
-        if(uRes.data) systemUsers = uRes.data; if(oRes.data) appOrders = oRes.data; if(dRes.data) dataEntries = dRes.data;
+        let [uRes, oRes, dRes, lRes] = await Promise.all([ 
+            db.from('users').select('*'), 
+            db.from('orders').select('*').order('id', { ascending: false }), 
+            db.from('data_entries').select('*').order('id', { ascending: false }),
+            db.from('logs').select('*').order('id', { ascending: false })
+        ]);
+        if(uRes.data) systemUsers = uRes.data; 
+        if(oRes.data) appOrders = oRes.data; 
+        if(dRes.data) dataEntries = dRes.data; 
+        if(lRes.data) systemLogs = lRes.data;
         renderAll();
     } catch(e) { console.error("Veritabanı bağlantı hatası:", e); }
     document.getElementById('splash').classList.add('hide'); document.getElementById('role-screen').style.display = 'flex'; 
