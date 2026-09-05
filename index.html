@@ -37,7 +37,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 ::-webkit-scrollbar-thumb { background: rgba(125, 125, 125, 0.3); border-radius: 20px; }
 * { scrollbar-width: thin; scrollbar-color: rgba(125, 125, 125, 0.3) transparent; box-sizing: border-box; }
 
-body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-modal):not(#modal):not(#add-modal):not(#machine-modal):not(#report-modal):not(#scanner-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
+body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-modal):not(#modal):not(#add-modal):not(#machine-modal):not(#report-modal):not(#scanner-modal):not(#qr-modal):not(script):not(style) { display: none !important; opacity: 0 !important; pointer-events: none !important; position: absolute !important; z-index: -9999 !important; }
 
 .app { display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-main); color: var(--text-main); overflow: hidden; }
 
@@ -47,7 +47,6 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 #mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9980; backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s; }
 #mobile-menu-overlay.show { opacity: 1; display: block; }
 
-/* MENÜ ÇENTİK DÜZELTMESİ EKLENDİ */
 .desktop-sidebar { position: absolute; top: 0; left: 0; bottom: 0; width: var(--sidebar-width); background: var(--sidebar-bg); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column; justify-content: space-between; padding: calc(24px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px)) 16px; z-index: 9990; }
 .sidebar-top .logo-area { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 20px; padding-left: 12px; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
 .sidebar-top .logo-icon { background: linear-gradient(135deg, var(--text-main), var(--nardo)); color: var(--bg-main); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; }
@@ -102,7 +101,7 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .page.active-page { display: block; animation: slideFadeIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 @keyframes slideFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* MODAL ÇENTİK DÜZELTMESİ EKLENDİ */
+/* Modallar */
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999999; backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.3s; overflow-y: auto; flex-direction: column; align-items: center; padding: calc(20px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 0px)); box-sizing: border-box; }
 .modal.show { display: flex; opacity: 1; }
 .sheet { background: var(--card-bg); color: var(--text-main); width: 480px; max-width: 100%; border-radius: 20px; padding: 30px; margin: auto; flex-shrink: 0; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
@@ -137,6 +136,11 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 .btn-update:active { opacity: 0.8; }
 .btn-delete { background: transparent; color: #ff5252; border: 2px solid #ff5252; padding: 12px; border-radius: 12px; font-weight: 800; width: 100%; margin-top: 12px; font-size: 13px; cursor: pointer; display: none; }
 .btn-print { background: #3b82f6; color: #fff; border: none; padding: 12px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 12px; font-size: 13px; cursor: pointer; }
+
+/* BARKODU AÇ BUTONU STİLİ */
+.btn-barcode { background: var(--card-sub-bg); color: var(--text-main); border: 1.5px solid var(--border-color); padding: 14px; border-radius: 12px; font-weight: 900; width: 100%; margin-top: 12px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+.btn-barcode:active { background: var(--border-color); }
+.btn-barcode svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .custom-dropdown { position: relative; width: 100%; user-select: none; }
 .custom-dropdown-selected { background: var(--card-sub-bg); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 12px 16px; font-size: 14px; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
@@ -452,6 +456,18 @@ body > *:not(.app):not(#splash):not(#role-screen):not(#login-modal):not(#admin-m
 <!-- MODALLAR -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal('modal')"><div class="sheet"><button class="close no-print" onclick="closeModal('modal')">✕</button><h2 id="mtitle" style="margin:0 0 20px;font-size:20px;font-weight:900;color:var(--text-main);"></h2><div id="details"></div></div></div>
 
+<!-- YENİ: BÜYÜK QR KOD GÖSTERİM MODALI -->
+<div class="modal" id="qr-modal" onclick="if(event.target===this)closeModal('qr-modal')">
+  <div class="sheet" style="text-align: center; width: 400px;">
+    <button class="close" onclick="closeModal('qr-modal')">✕</button>
+    <h3 style="margin: 0 0 20px; font-size: 18px; font-weight: 900; color: var(--text-main);">İŞ EMRİ BARKODU</h3>
+    <div style="background:#fff; padding:20px; border-radius:16px; display:inline-block; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+      <div id="large-qr-code-box"></div>
+      <div id="qr-modal-info" style="color:#000; font-size:12px; margin-top:10px; font-weight:900;"></div>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id="add-modal" onclick="if(event.target===this)closeModal('add-modal')">
  <div class="sheet">
   <button class="close" onclick="closeModal('add-modal')">✕</button>
@@ -574,6 +590,7 @@ function renderAll() {
     let overallPct = totalTarget > 0 ? Math.round((totalMade / totalTarget) * 100) : 0; document.getElementById("lines-preview").innerHTML = `<div class="card" style="padding:18px 15px"><div class="row" style="margin-bottom:8px;"><span style="color:var(--text-main); font-weight:800;">${t('knitting')}</span><strong style="color:var(--text-main); text-align:right;">${totalMade.toLocaleString()} / ${totalTarget.toLocaleString()} KG <span style="color:var(--nardo); font-size:13px; margin-left:4px;">(%${overallPct})</span></strong></div><div class="progress"><div class="bar" style="width:${overallPct}%;"></div></div></div>`;
 }
 
+// BARKODU AÇ BUTONLU SİPARİŞ DETAYI
 function openOrder(i){
   let o = appOrders[i]; 
   document.getElementById("mtitle").textContent = o.product; 
@@ -581,11 +598,28 @@ function openOrder(i){
   let deleteBtnHtml = (currentUser && currentUser.role === 'Yönetici') ? `<button class="btn-delete" style="display:block" onclick="deleteOrder(${i})">${t('deleteBtn')}</button>` : ''; 
   let controls = canEdit ? `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div><input type="number" id="edit-k" class="edit-input center" value="${o.made}" max="${o.target}" min="0"><button class="btn-update" onclick="saveProgress(${i})" data-i18n="updateBtn">${t('updateBtn')}</button>${deleteBtnHtml}` : `<div class="phase-title" data-i18n="knitting">${t('knitting')} (KG)</div><div class="edit-input center readonly">${o.made.toLocaleString()} KG</div><div style="text-align:center;margin-top:16px;font-size:12px;color:var(--nardo);font-weight:700">${t('viewOnlyMsg')}</div>`;
   
-  let qrDiv = `<div style="background:#fff; padding:15px; border-radius:14px; display:inline-block; margin-top:20px; box-shadow:0 10px 20px rgba(0,0,0,0.1);"><div id="qr-code-box"></div><div style="color:#000; font-size:11px; margin-top:8px; font-weight:900; text-align:center;">KAMERA İLE OKUTUN</div></div>`;
+  // Sabit QR yerine "Barkodu Aç" butonu eklendi
+  let barcodeBtnHtml = `<button class="btn-barcode" onclick="openLargeBarcode(${i})">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+    Barkodu Aç
+  </button>`;
   
-  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>Zorunlu Lot</span><strong style="color:#60a5fa">${o.lot_no || '-'}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div><div style="text-align:center;">${qrDiv}</div><button class="btn-print no-print" onclick="printJobOrder(${i})">🖨️ İŞ EMRİNİ YAZDIR</button>`; 
+  document.getElementById("details").innerHTML = `<div class="detail-box"><div class="d-row"><span>${t('orderNo')}</span><strong>#${o.no}</strong></div><div class="d-row"><span>Zorunlu Lot</span><strong style="color:#60a5fa">${o.lot_no || '-'}</strong></div><div class="d-row"><span>${t('target')}</span><strong>${o.target.toLocaleString()} KG</strong></div><div class="d-row"><span>${t('machineNo')}</span><strong>${o.machine || t('unassigned')}</strong></div></div><div class="detail-box"><div class="d-row"><span>${t('material')}</span><strong>${o.yarn}</strong></div><div class="d-row"><span>${t('color')}</span><strong>${o.color}</strong></div></div><div class="detail-box">${controls}</div>${barcodeBtnHtml}<button class="btn-print no-print" onclick="printJobOrder(${i})">🖨️ İŞ EMRİNİ YAZDIR</button>`; 
   openModal('modal');
-  setTimeout(() => { document.getElementById('qr-code-box').innerHTML = ""; new QRCode(document.getElementById("qr-code-box"), { text: `EA-ERP-ORDER:${o.id}`, width: 140, height: 140, colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H }); }, 100);
+}
+
+// BÜYÜK BARKODU PENCEREDE AÇMA FONKSİYONU
+function openLargeBarcode(i) {
+    let o = appOrders[i];
+    openModal('qr-modal');
+    setTimeout(() => {
+        document.getElementById('large-qr-code-box').innerHTML = "";
+        new QRCode(document.getElementById("large-qr-code-box"), {
+            text: `EA-ERP-ORDER:${o.id}`,
+            width: 220, height: 220, colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
+        });
+        document.getElementById('qr-modal-info').innerText = `Parti: #${o.no} | ${o.product}`;
+    }, 100);
 }
 
 function printJobOrder(i) {
@@ -632,7 +666,6 @@ function openAddModal() {
     openModal('add-modal'); 
 }
 
-/* YENİ EKLENEN VERİTABANI HATASI YAKALAYICI */
 async function saveNewOrder() { 
     if(!currentUser || currentUser.role !== 'Yönetici') return; 
     let mNo = selectedOrderMachine; 
@@ -645,7 +678,7 @@ async function saveNewOrder() {
     const { data, error } = await db.from('orders').insert([newOrder]).select();
     
     if(error) { 
-        alert("Sipariş oluşturulamadı! Veritabanı Hatası: " + error.message + "\n\n(Büyük ihtimalle Supabase panelinden 'orders' tablosuna 'lot_no' sütununu eklemeyi unuttunuz.)"); 
+        alert("Sipariş oluşturulamadı! Veritabanı Hatası: " + error.message); 
         return; 
     }
     if(data) { appOrders.unshift(data[0]); closeModal('add-modal'); renderAll(); switchView('view-orders', 'nav-orders'); } 
